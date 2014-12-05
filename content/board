@@ -1,0 +1,21 @@
+#this is the board to write postits and notifications, one per line 
+# = comment do not show
+# ---other directives---
+# postit: makes a postit
+# sos: makes an SOS message
+# ------styling------
+# new: adds a new sign to a postit
+# bg: sets background color (any css color will do)
+# fg: sets foreground color (any css color will do)
+# -------instructions-------
+# place directive and styling in []
+# works only in single lines
+# examples: 
+# [postit] test postit #this will show a postit with "test postit as content"
+# [postit bg=pink fg=lightgreen] mpitzis einai flwraki kai o fanis xameno kormi
+# [postit new]auto einai ena neo postit
+# [sos] check this asap!! # this will make an sos sign in the middle of the screen (aproximately)
+[postit] just default appearence 
+[postit bg=pink fg=lightgreen] hippie postit
+[postit new] this is a new postit!
+[sos] check this asap!!

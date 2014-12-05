@@ -1,0 +1,118 @@
+
+@media screen and (min-width: 320px) and (max-width: 821px) {
+	aside#menu {
+		float: none;
+		min-height: 294px;
+		width: 100%;
+	}
+
+	#menu ul li {
+	  float: left;
+	  height: 34px;
+	  min-width: 158px;
+	}
+
+	.mcap {
+	}
+
+	section#status {
+	  float:none;
+	  margin-left: 0px;
+	  font-size: 0.85em;
+	}
+
+	#ct_table td:nth-child(6) {
+	  display: none;
+	}
+
+	#ct_table td:nth-child(9) {
+		display: none;
+	}
+
+	#ct_table td:nth-child(10) {
+		display: none;
+	}
+
+	#ct_table td:nth-child(12) {
+		display: none;
+	}
+
+	section#history {
+	  margin-top: 4px;
+	  margin-left: 0px;
+	  min-width: 314px;
+	  font-size: 0.85em;
+	  width:98%;
+	}
+
+	#status > header {
+	  height: 82px;
+	}
+
+	#ct_table .thead {
+	  display: none;
+	}
+
+	#board {
+	  margin-left: 0px;
+	}
+
+	.menu-dialog {
+		left: 0;
+	}
+
+	#new_ticket, #new_client, #settings, #client, #gen_res, #allclients, #cis_res, #esoda, #costs, #various, #stats_info, #prices {
+		min-width:314px;
+		width: 90%;
+	}
+
+	.frm-actual-data {
+		max-width: 100%;
+	}
+
+	.ct-details {
+		width: 100%;
+	}
+
+	.ct-date > input {
+		width: 108px;
+	}
+
+	.ct-info > textarea {
+		width: 80% !important;
+	}
+
+	.frm-actual-data label {
+		max-width: 80px;
+		min-width: 51px;
+		width: auto;
+	}
+
+	#new_tk_frm input, #new_cl_frm input {
+	  width: 275px !important;
+	}
+
+	#new_tk_frm fieldset {
+		width: 90% !important;
+	}
+
+
+
+
+}
+
+@media screen and (min-width: 479px) and (max-width:540px) {
+	aside#menu {
+		min-height: 212px;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 767px){
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1040px) {
+	#ct_table td:nth-child(9) {
+		display: table-cell;
+	}
+}

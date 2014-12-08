@@ -1,65 +1,65 @@
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
-		<h2>Έξοδα</h2>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
+		<h2><?php echo $lang['costs']; ?></h2>
         <span class="filters" id="cost_filters">
             <form>
-                year <select id="cost_year">
+                <?php echo $lang['year']; ?> <select id="cost_year">
                     <option value="2014" selected>2014</option>
                 </select> 
-                month <select id="cost_month">
-                    <option value="0" selected>All</option>
-                    <option value="12">12 - Δεκέμβρης</option>                     
-                    <option value="11">11 - Νοέμβρης</option>                    
-                    <option value="10">10 - Οκτώβρης</option>                    
-                    <option value="9">9 - Σεπτέμβρης</option>                    
-                    <option value="8">8 - Αύγουστος</option>
-                    <option value="7">7 - Ιούλης</option>
-                    <option value="6">6 - Ιούνης</option>
-                    <option value="5">5 - Μάης</option>
-                    <option value="4">4 - Απρίλης</option>
-                    <option value="3">3 - Μάρτης</option>
+                <?php echo $lang['month']; ?> <select id="cost_month">
+                    <option value="0" selected><?php echo $lang['month-all']; ?></option>
+                    <option value="12">12 - <?php echo $lang['month-dec']; ?></option>                     
+                    <option value="11">11 - <?php echo $lang['month-nov']; ?></option>                    
+                    <option value="10">10 - <?php echo $lang['month-oct']; ?></option>                    
+                    <option value="9">9 - <?php echo $lang['month-sep']; ?></option>                    
+                    <option value="8">8 - <?php echo $lang['month-aug']; ?></option>
+                    <option value="7">7 - <?php echo $lang['month-jul']; ?></option>
+                    <option value="6">6 - <?php echo $lang['month-jun']; ?></option>
+                    <option value="5">5 - <?php echo $lang['month-may']; ?></option>
+                    <option value="4">4 - <?php echo $lang['month-apr']; ?></option>
+                    <option value="3">3 - <?php echo $lang['month-mar']; ?></option>
                 </select>
             </form>
         </span>
-        <span class="add" id="add_cost">+ προσθήκη εξόδου</span>
+        <span class="add" id="add_cost">+ <?php echo $lang['costs-add']; ?></span>
         <div id="cres"></div>
 		<span id="add_cost_frm" style="display:none;">
 			<form name="ac_frm" id="ac_frm" action="index.php?task=acost&pos=before">
 				<fieldset>
-				<legend>Νέο έξοδο</legend>
-					<label for="cDesc">Περιγραφή</label>
+				<legend><?php echo $lang['costs-new']; ?></legend>
+					<label for="cDesc"><?php echo $lang['costs-descr']; ?></label>
 					<textarea name="cDesc" id="cDesc"></textarea><br />
-					<label for="cAmount">Ποσό</label>
+					<label for="cAmount"><?php echo $lang['costs-amount']; ?></label>
 					<input type="text" name="cAmount" id="cAmount" value="" size="4" /><br />
-					<label for="cDate">Ημ/νια</label>
+					<label for="cDate"><?php echo $lang['costs-date']; ?></label>
 					<input type="text" name="cDate" id="cDate" value="" size="12" /><br />
 				</fieldset>
-				<span class="fake-button" id="addcsbtn">Προσθήκη λυπητερής</span><br /><br />
-				<span class="cl-b" onclick="$(this).parent().parent().toggle();">Close me</span>
+				<span class="fake-button" id="addcsbtn"><?php echo $lang['costs-add-msg']; ?></span><br /><br />
+				<span class="cl-b" onclick="$(this).parent().parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 			</form>
 			<div id="new_cs_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
 		</span>
 		<span id="edit_cost_frm" style="display:none;">
 			<form name="ec_frm" id="ec_frm" action="index.php?task=ecost&pos=before">
 				<fieldset>
-				<legend>Επεξεργασία εξόδου</legend>
-					<label for="ecDesc">Περιγραφή</label>
+				<legend><?php echo $lang['costs-edit']; ?></legend>
+					<label for="ecDesc"><?php echo $lang['costs-descr']; ?></label>
 					<textarea name="ecDesc" id="ecDesc"></textarea><br />
-					<label for="ecAmount">Ποσό</label>
+					<label for="ecAmount"><?php echo $lang['costs-amount']; ?></label>
 					<input type="text" name="ecAmount" id="ecAmount" value="" size="4" /><br />
-					<label for="ecDate">Ημ/νια</label>
+					<label for="ecDate"><?php echo $lang['costs-date']; ?></label>
 					<input type="text" name="ecDate" id="ecDate" value="" size="12" /><br />
                     <input type="hidden" name="ecId" id="ecId" value="" />
 				</fieldset>
-				<span class="fake-button" id="editcsbtn">Αποθήκευση λυπητερής</span><br /><br />
-				<span class="cl-b" onclick="$(this).parent().parent().toggle();">Close me</span>
+				<span class="fake-button" id="editcsbtn"><?php echo $lang['costs-save']; ?></span><br /><br />
+				<span class="cl-b" onclick="$(this).parent().parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 			</form>
 			<div id="edit_cs_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
 		</span>
         <div class="elevate menu-dialog" style="display:none;" id="dcost_dialog">
-            <h2>ΔΙΑΓΡΑΦΗ ΛΥΠΗΤΕΡΗΣ!</h2>
-            <div id="dcs_cl_msg">Sigoura i tha kaneis xazomara? Delete <strong></strong>-<strong></strong> ?</div><br><br>
-            <span id="dcs_yes" class="cl-b b-sblue del-cl-b">YES</span>
-            <span onclick="document.getElementById('dcost_dialog').style.display = 'none';" class="cl-b b-sblue" style="font-size:24px;">NO</span>
+            <h2><?php echo $lang['costs-delete']; ?></h2>
+            <div id="dcs_cl_msg"><?php echo $lang['costs-delete-msg']; ?> <strong></strong>-<strong></strong> ?</div><br><br>
+            <span id="dcs_yes" class="cl-b b-sblue del-cl-b"><?php echo $lang['costs-delete-yes']; ?></span>
+            <span onclick="document.getElementById('dcost_dialog').style.display = 'none';" class="cl-b b-sblue" style="font-size:24px;"><?php echo $lang['costs-delete-no']; ?></span>
         </div>
         <div id="cres_act" class="elevate menu-dialog" style="display:none;"></div>
 <script>
@@ -112,7 +112,7 @@ $(document).ready(function() {
 				$("#cs_frm").append(textStatus);
 			});
 		} else {
-			alert('Re vale perigrafh, poso kai imerominia!');
+			alert('<?php echo $lang['costs-error1']; ?>');
 		}
 	});
     //edit current cost
@@ -136,7 +136,7 @@ $(document).ready(function() {
                 $("#gen_res").show("fast").append(textStatus).delay(2000).hide("fast");
             });
         } else {
-            alert('zero id is not possible');
+            alert('<?php echo $lang['costs-error2']; ?>');
         }
     });
     //store edited cost
@@ -165,7 +165,7 @@ $(document).ready(function() {
 				$("#ecs_frm").append(textStatus);
 			});
 		} else {
-			alert('Re vale perigrafh, poso kai imerominia!');
+			alert('<?php echo $lang['costs-error1']; ?>');
 		}
     });
     //delete cost

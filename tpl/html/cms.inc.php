@@ -1,19 +1,19 @@
-<h2>CMS</h2> (δλδ Content Management System)
+<h2><?php echo $lang['cms']; ?></h2> <?php echo $lang['cms-msg']; ?>
 <hr size="1" />
 <div id="cms_intro">
-Εδώ μπορείτε να κάνετε edit το message of the day (motd) και τον πίνακα που γράφουμε γενικώς διάφορα (board)
+<?php echo $lang['cms-intro']; ?>
 </div>
 <hr size="1" />
 <div id="cms_data">
     <form>
-        <label for="motd">Message of the day</label><br />
+        <label for="motd"><?php echo $lang['cms-motd']; ?></label><br />
         <textarea id="motd_txt" name="motd"></textarea><br />
-        <span class="fake-button" id="cms_save_motd">Save motd</span><br /><br />
-        <label for="board">Board</label><br />
+        <span class="fake-button" id="cms_save_motd"><?php echo $lang['cms-motd-save']; ?></span><br /><br />
+        <label for="board"><?php echo $lang['cms-board']; ?></label><br />
         <textarea id="board_txt" name="board"></textarea><br />
-        <span class="fake-button" id="cms_save_board">Save board</span><br />
+        <span class="fake-button" id="cms_save_board"><?php echo $lang['cms-board-save']; ?></span><br />
     </form>
-    <span class="fake-button" style="float:right;" id="cms_save">Save all</span>
+    <span class="fake-button" style="float:right;" id="cms_save"><?php echo $lang['cms-save-all']; ?></span>
     <div id="cms_res"></div>
 </div>
 
@@ -27,7 +27,7 @@ $("#cms_save").click(function(){
     {motd: motdtxt, board: boardtxt, what: "all"},
     function(data, textStatus, jqXHR){
         if(data.status === "success") {
-            $("#cms_res").show('fast').html("Ok all updated!").delay(2000).hide('slow');
+            $("#cms_res").show('fast').html("<?php echo $lang['cms-save-ok']; ?>").delay(2000).hide('slow');
         } else if(data.status === "error") {
             $("#cms_res").show('fast').html(data.message).delay(2000).hide('slow');
         }

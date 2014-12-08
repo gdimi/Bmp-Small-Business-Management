@@ -1,17 +1,19 @@
 <?php
 if (!defined('_w00t_frm')) die('har har har');
 
-/*TODO
- * db:
- * user: hybridwe_dosusr
- * pass: yI397K4NQIQE
- * dbname: hybridwe_dos
+/*main init file
+ * loads configuration
+ * registers tasks
+ * handle action and position of tasks
+ * executes tasks
+ * load language
+ * load cases and cache
  */
 //load settings
 require_once('sources/config.php');
 $dss = new DSconfig;
 
-//first handle possible tasks
+//first register possible tasks
 $tasks = Array();
 $tasks['sclient'] = 'sclient.task';
 $tasks['client'] = 'client.task';
@@ -56,6 +58,19 @@ if ($tasks[$task] && $pos == 'before') {
 	require_once('sources/class.db.php');
 	require_once('sources/class.tickets.php');
 	require_once('sources/class.cms.php');
+
+	//now load language
+	if ($dss->lang) {
+		$activeLanguage = $dss->lang;
+	} else {
+		$activeLanguage = "gr";
+	}
+
+	$lang = array();
+
+	include_once('language/'.$activeLanguage.'.php');
+
+	//load tickets and cache
 	$tickets_handler = tickets::getInstance();
 	$cache = new Cache;
 	$cache->cachefile = 'tickets.html';

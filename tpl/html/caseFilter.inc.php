@@ -4,14 +4,14 @@
     }
 ?>
 <form>
-    <strong>Filter:</strong>&nbsp;
-	<label for="toggle_closed">closed</label>
+    <strong><?php echo $lang['case-filter-filter']; ?></strong>&nbsp;
+	<label for="toggle_closed"><?php echo $lang['case-filter-Closed']; ?></label>
 	<input type="checkbox" name="toggle_closed" id="toggle_closed" checked/>
-	<label for="toggle_open">open</label>
+	<label for="toggle_open"><?php echo $lang['case-filter-Open']; ?></label>
 	<input type="checkbox" name="toggle_open" id="toggle_open" />
-	<label for="toggle_high">high</label>
+	<label for="toggle_high"><?php echo $lang['case-filter-High']; ?></label>
 	<input type="checkbox" name="toggle_high" id="toggle_high" />
-	<label for="toggle_user">User</label>
+	<label for="toggle_user"><?php echo $lang['case-filter-User']; ?></label>
 	<select name="toggle_user" id="toggle_user">
 		<option></option>
         <?php echo $userHTML; ?>

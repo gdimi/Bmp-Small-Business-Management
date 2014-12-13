@@ -1,5 +1,5 @@
 <?php
-//delete a ticket
+//display income table
 if (!defined('_w00t_frm')) die('har har har');
 $pos = $_GET['pos'];
 $scerr = ''; //initialize error variable

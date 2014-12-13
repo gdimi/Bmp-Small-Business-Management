@@ -1,5 +1,5 @@
 <?php
-//show expenses
+//show expenses table
 if (!defined('_w00t_frm')) die('har har har');
 $pos = $_GET['pos'];
 
@@ -16,17 +16,20 @@ if (!$pos or $pos != 'before') {
 			$im = $_GET['im']+1;
 			$lastMonth = $im - 1;
 			$iy = $_GET['iy'];
+			$ly = $iy;
 			if ($iy > $curYear) {
 				$idate = $now;
 			} else {
 				if ($im > 12 && $iy == $curYear) {
-					$im = $curMonth;
+					$im = 1;
+					$lastMonth;
+					$iy++;
 				} elseif ($im > 12 && $iy < $curYear) {
 					$im = 12;
 				}
 			}
 			if (!$idate) { $idate = strtotime($iy.'-'.$im); }
-			if (!$ldate) { $ldate = strtotime($iy.'-'.$lastMonth); }
+			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth); }
 			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
 			$limit = '';
 		}

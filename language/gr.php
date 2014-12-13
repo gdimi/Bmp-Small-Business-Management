@@ -6,21 +6,21 @@
 if (!defined('_w00t_frm')) die('har har har');
 
 $lang['controls-close'] = 'Close me';
-$lang['month-all'] = 'All'
-$lang['month-dec'] = 'Δεκέμβρης'
-$lang['month-nov'] = 'Νοέμβρης'
-$lang['month-oct'] = 'Οκτώβρης'
-$lang['month-sep'] = 'Σεπτέμβρης'
-$lang['month-aug'] = 'Αύγουστος'
-$lang['month-jul'] = 'Ιούλης'
-$lang['month-jun'] = 'Ιούνης'
-$lang['month-may'] = 'Μάης'
-$lang['month-apr'] = 'Απρίλης'
-$lang['month-mar'] = 'Μάρτης'
-$lang['month-feb'] = 'Φλεβάρης'
-$lang['month-jan'] = 'Ιανουάριος'
-$lang['month'] = 'Μήνας'
-$lang['year'] = 'Έτος'
+$lang['month-all'] = 'All';
+$lang['month-dec'] = 'Δεκέμβρης';
+$lang['month-nov'] = 'Νοέμβρης';
+$lang['month-oct'] = 'Οκτώβρης';
+$lang['month-sep'] = 'Σεπτέμβρης';
+$lang['month-aug'] = 'Αύγουστος';
+$lang['month-jul'] = 'Ιούλης';
+$lang['month-jun'] = 'Ιούνης';
+$lang['month-may'] = 'Μάης';
+$lang['month-apr'] = 'Απρίλης';
+$lang['month-mar'] = 'Μάρτης';
+$lang['month-feb'] = 'Φλεβάρης';
+$lang['month-jan'] = 'Ιανουάριος';
+$lang['month'] = 'Μήνας';
+$lang['year'] = 'Έτος';
 $lang['lmenu'] = 'Menu';
 $lang['lmenu-add-case'] = 'add Case';
 $lang['lmenu-add-client'] = 'add Client';

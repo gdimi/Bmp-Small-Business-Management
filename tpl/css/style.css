@@ -166,6 +166,7 @@ tr.tbody td {
 
 .ct-info > textarea {
     height: auto;
+    min-height: 140px;
     width: 66% !important;
 }
 

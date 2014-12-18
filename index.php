@@ -115,8 +115,8 @@ require_once('sources/init.php');
 				$actual_ticket_data .= '
 			<div id="cur_ticket_'.$key.'" class="div-elevate .'.$tstat.'">
 			<span class="cl-b b-blue" onclick="$(this).parent().toggle();">Close me</span>
-			<span class="cl-b b-blue" id="unlock_tk_'.$key.'" style="clear:both;">Unlock me</span>
-			<span class="cl-b b-blue" id="lock_tk_'.$key.'" style="display:none;clear:both;">Lock me</span>
+			<span class="cl-b b-blue" id="unlock_tk_'.$key.'" style="clear:right;">Unlock me</span>
+			<span class="cl-b b-blue" id="lock_tk_'.$key.'" style="display:none;clear:right;">Lock me</span>
 			<form name="edit_tk_'.$key.'" id="edit_tk_'.$key.'" class="frm-actual-data">
 				<h4 class="">Case '.$key.' : <input type="text" name="title" value="'.$ticket['title'].'" maxlength="255" disabled /></h4>
 				<div class="ct-details">

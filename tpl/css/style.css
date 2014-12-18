@@ -274,7 +274,7 @@ tr.tbody td {
 	display:none;
 }
 
-#settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms_img {
+#settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms {
     background: url("../../images/settings.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
     display: inline-block;
@@ -353,11 +353,11 @@ table#ct_table {
 #stats {
 	background: url("../../images/statistics.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-#cms_img {
+#cms {
 	background: url("../../images/cms.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
-#settings_tk:hover,#add_client:hover,#all_clients:hover,#income:hover,#expenses:hover,#events:hover,#stats:hover,#cms_img:hover {
+#settings_tk:hover,#add_client:hover,#all_clients:hover,#income:hover,#expenses:hover,#events:hover,#stats:hover,#cms:hover {
 	transform: rotate(180deg);
 	-ms-transform: rotate(180deg); /* IE 9 */
 	-webkit-transform: rotate(180deg); /* Safari and Chrome */

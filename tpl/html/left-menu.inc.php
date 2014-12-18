@@ -6,10 +6,10 @@
             <li><span class="mcap"><?php echo $lang['lmenu-income']; ?></span> <span id="income"></span></li>
             <li><span class="mcap"><?php echo $lang['lmenu-expenses']; ?></span> <span id="expenses"></span></li>
             <li><span class="mcap"><?php echo $lang['lmenu-events']; ?></span> <span id="events"></span></li>
-            <li><span class="mcap" id="cms"><?php echo $lang['lmenu-cms']; ?></span> <span id="cms_img"></span></li>
+            <li><span class="mcap"><?php echo $lang['lmenu-cms']; ?></span> <span id="cms"></span></li>
             <li><span class="mcap"><?php echo $lang['lmenu-stats']; ?></span> <span id="stats"></span></li>
             <li><span class="mcap"><?php echo $lang['lmenu-settings']; ?></span> <span id="settings_tk"></span></li>
-            <li><span class="mcap"><a href="javascript:void(0);" onclick="$('#various').toggle();" style="color:white;text-decoration:none;"><?php echo $lang['lmenu-various']; ?></a></span></li>           
+            <li><span class="mcap"><a href="javascript:void(0);" onclick="$('#various').toggle();" style="color:white;text-decoration:none;"><?php echo $lang['lmenu-various']; ?></a></span></li>
             <li><span class="mcap"><a href="javascript:void(0);" onclick="$('#prices').toggle();" style="color:white;text-decoration:none;"><?php echo $lang['lmenu-prices']; ?></a></span></li>
             <li><span class="mcap"><a href="javascript:void(0);" onclick="$('#this_todo').toggle();" style="color:white;text-decoration:none;"><?php echo $lang['lmenu-todo']; ?></a></span></li>
         </ul>

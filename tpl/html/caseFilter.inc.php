@@ -5,13 +5,13 @@
 ?>
 <form>
     <strong><?php echo $lang['case-filter-filter']; ?></strong>&nbsp;
-	<label for="toggle_closed"><?php echo $lang['case-filter-Closed']; ?></label>
+	<label for="toggle_closed"><?php echo $lang['case-filter-closed']; ?></label>
 	<input type="checkbox" name="toggle_closed" id="toggle_closed" checked/>
-	<label for="toggle_open"><?php echo $lang['case-filter-Open']; ?></label>
+	<label for="toggle_open"><?php echo $lang['case-filter-open']; ?></label>
 	<input type="checkbox" name="toggle_open" id="toggle_open" />
-	<label for="toggle_high"><?php echo $lang['case-filter-High']; ?></label>
+	<label for="toggle_high"><?php echo $lang['case-filter-high']; ?></label>
 	<input type="checkbox" name="toggle_high" id="toggle_high" />
-	<label for="toggle_user"><?php echo $lang['case-filter-User']; ?></label>
+	<label for="toggle_user"><?php echo $lang['case-filter-user']; ?></label>
 	<select name="toggle_user" id="toggle_user">
 		<option></option>
         <?php echo $userHTML; ?>

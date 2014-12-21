@@ -16,6 +16,6 @@
 # [postit new]auto einai ena neo postit
 # [sos] check this asap!! # this will make an sos sign in the middle of the screen (aproximately)
 [postit] just default appearence 
-[postit bg=pink fg=lightgreen] hippie postit
+[postit bg=pink fg=green]a hippie postit
 [postit new] this is a new postit!
 [sos] check this asap!!

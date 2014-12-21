@@ -64,7 +64,7 @@ if (!$pos or $pos != 'before') {
                 </tr>';
                 $total += $case['price'];
 			}
-			$msg .= '</table><div>Σύνολο: <strong>'.$total.'</strong></div>';
+			$msg .= '</table><div style="position: absolute; top: 0px; left: 35%;">Σύνολο: <strong>'.$total.'</strong></div>';
 			$tk_status = json_encode(array(
 			 'status' => 'success',
 			 'message'=> $msg

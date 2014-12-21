@@ -8,7 +8,7 @@ if (!$pos or $pos != 'before') {
 	$acerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
 	$client = checkVals($acerr,$_POST);
-	if (is_array($client)) {
+	if (is_array($client) && !$acerr) {
 		$today = time();
 		try {
 			$sccon = new PDO('sqlite:pld/HyperLAB.db3');
@@ -26,10 +26,14 @@ if (!$pos or $pos != 'before') {
 				echo $tk_status;
 				exit(0);
 			} else { // something gone wrong!
-				$acerr = "possible sql error!";
+				if (!$sccon) { $accer = 'cannot connect'; }
+				if (!$sth) { $accer = 'cannot prepare'; }
+				$acerr .= "possible sql error: ";
+				$acerr .= $sth->errorCode();
 			}
 		} catch(PDOException $ex) {
-			$acerr = "An Error occured!".$ex->getMessage();
+			logerror($e->getMessage(), "opendatabase");
+			$acerr .= "Error in openhrsedb ".$e->getMessage();
 		}
 	} 
 }

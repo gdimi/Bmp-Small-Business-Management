@@ -292,7 +292,6 @@ tr.tbody td {
 }
 
 #stats_info {
-    display: block;
     left: 165px;
     max-width: 1200px;
     width: 70%;

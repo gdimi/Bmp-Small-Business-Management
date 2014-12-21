@@ -9,11 +9,14 @@ if (!$pos or $pos != 'before') {
     if (isset($_POST['motd'])) { $motd = substr($_POST['motd'],0,128); }
     if (isset($_POST['board'])) { $board = $_POST['board']; }
     if ($what == 'all') {
-        UpdateAll($motd,$board);
+        $res = UpdateAll($motd,$board);
+        if (!$res) { $scerr = "updated all failed!"; }
     } elseif ($what == 'motd') {
-        UpdateMotd($motd);
+        $res = UpdateMotd($motd);
+        if (!$res) { $scerr = "updated motd failed!"; }
     } elseif ($what == 'board') {
-        UpdateBoard($board);
+        $res = UpdateBoard($board);
+        if (!$res) { $scerr = "updated board failed!"; }
     } else {
         $scerr = 'Uknown directive: '.$what;
     }
@@ -36,20 +39,25 @@ if ($scerr) {
     exit(0);
 }
 
-function UpdateMotd($motd) {
+function UpdateMotd($motd,&$scerr) {
     if (file_exists("content/motd")) {
-        $motd = file_put_contents("content/motd",$motd);
-    }
+        return $motd = file_put_contents("content/motd",$motd);
+    } else {
+		$scerr .= "motd file not found!";
+	}
 }
 
-function UpdateBoard($board) {
+function UpdateBoard($board,&$scerr) {
     if (file_exists("content/board")) {
-        $board = file_put_contents("content/board",$board);
-    }
+        return $board = file_put_contents("content/board",$board);
+    } else {
+		$scerr .= "board file not found!";
+	}
 }
 
-function UpdateAll($motd,$board) {
-    UpdateMotd($motd);
-    UpdateBoard($board);
+function UpdateAll($motd,$board,&$scerr) {
+    $motd = UpdateMotd($motd,$scerr);
+    $board = UpdateBoard($board,$scerr);
+    return $motd * $board;
 }
 ?>

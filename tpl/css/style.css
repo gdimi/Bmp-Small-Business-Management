@@ -291,6 +291,13 @@ tr.tbody td {
 	-webkit-transition-delay:.2s;
 }
 
+#stats_info {
+    display: block;
+    left: 165px;
+    max-width: 1200px;
+    width: 70%;
+}
+
 #cms {
     cursor:pointer;
 }
@@ -777,4 +784,15 @@ span.clname  {
 
 #cms_data > div {
   margin-top: 12px;
+}
+
+
+#stats_data .case-types {
+    float: left;
+    min-width: 412px;
+    padding-right: 6px;
+}
+
+#stats_data > div.case-types:nth-child(2n+3) {
+    clear: left;
 }

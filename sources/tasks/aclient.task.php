@@ -25,6 +25,8 @@ if (!$pos or $pos != 'before') {
 				));
 				echo $tk_status;
 				exit(0);
+			} else { // something gone wrong!
+				$acerr = "possible sql error!";
 			}
 		} catch(PDOException $ex) {
 			$acerr = "An Error occured!".$ex->getMessage();

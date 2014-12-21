@@ -43,7 +43,7 @@ if (!$pos or $pos != 'before') {
                 </div>
                 ";
             }
-            $schmtl .="</div>";
+            $schtml .="</div>";
         } else {
             $scerr = "An error occured in list by case!";
         }
@@ -62,7 +62,7 @@ if (!$pos or $pos != 'before') {
                 </div>
                 ";
             }
-            $schmtl .="</div>";
+            $schtml .="</div>";
         }
         // get top 8 customers by total income and display
         $scres = $sccon->query('SELECT  cl.name, SUM("price") as theSUM FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 GROUP BY cs.clientID ORDER BY theSUM DESC LIMIT 8;');
@@ -75,7 +75,7 @@ if (!$pos or $pos != 'before') {
                 </div>
                 ";
             }
-            $schmtl .="</div>";
+            $schtml .="</div>";
         }
         // get top 8 customers by # of cases and display
         $scres = $sccon->query('SELECT  cl.name, COUNT(0) as theCount FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 GROUP BY cs.clientID ORDER BY theCount DESC LIMIT 8;');
@@ -88,7 +88,7 @@ if (!$pos or $pos != 'before') {
                 </div>
                 ";
             }
-            $schmtl .="</div>";
+            $schtml .="</div>";
         }
     } catch(PDOException $ex) {
         $scerr = "An Error occured!".$ex->getMessage();

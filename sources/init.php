@@ -18,6 +18,7 @@ $tasks = Array();
 $tasks['sclient'] = 'sclient.task';
 $tasks['client'] = 'client.task';
 $tasks['aclient'] = 'aclient.task';
+$tasks['dclient'] = 'dclient.task';
 $tasks['atk'] = 'addTicket';
 $tasks['dtk'] = 'delTicket';
 $tasks['acl'] = 'allClients.task';
@@ -50,7 +51,12 @@ if ($tasks[$task] && $pos == 'before') {
 		require_once($task_file);
 		exit();
 	} else {
-		echo 'Fatal: task file for ['.$task.'] not found';
+		$task_status = json_encode(array(
+		 'status' => 'error',
+		 'message'=> 'Fatal: task file for ['.$task.'] not found<br />'
+		));
+		echo $task_status;
+		exit(1);
 	}
 } else {//continue normally
 	require_once('sources/class.cache.php');

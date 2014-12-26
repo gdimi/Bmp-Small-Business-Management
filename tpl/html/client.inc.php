@@ -11,6 +11,10 @@
 </span>
 <script>
 $(document).ready(function() {
+	if ($("#client .cldel").css('display') == 'none') {
+		$("#client .cldel").show(); //show delete button in case it got hidden during a delete
+	}
+
 	$(".cldel").click(function(){
 		$("#dt_cl").show();
 	});

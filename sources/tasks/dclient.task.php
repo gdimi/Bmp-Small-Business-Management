@@ -20,7 +20,7 @@ if (!$pos or $pos != 'before') {
 					$clientData2store[$key] = $value;
 				}
 				//store into contents/trashed
-				$clJSONdata = json_endode($clientData2store);
+				$clJSONdata = json_encode($clientData2store);
 				if (!file_put_contents("content/trashed/client-$cid",$clJSONdata)) {
 					$storemsg = ',but client data store failed';
 				} else {

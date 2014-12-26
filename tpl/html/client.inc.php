@@ -21,8 +21,11 @@ $(document).ready(function() {
 			{clid : clid, task: "dclient",pos: "before"},
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
+					$("#dt_cl").hide();
+					$("#client .cldel").hide();
 					$("#client > div").html(data.message);
 				} else if(data.status === "error") {
+					$("#dt_cl").hide();
 					$("#client > div").append(data.message);
 					$("#client").delay(5000).hide("slow");
 				}

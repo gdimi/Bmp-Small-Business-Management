@@ -18,7 +18,6 @@ $tasks = Array();
 $tasks['sclient'] = 'sclient.task';
 $tasks['client'] = 'client.task';
 $tasks['aclient'] = 'aclient.task';
-$tasks['dclient'] = 'dclient.task';
 $tasks['atk'] = 'addTicket';
 $tasks['dtk'] = 'delTicket';
 $tasks['acl'] = 'allClients.task';
@@ -40,7 +39,12 @@ $pos = trim($_GET['pos']);
 $action = trim($_GET['action']);
 //check if position
 if (!$pos && $task) {
-	die('Fatal: no position of execution!');
+	$task_status = json_encode(array(
+	 'status' => 'error',
+	 'message'=> 'Fatal: no position of execution! for ['.$task.'] <br />'
+	));
+	echo $task_status;
+	exit(1);
 }
 //echo "$task | $pos <br/>";
 //handle before tasks

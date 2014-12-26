@@ -43,7 +43,7 @@ if (!$pos or $pos != 'before') {
 			$scerr = "An Error occured!".$ex->getMessage();
 		}
 	} else {
-		$scerr = 'No clid';
+		$scerr = 'Fatal: No client id supplied';
 	}
 }
 

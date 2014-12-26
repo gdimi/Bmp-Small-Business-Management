@@ -14,5 +14,22 @@ $(document).ready(function() {
 	$(".cldel").click(function(){
 		$("#dt_cl").show();
 	});
+	$(".del-cl-b").click(function(){
+		var clid = returnEndId(this);
+		if (clid > 0) {
+			$.get("index.php",
+			{clid : clid, task: "dclient",pos: "before"},
+			function(data, textStatus, jqXHR){
+				if(data.status === "success") {
+					$("#client > div").html(data.message);
+				} else if(data.status === "error") {
+					$("#client > div").append(data.message);
+					$("#client").delay(5000).hide("slow");
+				}
+			}, "json").fail(function(jqXHR, textStatus, errorThrown){
+				$("#client").append(textStatus);
+		});
+		}
+	});
 });
 </script>

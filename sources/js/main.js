@@ -36,7 +36,8 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
                     $("#dt_cl span.del-cl-b").attr( 'id', 'dlc_' + clid );  //set id with current client's id in delete button
-					$("#client > div").html(data.message);
+					$("#client #ecl_frm").html(data.message);
+					$("#client > div > .cl-cases").html(data.cases);
 					$("#client").show("fast");
 				} else if(data.status === "error") {
 					$("#client > div").append(data.message);
@@ -198,7 +199,8 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
                     $("#dt_cl span.del-cl-b").attr( 'id', 'dlc_' + cid ); //set id with current client's id
-					$("#client > div").html(data.message);
+					$("#client #ecl_frm").html(data.message);
+					$("#client > div > .cl-cases").html(data.cases);
 					$("#client").show("fast");
 				} else if(data.status === "error") {
 					$("#client > div").append(data.message);

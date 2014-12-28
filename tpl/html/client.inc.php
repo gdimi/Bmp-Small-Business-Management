@@ -1,9 +1,16 @@
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 		<h2><?php echo $lang['client-card']; ?></h2>
-		<div></div>
-<span class="fake-button red-btn cldel" style="display:inline-block"><?php echo $lang['client-delete-btn']; ?></span>
-
-<span class="elevate menu-dialog" style="display:none;" id="dt_cl">
+		<div>
+			<div>
+				<form id="ecl_frm" name="ecl-frm" action="index.php?task=eclient&pos=before">
+				</form>
+			</div>
+			<div class="cl-cases"></div>
+		</div>
+		<span><div id="edit_cl_frm_error"></div></span>
+	<span class="fake-button red-btn cldel" style="display:inline-block"><?php echo $lang['client-delete-btn']; ?></span>
+	<span class="fake-button cledit" style="display:inline-block"><?php echo $lang['client-edit-btn']; ?></span>
+	<span class="elevate menu-dialog" style="display:none;" id="dt_cl">
     <h2><?php echo $lang['client-delete-title']; ?></h2>
     <div id="dt_cl_msg"><?php echo $lang['client-delete-msg']; ?> <strong></strong>-<strong></strong> ?</div><br><br>
     <span id="" class="cl-b b-sblue del-cl-b"><?php echo $lang['client-delete-yes']; ?></span>
@@ -35,8 +42,32 @@ $(document).ready(function() {
 				}
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
 				$("#client").append(textStatus);
-		});
+			});
 		}
 	});
+
+	$("#client .cledit").click(function(){
+		var clid = $("#ecl_frm #eclid").val();
+		if (clid > 0) {
+			var URL = $("#ecl_frm").attr("action");
+			var formData = $("#ecl_frm").serializeArray();
+			$.post(URL,
+			formData,
+			function(data, textStatus, jqXHR){
+				if(data.status === "success") {
+					$("#edit_cl_frm_error").hide();
+					$("#ecl_frm").append(data.message).delay(2000);
+				} else if(data.status === "error") {
+					$("#edit_cl_frm_error").show().html(data.message);
+				}
+
+			}, "json").fail(function(jqXHR, textStatus, errorThrown){
+				$("#ecl_frm").append(textStatus);
+			});
+		} else {
+			alert('<?php echo $lang['client-edit-error']; ?>');
+		}
+	});
+
 });
 </script>

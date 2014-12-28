@@ -335,6 +335,13 @@ table#ct_table {
     width: 99%;
 }
 
+#edit-cl-frm-error {
+	color:red;
+	border:medium solid red;
+	padding:8px;
+	display:none;
+}
+
 #delc_frm > input {
   min-width: 26em;
   padding: 4px;

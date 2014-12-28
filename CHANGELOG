@@ -1,0 +1,6 @@
+## CHANGELOG 
+*0.337*
+
+fixed issue 16 - in expenses, the form doesnt calculate december 
+fixed issue 15 - in income, the form doesnt calculate december
+changed min height of case body to 140px cause it was toooo small...

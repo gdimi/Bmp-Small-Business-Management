@@ -9,13 +9,13 @@ if (!$pos or $pos != 'before') {
     if (isset($_POST['motd'])) { $motd = substr($_POST['motd'],0,128); }
     if (isset($_POST['board'])) { $board = $_POST['board']; }
     if ($what == 'all') {
-        $res = UpdateAll($motd,$board);
+        $res = UpdateAll($motd,$board,$scerr);
         if (!$res) { $scerr = "updated all failed!"; }
     } elseif ($what == 'motd') {
-        $res = UpdateMotd($motd);
+        $res = UpdateMotd($motd,$scerr);
         if (!$res) { $scerr = "updated motd failed!"; }
     } elseif ($what == 'board') {
-        $res = UpdateBoard($board);
+        $res = UpdateBoard($board,$scerr);
         if (!$res) { $scerr = "updated board failed!"; }
     } else {
         $scerr = 'Uknown directive: '.$what;

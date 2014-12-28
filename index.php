@@ -257,7 +257,7 @@ require_once('sources/init.php');
 		<h2>Development</h2>
 		<hr size="1" />
 		<div><pre>
-			<?php include('DEV_TODO.txt'); ?>
+			<?php include('CHANGELOG'); ?>
 		</div></pre>
 	</div>
 <script>

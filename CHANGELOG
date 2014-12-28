@@ -1,5 +1,22 @@
 ## CHANGELOG 
-*0.337*
+
+*0.362* - 28/12/2014
+
+added this changelog
+issue 8 - implement edit client
+issue 9 - implement delete client
+fix for issue 21 - when position of a task missing result is parsererror
+fix for issue 20 - when a task file is missing result is parsererror
+fix for issue 19 - update all in cms always returns ok
+fix for issue 18 - sometimes adding a client returns parser error
+better display of stats data
+fixed a typo causing wrong html output in statistics
+moved total at top for expenses and income
+fix lock/unlock buttons wrong position
+make CMS image clickable instead of word 'CMS'
+
+
+*0.337* - 13/12/2014
 
 fixed issue 16 - in expenses, the form doesnt calculate december 
 fixed issue 15 - in income, the form doesnt calculate december

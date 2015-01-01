@@ -27,11 +27,11 @@
 				<fieldset>
 				<legend><?php echo $lang['costs-new']; ?></legend>
 					<label for="cDesc"><?php echo $lang['costs-descr']; ?></label>
-					<textarea name="cDesc" id="cDesc"></textarea><br />
+					<textarea name="cDesc" id="cDesc" required  pattern=".{4,}"></textarea><br />
 					<label for="cAmount"><?php echo $lang['costs-amount']; ?></label>
-					<input type="text" name="cAmount" id="cAmount" value="" size="4" /><br />
+					<input type="text" name="cAmount" id="cAmount" value="" size="4" required /><br />
 					<label for="cDate"><?php echo $lang['costs-date']; ?></label>
-					<input type="text" name="cDate" id="cDate" value="" size="12" /><br />
+					<input type="text" name="cDate" id="cDate" value="" size="12" required placeholder="DD/MM/YYYY" /><br />
 				</fieldset>
 				<span class="fake-button" id="addcsbtn"><?php echo $lang['costs-add-msg']; ?></span><br /><br />
 				<span class="cl-b" onclick="$(this).parent().parent().toggle();"><?php echo $lang['controls-close']; ?></span>
@@ -43,11 +43,11 @@
 				<fieldset>
 				<legend><?php echo $lang['costs-edit']; ?></legend>
 					<label for="ecDesc"><?php echo $lang['costs-descr']; ?></label>
-					<textarea name="ecDesc" id="ecDesc"></textarea><br />
+					<textarea name="ecDesc" id="ecDesc" required  pattern=".{4,}"></textarea><br />
 					<label for="ecAmount"><?php echo $lang['costs-amount']; ?></label>
-					<input type="text" name="ecAmount" id="ecAmount" value="" size="4" /><br />
+					<input type="text" name="ecAmount" id="ecAmount" value="" size="4" required /><br />
 					<label for="ecDate"><?php echo $lang['costs-date']; ?></label>
-					<input type="text" name="ecDate" id="ecDate" value="" size="12" /><br />
+					<input type="text" name="ecDate" id="ecDate" value="" size="12" required placeholder="DD/MM/YYYY"/><br />
                     <input type="hidden" name="ecId" id="ecId" value="" />
 				</fieldset>
 				<span class="fake-button" id="editcsbtn"><?php echo $lang['costs-save']; ?></span><br /><br />

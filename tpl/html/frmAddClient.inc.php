@@ -15,13 +15,13 @@ if (!defined('_w00t_frm')) die('har har har');
 			<fieldset>
 				<legend>Add a new Client</legend>
 				<label for="clName">Name</label>
-				<input type="text" name="clName" id="ncl_name" value="" /><br /><br />
+				<input type="text" name="clName" id="ncl_name" value="" required  pattern=".{4,}"/><br /><br />
 				<label for="clTel1">Telephone 1</label>
-				<input type="text" name="clTel1" id="ncl_tel1" value="" /><br /><br />
+				<input type="tel" name="clTel1" id="ncl_tel1" value="" /><br /><br />
 				<label for="clTel2">Telephone 2</label>
-				<input type="text" name="clTel2" id="ncl_tel2" value="" /><br /><br />
+				<input type="tel" name="clTel2" id="ncl_tel2" value="" /><br /><br />
 				<label for="clemail">Email</label>
-				<input type="text" name="clemail" id="ncl_email" value="" /><br /><br />
+				<input type="email" name="clemail" id="ncl_email" value="" placeholder="email@domain.tld"/><br /><br />
 				<label for="clAddress">Address</label>
 				<textarea name="clAddress" id="ncl_address" rows="7" cols="35"></textarea><br /><br />
 				<label for="clOinfo">Other info</label>

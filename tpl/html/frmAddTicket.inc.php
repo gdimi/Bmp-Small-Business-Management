@@ -17,30 +17,30 @@ if (!defined('_w00t_frm')) die('har har har');
 			<fieldset>
 				<legend>Add a new Case</legend>
 				<label for="title">Title</label>
-				<input type="text" name="title" id="ntk_title" value="" size="38" /><br /><br />
+				<input type="text" name="title" id="ntk_title" value="" size="38" required  pattern=".{5,}" /><br /><br />
 				<!--<label for="date">Date</label>
 				<input type="text" name="date"  id="ntk_date" value="" />-->
 				<label for="model">Model/SN</label>
 				<input type="text" name="model" id="ntk_model" value="" size="38" /><br /><br />
 				<label for="info">Additional info</label>
-				<textarea name="info" id="ntk_info" rows="10" cols="43" class="rich"></textarea><br /><br />
+				<textarea name="info" id="ntk_info" rows="10" cols="43" class="rich" required></textarea><br /><br />
 				<!--<label for="fix">How to fix it</label>
 				<textarea name="fix" id="ntk_fix"></textarea><br /><br />-->
 				<label for="client">Client</label>
-				<input type="text" name="client" id="ntk_client" value="" /><br />
+				<input type="text" name="client" id="ntk_client" value="" required /><br />
                 <input type="hidden" name="cid" id="cid" value="" />
 				<div id="ntk_client_res" style="display:none;"></div><br />
 				<label for="cat">Tag</label>
 				<input type="text" name="cat" id="ntk_cat" value="" /><br /><br />
 				<label for="priority">Priority</label>
-				<select name="priority" id="ntk_priority">
+				<select name="priority" id="ntk_priority" required>
 					<option></option>
 					<option value="3">High</option>
 					<option value="2">Medium</option>
 					<option value="1">Low</option>
 				</select><br /><br />
 				<label for="type">Type</label>
-				<select name="type" id="ntk_type">
+				<select name="type" id="ntk_type" required>
 					<option></option>
 					<?php 
 						foreach ($dss->caseType as $ctype=>$value) {
@@ -49,7 +49,7 @@ if (!defined('_w00t_frm')) die('har har har');
 					?>
 				</select><br /><br />
 				<label for="status">Status</label>
-				<select name="status" id="ntk_status">
+				<select name="status" id="ntk_status" required>
 					<option></option>
 					<?php 
 						foreach ($dss->caseStatus as $cstat=>$value) {

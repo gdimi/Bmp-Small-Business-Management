@@ -14,7 +14,7 @@ if (!$pos or $pos != 'before') {
 			if ($scres) {
 				foreach ($scres as $pcl) {
 					$schtml .="
-							<label for=\"name\">Όνομα</label> <input type=\"text\" name=\"eclname\" value=\"${pcl['name']}\" /><br />
+							<label for=\"name\">Όνομα</label> <input type=\"text\" name=\"eclname\" value=\"${pcl['name']}\" required  pattern=\".{4,}\"/><br />
 							<label for=\"tel1\">Τηλέφωνο1</label> <input type=\"text\" name=\"ecltel1\" value=\"${pcl['tel1']}\" /><br />
 							<label for=\"tel2\">Τηλέφωνο2</label> <input type=\"text\" name=\"ecltel2\" value=\"${pcl['tel2']}\" /><br />
 							<label for=\"email\">email</label> <input type=\"text\" name=\"eclmail\" value=\"${pcl['email']}\" /><br />

@@ -8,38 +8,38 @@ if (!defined('_w00t_frm')) die('har har har');
 			<span>model:</span> To model i Serial Number i service tag 255 chars max. An den exei i den to 3eroume vazoume mia "-"<br /><br />
 			<span>Additional info:</span> Any other info about the error goes here. Dont write the story of your life, 4096chars max<br /><br />
 			<span>Client:</span> Auto complete field<br /><br />
-			<span>Category:</span> Use your imagination (eg LAB meaning ..LAB! Εξωτερική δουλειά etc). There are no standar categories here, categories work as a tagging system.<br /><br />
+			<span>Category:</span> Use your imagination (eg LAB meaning ..LAB! onsite etc). There are no standar categories here, categories work as a tagging system.<br /><br />
 			<span>Priority:</span> High,Medium,Low pretty self explaining.<br /><br />
 			<span>Type:</span> The usual..ta gnosta..<br /><br />
 			<span>Status:</span> Open,Close,In progress,Frozen you can figure it out. Unfixable means either cannot be fixed or client doesnt want to fix it.<br /><br />
 			<span>Your name:</span> Leave a nickname! Please dont write your full name or any other personal data, this is not a dating service xD <br />
 			</div>
 			<fieldset>
-				<legend>Add a new Case</legend>
-				<label for="title">Title</label>
+				<legend><?php echo $lang['case-add']; ?></legend>
+				<label for="title"><?php echo $lang['case-add-title']; ?></label>
 				<input type="text" name="title" id="ntk_title" value="" size="38" required  pattern=".{5,}" /><br /><br />
 				<!--<label for="date">Date</label>
 				<input type="text" name="date"  id="ntk_date" value="" />-->
-				<label for="model">Model/SN</label>
+				<label for="model"><?php echo $lang['case-add-model']; ?></label>
 				<input type="text" name="model" id="ntk_model" value="" size="38" /><br /><br />
-				<label for="info">Additional info</label>
+				<label for="info"><?php echo $lang['case-add-info']; ?></label>
 				<textarea name="info" id="ntk_info" rows="10" cols="43" class="rich" required></textarea><br /><br />
 				<!--<label for="fix">How to fix it</label>
 				<textarea name="fix" id="ntk_fix"></textarea><br /><br />-->
-				<label for="client">Client</label>
+				<label for="client"><?php echo $lang['case-add-client']; ?></label>
 				<input type="text" name="client" id="ntk_client" value="" required /><br />
                 <input type="hidden" name="cid" id="cid" value="" />
 				<div id="ntk_client_res" style="display:none;"></div><br />
-				<label for="cat">Tag</label>
+				<label for="cat"><?php echo $lang['case-add-tag']; ?></label>
 				<input type="text" name="cat" id="ntk_cat" value="" /><br /><br />
-				<label for="priority">Priority</label>
+				<label for="priority"><?php echo $lang['case-add-priority']; ?></label>
 				<select name="priority" id="ntk_priority" required>
 					<option></option>
 					<option value="3">High</option>
 					<option value="2">Medium</option>
 					<option value="1">Low</option>
 				</select><br /><br />
-				<label for="type">Type</label>
+				<label for="type"><?php echo $lang['case-add-type']; ?></label>
 				<select name="type" id="ntk_type" required>
 					<option></option>
 					<?php 
@@ -48,7 +48,7 @@ if (!defined('_w00t_frm')) die('har har har');
 						}
 					?>
 				</select><br /><br />
-				<label for="status">Status</label>
+				<label for="status"><?php echo $lang['case-add-status']; ?></label>
 				<select name="status" id="ntk_status" required>
 					<option></option>
 					<?php 
@@ -57,11 +57,11 @@ if (!defined('_w00t_frm')) die('har har har');
 						}
 					?>
 				</select><br /><br />
-				<label for="price">Price</label>
+				<label for="price"><?php echo $lang['case-add-price']; ?></label>
 				<input type="text" name="price" id="ntk_price" size="10" maxlength="10" value="" /><br /><br />
-				<label for="follow">Follow</label>
+				<label for="follow"><?php echo $lang['case-add-follow']; ?></label>
 				<input type="text" name="follow" id="ntk_follow" size="20" maxlength="255" value="" /><br /><br />
-				<label for="your-name">Your name</label>
+				<label for="your-name"><?php echo $lang['case-add-user']; ?></label>
 				<select name="your-name" id="ntk_name">
 					<option></option>
 					<?php foreach ($dss->users as $oneuser) {
@@ -71,10 +71,10 @@ if (!defined('_w00t_frm')) die('har har har');
 			</fieldset><br />
 			<!--<input type="hidden" name="id" id="id" value="<?php echo ($total+1); ?>" />-->
 			<input type="hidden" name="pos" id="pos" value="before" />
-			<span class="fake-button" id="addtckbtn">submit Case!</span><br />
+			<span class="fake-button" id="addtckbtn"><?php echo $lang['case-add-submit']; ?></span><br />
 		</form>
 		<div id="new_tk_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 <script>
 $(document).ready(function() {
 	$("#add_help").hover(function(){

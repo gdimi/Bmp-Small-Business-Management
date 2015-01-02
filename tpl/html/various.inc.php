@@ -1,6 +1,6 @@
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 		<div>
-            <h2>Διάφορα χρήσιμα</h2>
+            <h2><?php echo $lang['various']; ?></h2>
 			<?php include('content/various.html'); ?>
 
         </div>

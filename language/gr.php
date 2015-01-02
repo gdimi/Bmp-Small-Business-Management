@@ -72,6 +72,30 @@ $lang['costs-delete-yes'] = 'YES';
 $lang['costs-delete-no'] = 'NO';
 $lang['costs-error1'] = 'Re vale perigrafh, poso kai imerominia!';
 $lang['costs-error2'] = 'zero id is not possible';
-
+$lang['income'] = 'Έσοδα';
+$lang['stats'] = 'Στατιστικά';
+$lang['various'] = 'Διάφορα χρήσιμα';
+$lang['client-add-error'] = 'Λείπει το όνομα πελάτη!';
+$lang['client-add'] = 'Πρόσθεση νέου πελάτη';
+$lang['client-add-name'] = 'Name';
+$lang['client-add-tel1'] = 'Telephone 1';
+$lang['client-add-tel2'] = 'Telephone 2';
+$lang['client-add-email'] = 'Email';
+$lang['client-add-address'] = 'Address';
+$lang['client-add-info'] = 'Other info';
+$lang['client-add-submit'] = 'submit Client!';
+$lang['case-add'] = 'Add a new Case';
+$lang['case-add-title'] = 'Title';
+$lang['case-add-model'] = 'Model/SN';
+$lang['case-add-info'] = 'Additional info';
+$lang['case-add-client'] = 'Client';
+$lang['case-add-tag'] = 'Tag';
+$lang['case-add-priority'] = 'Priority';
+$lang['case-add-type'] = 'Type';
+$lang['case-add-status'] = 'Status';
+$lang['case-add-price'] = 'Price';
+$lang['case-add-follow'] = 'Follow';
+$lang['case-add-user'] = 'Your name';
+$lang['case-add-submit'] = 'submit Case!';
 
 ?> 

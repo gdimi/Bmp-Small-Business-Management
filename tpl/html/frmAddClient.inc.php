@@ -13,25 +13,25 @@ if (!defined('_w00t_frm')) die('har har har');
 			<span>Your name:</span> Leave a nickname! Please dont write your full name or any other personal data, this is not a dating service xD <br />
 			</div>
 			<fieldset>
-				<legend>Add a new Client</legend>
-				<label for="clName">Name</label>
+				<legend><?php echo $lang['client-add']; ?></legend>
+				<label for="clName"><?php echo $lang['client-add-name']; ?></label>
 				<input type="text" name="clName" id="ncl_name" value="" required  pattern=".{4,}"/><br /><br />
-				<label for="clTel1">Telephone 1</label>
+				<label for="clTel1"><?php echo $lang['client-add-tel1']; ?></label>
 				<input type="tel" name="clTel1" id="ncl_tel1" value="" /><br /><br />
-				<label for="clTel2">Telephone 2</label>
+				<label for="clTel2"><?php echo $lang['client-add-tel2']; ?></label>
 				<input type="tel" name="clTel2" id="ncl_tel2" value="" /><br /><br />
-				<label for="clemail">Email</label>
+				<label for="clemail"><?php echo $lang['client-add-email']; ?></label>
 				<input type="email" name="clemail" id="ncl_email" value="" placeholder="email@domain.tld"/><br /><br />
-				<label for="clAddress">Address</label>
+				<label for="clAddress"><?php echo $lang['client-add-address']; ?></label>
 				<textarea name="clAddress" id="ncl_address" rows="7" cols="35"></textarea><br /><br />
-				<label for="clOinfo">Other info</label>
+				<label for="clOinfo"><?php echo $lang['client-add-info']; ?></label>
 				<textarea name="clOinfo" id="ncl_oinfo" rows="7" cols="35" class="rich"></textarea><br /><br />
 			</fieldset><br /><br />
 			<input type="hidden" name="pos" id="pos" value="before" />
-			<span class="fake-button" id="addclbtn">submit Client!</span><br /><br />
+			<span class="fake-button" id="addclbtn"><?php echo $lang['client-add-submit']; ?></span><br /><br />
 		</form>
 		<div id="new_cl_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 <script>
 $(document).ready(function() {
 	$("#add_help_cl").hover(function(){
@@ -61,7 +61,7 @@ $(document).ready(function() {
 				$("#new_cl_frm").append(textStatus);
 			});
 		} else {
-			alert('Re vale onoma pelath!');
+			alert('<?php echo $lang['client-add-error']; ?>');
 		}
 	});
 });

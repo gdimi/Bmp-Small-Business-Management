@@ -3,6 +3,7 @@
         <span class="filters" id="cost_filters">
             <form>
                 <?php echo $lang['year']; ?> <select id="cost_year">
+                    <option value="2015" selected>2015</option>
                     <option value="2014" selected>2014</option>
                 </select> 
                 <?php echo $lang['month']; ?> <select id="cost_month">
@@ -17,6 +18,8 @@
                     <option value="5">5 - <?php echo $lang['month-may']; ?></option>
                     <option value="4">4 - <?php echo $lang['month-apr']; ?></option>
                     <option value="3">3 - <?php echo $lang['month-mar']; ?></option>
+                    <option value="2">2 - <?php echo $lang['month-feb']; ?></option>
+                    <option value="1">1 - <?php echo $lang['month-jan']; ?></option>
                 </select>
             </form>
         </span>

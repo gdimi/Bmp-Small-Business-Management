@@ -1,6 +1,10 @@
 <?php
+/**********************
+ * update ticket task *
+ **********************/
 
 if (!defined('_w00t_frm')) die('har har har');
+
 //check position of execution
 if ($_GET['pos'] != 'before') {
 	echo json_encode(array(
@@ -9,10 +13,10 @@ if ($_GET['pos'] != 'before') {
 		));
 		exit(1) ;
 }
+
 require_once('sources/Class.formVal.php');
 require_once('sources/config.php');
 $dss = new DSconfig;
-
 $tfrm = new ValForm;
 
 $ticket = Array();
@@ -34,7 +38,9 @@ $ticket['user'] = $_POST['user'];
 $ticket['category'] = $_POST['cat'];
 $ticket['price'] = (float)$_POST['price'];
 $ticket['follow'] = $_POST['follow'];
-//$ticket['id'] = $_POST['id'];
+if (isset($_POST['ctupdate'])) { $ticket['ctupdate'] = $_POST['ctupdate']; }
+
+
 //print_r($tickets);
 //make default values for non-required fields
 if ($ticket['price'] == '') { $ticket['price'] = "0.0"; }
@@ -100,8 +106,13 @@ $headers = 'From: '.$dss->mailfrom . "\r\n" .
 
 
 //now lets make a new ticket!
-//$today = date("j/m/Y H:i:s");
-$ticket['updated'] = time();
+//check if we're not going to change the updated value of the ticket so to avoid wrong calcs based on close status and updated date
+if (!isset($ticket['ctupdate']) || $ticket['ctupdate'] != '1') {
+	$ticket['updated'] = time();
+	$updatedqry = '", updated="'.$ticket['updated'];
+} else {
+	$updatedqry = '';
+}
 
 //FIXME in template & task, there is no 'client' field, only his/hers id
 $client = $ticket['client']; //store client name for email
@@ -118,18 +129,12 @@ $edTicket = "\n
 [name: ${ticket['user']}]\n
 [follow: ${ticket['follow']}]\n";
 
-
 $ahistory = "${ticket['updated']} ${ticket['user']} updated case ${ticket['title']} \n";
-//print_r($ticket);
-
-
-//TODO: check previous status value so when changes from something to "closed", update the 'closed' field with current timestamp
 
 try {
     $sccon = new PDO('sqlite:pld/HyperLAB.db3');
     $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-    $update = 'UPDATE "Case" SET title="'.$ticket['title'].'", updated="'.$ticket['updated'].'", model="'.$ticket['model'].'", info="'.$ticket['info'].'", category="'.$ticket['category'].'", clientID='.$ticket['clientID'].', priority='.$ticket['priority'].', type='.$ticket['type'].', status='.$ticket['status'].', price='.$ticket['price'].', user="'.$ticket['user'].'", follow="'.$ticket['follow'].'"  WHERE id='.$ticket['id'].' ;';
-    //$insert ='INSERT INTO "Case" (title, error, info, clientID, category, priority, type, status, created, updated , user, price) VALUES (:title, :error, :info, :clientID, :category, :priority, :type, :status, :created, :updated, :user, :price)';
+    $update = 'UPDATE "Case" SET title="'.$ticket['title'].$updatedqry.'", model="'.$ticket['model'].'", info="'.$ticket['info'].'", category="'.$ticket['category'].'", clientID='.$ticket['clientID'].', priority='.$ticket['priority'].', type='.$ticket['type'].', status='.$ticket['status'].', price='.$ticket['price'].', user="'.$ticket['user'].'", follow="'.$ticket['follow'].'"  WHERE id='.$ticket['id'].' ;';
 	$sth = $sccon->prepare($update);
 	$scres = $sth->execute();
 	if ($scres) {
@@ -144,12 +149,17 @@ try {
 		exit(0);
 	}
 } catch(PDOException $ex) {
-	$tk_status = json_encode(array(
-    'status' => 'error',
-    'message'=> $ex->getMessage()
-    ));
-	mail($to, $subject, $ex->getMessage(), $headers);
-    echo $tk_status;
-	exit(1) ;
+	$terror = $ex->getMessage();
+} catch(Exception $e) {
+	$terror = $e->getMessage();
 }
+
+$tk_status = json_encode(array(
+'status' => 'error',
+'message'=> $terror
+));
+mail($to, $subject, $terror, $headers);
+echo $tk_status;
+exit(1) ;
+
 ?>

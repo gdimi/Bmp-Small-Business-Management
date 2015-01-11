@@ -20,12 +20,9 @@ if (!$pos or $pos != 'before') {
 			if ($iy > $curYear) {
 				$idate = $now;
 			} else {
-				if ($im > 12 && $iy == $curYear) {
+				if ($im > 12) {
 					$im = 1;
-					$lastMonth;
 					$iy++;
-				} elseif ($im > 12 && $iy < $curYear) {
-					$im = 12;
 				}
 			}
 			if (!$idate) { $idate = strtotime($iy.'-'.$im); }

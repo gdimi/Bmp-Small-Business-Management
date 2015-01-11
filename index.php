@@ -93,7 +93,7 @@ require_once('sources/init.php');
 	<div id="various" class="elevate menu-dialog">
 <?php include('tpl/html/various.inc.php'); ?>
 	</div>
-	<div id="prices" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 1%;" contenteditable="true">
+	<div id="prices" class="elevate menu-dialog" contenteditable="true">
    		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
 <?php include('tpl/html/prices.inc.php'); ?>
 	</div>

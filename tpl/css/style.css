@@ -297,6 +297,16 @@ tr.tbody td {
     width: 70%;
 }
 
+#prices {
+	display: block;
+	left: 20%;
+	top: 1%;
+	max-width: 848px;
+	width: auto;
+	max-height: 600px;
+	overflow: auto;
+}
+
 #cms {
     cursor:pointer;
 }

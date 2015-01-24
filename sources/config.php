@@ -21,6 +21,7 @@ class DSConfig {
 	var $backup = 'on delete'; //on delete, always, never
 	var $revisions = true;
 	var $rev_num = 2;
+	var $debug = false;
 	var $lang = 'gr';
 	var $caseType = array(
 		'1'=>'case type 1',

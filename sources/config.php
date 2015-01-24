@@ -22,6 +22,7 @@ class DSConfig {
 	var $revisions = true;
 	var $rev_num = 2;
 	var $debug = false;
+	var $startYear = 2014;
 	var $lang = 'gr';
 	var $caseType = array(
 		'1'=>'case type 1',

@@ -3,6 +3,7 @@ if (!defined('_w00t_frm')) die('har har har');
 
 /*main init file
  * loads configuration
+ * init some globally used variables
  * registers tasks
  * handle action and position of tasks
  * executes tasks
@@ -12,6 +13,10 @@ if (!defined('_w00t_frm')) die('har har har');
 //load settings
 require_once('sources/config.php');
 $dss = new DSconfig;
+
+//globally used variables
+$thisYear = date("Y");
+$curTimestamp = time();
 
 //first register possible tasks
 $tasks = Array();
@@ -34,6 +39,7 @@ $tasks['csd'] = 'dcost.task';
 $tasks['stats'] = 'stats.task';
 $tasks['cms'] = 'cms.task';
 $tasks['cmsupd'] = 'cmsUpdate.task';
+
 //get task and position
 $task = trim($_GET['task']);
 $pos = trim($_GET['pos']);

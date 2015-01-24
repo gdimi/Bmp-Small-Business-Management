@@ -1,10 +1,10 @@
+		<?php require_once('sources/preprocessor/costs.php'); //require preprocessor ?>
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 		<h2><?php echo $lang['costs']; ?></h2>
         <span class="filters" id="cost_filters">
             <form>
                 <?php echo $lang['year']; ?> <select id="cost_year">
-                    <option value="2015" selected>2015</option>
-                    <option value="2014" selected>2014</option>
+					<?php echo $CostsOptHTML; ?>
                 </select> 
                 <?php echo $lang['month']; ?> <select id="cost_month">
                     <option value="0" selected><?php echo $lang['month-all']; ?></option>

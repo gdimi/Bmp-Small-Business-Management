@@ -28,9 +28,15 @@ if (!$pos or $pos != 'before') {
 			if (!$idate) { $idate = strtotime($iy.'-'.$im); }
 			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth); }
 			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
-			$limit = '';
+		} elseif ($_GET['iy'] && (int)$_GET['im'] == 0) {
+			$iy = $_GET['iy'];
+			$idate = strtotime(($iy).'-12-31');
+			$ldate = strtotime($iy.'-1-1') - 1; //adjust timestamp 1 sec before selected year to catch 'zero' second of it
+			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
 		}
-		//die($idate.'|'.$ldate);
+
+		$limit = '';
+
 		//die($idate.'|'.$iy.'-'.$im.'|'.strtotime('2014-3').'|'.$now);
 		//echo 'SELECT id,description,amount,cdate FROM "costs" '.$idateSQL.' ORDER BY cdate DESC '.$limit.' ;';
 		//die();

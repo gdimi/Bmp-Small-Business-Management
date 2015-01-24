@@ -29,8 +29,15 @@ if (!$pos or $pos != 'before') {
 			if (!$idate) { $idate = strtotime($iy.'-'.$im); }
 			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth); }
 			$idateSQL = ' AND updated < '.$idate.' AND updated > '.$ldate;
-			$limit = '';
+		} elseif ($_GET['iy'] && (int)$_GET['im'] == 0) {
+			$iy = $_GET['iy'];
+			$idate = strtotime(($iy).'-12-31');
+			$ldate = strtotime($iy.'-1-1') - 1; //adjust timestamp 1 sec before selected year to catch 'zero' second of it
+			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
 		}
+
+		$limit = '';
+
 		//die($idate.'|'.$ldate);
 		//die($idate.'|'.$iy.'-'.$im.'|'.strtotime('2014-3').'|'.$now);
 		$sccon = new PDO('sqlite:pld/HyperLAB.db3');

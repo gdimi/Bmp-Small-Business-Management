@@ -1,6 +1,6 @@
 		<?php require_once('sources/preprocessor/income.php'); //require preprocessor ?>
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
-		<h2><?php echo $lang['costs']; ?></h2>
+		<h2><?php echo $lang['income']; ?></h2>
         <span class="filters" id="income_filters">
             <form>
                 <?php echo $lang['year']; ?> <select id="income_year">

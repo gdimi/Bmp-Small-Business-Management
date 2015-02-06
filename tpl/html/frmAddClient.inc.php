@@ -29,6 +29,7 @@ if (!defined('_w00t_frm')) die('har har har');
 			</fieldset><br /><br />
 			<input type="hidden" name="pos" id="pos" value="before" />
 			<span class="fake-button" id="addclbtn"><?php echo $lang['client-add-submit']; ?></span><br /><br />
+			<span class="frmacl_res"></span>
 		</form>
 		<div id="new_cl_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
@@ -47,13 +48,13 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#new_cl_frm_error").hide();
-					$("#new_cl_frm").append(data.message).delay(2000).hide('slow');
+					$("#new_cl_frm .frmacl_res").html(data.message);
 					$("#new_client").delay(3000).hide('slow', function() {
+						//reset form & messages
                         var delclfrm = document.getElementById('new_cl_frm');
-                        delclfrm.reset(); //reset form
-						//window.location = 'index.php?action=docache';
+                        delclfrm.reset();
+                        $("#new_cl_frm .frmacl_res").html('&nbsp;');
 					});
-					//$("#tkt_success").hide();
 				} else if(data.status === "error") {
 					$("#new_cl_frm_error").show();
 					$("#new_cl_frm_error").html(data.message);

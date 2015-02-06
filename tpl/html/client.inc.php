@@ -7,7 +7,8 @@
 			</div>
 			<div class="cl-cases"></div>
 		</div>
-		<span><div id="edit_cl_frm_error"></div></span>
+		<span class="ecl_res"></span>
+		<span class="ecl_frm_error"></span>
 	<span class="fake-button red-btn cldel" style="display:inline-block"><?php echo $lang['client-delete-btn']; ?></span>
 	<span class="fake-button cledit" style="display:inline-block"><?php echo $lang['client-edit-btn']; ?></span>
 	<span class="elevate menu-dialog" style="display:none;" id="dt_cl">
@@ -34,10 +35,12 @@ $(document).ready(function() {
 				if(data.status === "success") {
 					$("#dt_cl").hide();
 					$("#client .cldel").hide();
-					$("#client > div").html(data.message);
+					$("#client .cledit").hide();
+					$("#client #ecl_frm").hide();
+					$("#client > .ecl_res").html(data.message);
 				} else if(data.status === "error") {
 					$("#dt_cl").hide();
-					$("#client > div").append(data.message);
+					$("#client > .ecl_frm_error").html(data.message);
 					$("#client").delay(5000).hide("slow");
 				}
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
@@ -55,10 +58,10 @@ $(document).ready(function() {
 			formData,
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
-					$("#edit_cl_frm_error").hide();
-					$("#ecl_frm").append(data.message).delay(2000);
+					$("#client > .ecl_frm_error").hide();
+					$("#client > .ecl_res").html(data.message).delay(2000);
 				} else if(data.status === "error") {
-					$("#edit_cl_frm_error").show().html(data.message);
+					$("#client > .ecl_frm_error").show().html(data.message);
 				}
 
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){

@@ -143,7 +143,10 @@ try {
 		 'status' => 'success',
 		 'message'=> $schtml
 		));
-        mail($to,$subject,$edTicket,$headers); //send notification mail
+		//check if we're to send or not notification mail
+		if ($_POST['ctnotify'] != '1') {
+			mail($to,$subject,$edTicket,$headers);
+		}
         file_put_contents('action_history.txt',$ahistory,FILE_APPEND); //update history file
 		echo $tk_status;
 		exit(0);

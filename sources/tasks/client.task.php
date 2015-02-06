@@ -23,6 +23,15 @@ if (!$pos or $pos != 'before') {
                             <input type=\"hidden\" name=\"eclid\" id=\"eclid\" value=\"${cid}\" />
 					";
 				}
+				//check if this client actually exists
+				if (!$pcl['name']) {
+					$tk_status = json_encode(array(
+					 'status' => 'error',
+					 'message'=> 'Client with id '.$cid.' not found!'
+					));
+					echo $tk_status;
+					exit(0);
+				}
                 //now get its cases
 				$scres = $sccon->query('SELECT title,updated,type,id FROM "Case" WHERE clientID = '.$cid.' ORDER BY updated DESC;');
 				if ($scres) {

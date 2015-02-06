@@ -4,6 +4,7 @@ $(document).ready(function() {
 	});
     $("#add_client").click(function() {
 		$("#new_client").toggle('fast');
+		$("#new_cl_frm").show('fast');
 	});
     $("#stats").click(function() {
 		$("#stats_info").toggle('fast');

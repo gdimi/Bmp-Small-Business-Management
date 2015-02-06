@@ -122,7 +122,8 @@
 				<div class="ct-price"> <label for="price">Price:</label> <input type="text" name="price" value="'.$ticket['price'].'" maxlength="4"  disabled /><br /></div>
 				<div class="ct-follow"><label for="user">Follow:</label> <input type="text" name="follow" disabled value="'.$ticket['follow'].'" /></div>
 				<div class="ct-user"> <label for="user">User:</label> <input type="text" name="user" disabled value="'.$ticket['user'].'" /></div>
-				<div class="ct-update">Don\'t change updated date <input type="checkbox" name="ctupdate" value="1" style="width:auto" disabled></div>
+				<div class="ct-update"><input type="checkbox" name="ctupdate" value="1" style="width:auto" disabled> Don\'t change updated date </div>
+				<div class="ct-notify"><input type="checkbox" name="ctnotify" value="1" style="width:auto" disabled> Don\'t send notification about this update </div>
 				<input type="hidden" name="cid" value="'.$ticket['client'].'" id="et_client_'.$key.'"/>
 				<input type="hidden" name="tid" value="'.$key.'" id="et_id_'.$key.'"/>
 				<div id="ed_tk_frm_err_'.$key.'" style="color:red;border:medium solid red;padding:8px;display:none;"></div>

@@ -30,6 +30,8 @@ $(document).ready(function() {
 	});
 	//catch all client links
 	$("#allclients").on('click','.show-client',function() {
+		$("#client > .ecl_res").html('&nbsp;');		//reset result span
+		$("#client > .ecl_frm_error").html('&nbsp;');	//reset error span
 		var clid = parseInt(this.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
 		if (clid > 0) {
 			$.get("index.php",
@@ -37,12 +39,17 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
                     $("#dt_cl span.del-cl-b").attr( 'id', 'dlc_' + clid );  //set id with current client's id in delete button
-					$("#client #ecl_frm").html(data.message);
+					$("#client #ecl_frm").show().html(data.message);
 					$("#client > div > .cl-cases").html(data.cases);
+					$("#client .cldel").show();
+					$("#client .cledit").show();
 					$("#client").show("fast");
 				} else if(data.status === "error") {
-					$("#client > div").append(data.message);
-					$("#client").show("fast").delay(2000).hide("slow");
+					$("#client .ecl_frm_error").html(data.message);
+					$("#client #ecl_frm").hide();
+					$("#client .cldel").hide();
+					$("#client .cledit").hide();
+					$("#client").show("fast").delay(5000).hide("slow");
 				}
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
 				$("#client").show("fast").append(textStatus);

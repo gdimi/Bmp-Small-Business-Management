@@ -49,6 +49,8 @@ $(document).ready(function() {
 					$("#new_cl_frm_error").hide();
 					$("#new_cl_frm").append(data.message).delay(2000).hide('slow');
 					$("#new_client").delay(3000).hide('slow', function() {
+                        var delclfrm = document.getElementById('new_cl_frm');
+                        delclfrm.reset(); //reset form
 						//window.location = 'index.php?action=docache';
 					});
 					//$("#tkt_success").hide();

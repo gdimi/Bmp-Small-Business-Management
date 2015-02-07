@@ -1,6 +1,7 @@
 ## CHANGELOG 
 
 *0.375* - 7/2/2015
+issue 41 - added option to not send notification mail upon case update
 issue 40 - expenses: cannot delete expense
 issue 39 - client: after adding a client the form is not cleared 
 issue 38 - client: after adding a client, adding another is not possible

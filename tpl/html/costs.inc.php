@@ -61,7 +61,7 @@
         <div class="elevate menu-dialog" style="display:none;" id="dcost_dialog">
             <h2><?php echo $lang['costs-delete']; ?></h2>
             <div id="dcs_cl_msg"><?php echo $lang['costs-delete-msg']; ?> <strong></strong>-<strong></strong> ?</div><br><br>
-            <span id="dcs_yes" class="cl-b b-sblue del-cl-b"><?php echo $lang['costs-delete-yes']; ?></span>
+            <span id="dcs_yes" class="cl-b b-sblue"><?php echo $lang['costs-delete-yes']; ?></span>
             <span onclick="document.getElementById('dcost_dialog').style.display = 'none';" class="cl-b b-sblue" style="font-size:24px;"><?php echo $lang['costs-delete-no']; ?></span>
         </div>
         <div id="cres_act" class="elevate menu-dialog" style="display:none;"></div>
@@ -71,6 +71,7 @@ $(document).ready(function() {
 		var im = $('#cost_month').val();
 		var iy = $('#cost_year').val();
 		if (im != NaN && iy != NaN) {
+			//$("#costs > div#cres").append('<img src="images/loader.gif" />');
 			$.get("index.php",
 			{iy:iy,im:im,task: "costs",pos: "before"},
 			function(data, textStatus, jqXHR){
@@ -120,6 +121,7 @@ $(document).ready(function() {
 	});
     //edit current cost
     $("#cres").on('click', '.cost-edit' ,function(){
+	  //console.log('edit');
       var cid = returnEndId(this);
         if (cid > 0) { //must be bigger than zero
             $.get("index.php",
@@ -155,7 +157,7 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#edit_cs_frm_error").hide();
-					$("#ec_frm").append(data.message).delay(2000);
+					$("#ec_frm").html(data.message).delay(2000);
                     $("#edit_cs_frm_error").hide();
 					$("#edit_cost_frm").delay(1000).hide('slow', function() {
 					});
@@ -173,11 +175,15 @@ $(document).ready(function() {
     });
     //delete cost
     $("#cres").on('click', '.cost-delete' ,function(){
-        $("#dcost_dialog").show();//show dialog
+		//console.log(this);
         var cid = returnEndId(this); //get cost id
+        
+        $("#dcost_dialog").show();//show dialog
+        
         $("#dcs_yes").click({cid:cid},function(evt) {
             $("#dcs_yes").parent().hide();//hide dialog
             var csid = evt.data.cid; //get cost id again from data passed to function
+
             if (csid > 0) { //must be bigger than zero
                 $.get("index.php",
                 {cid : csid, task: "csd",pos: "before"},
@@ -186,7 +192,7 @@ $(document).ready(function() {
                         $("#cres_act").html(data.message);
                         $("#cres_act").show("fast");
                     } else if(data.status === "success") {
-                        $("#cres_act").append(data.message);
+                        $("#cres_act").html(data.message);
                         $("#cres_act").show("fast").delay(2000).hide("slow");
                     }
                 }, "json").fail(function(jqXHR, textStatus, errorThrown){

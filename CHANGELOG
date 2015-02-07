@@ -1,5 +1,21 @@
 ## CHANGELOG 
 
+*0.375* - 7/2/2015
+issue 40 - expenses: cannot delete expense
+issue 39 - client: after adding a client the form is not cleared 
+issue 38 - client: after adding a client, adding another is not possible
+issue 37 - client: after deleting a client you cannot see any other 
+issue 36 - client: clicking on a deleted client returns "success"
+issue 31 - client: result is appended not replacing existing html 
+issue 29 - cost / income : 'all' option doesnt work per year
+issue 28 - cost and income: wrong year selected by default
+issue 22 - fix for when clearing motd, we get "update all failed!"
+fix prices window overflow and max-height
+issues 15/16 revisited
+issue 3 - added a checkbox to not alter the 'update' date when updating an old case 
+some code restructuring
+added some html5 stuff in forms (placeholder, pattern etc)
+
 *0.362* - 28/12/2014
 
 replaced this->todo with changelog 

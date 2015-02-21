@@ -33,7 +33,7 @@ if (!$pos or $pos != 'before') {
 			$iy = $_GET['iy'];
 			$idate = strtotime(($iy).'-12-31');
 			$ldate = strtotime($iy.'-1-1') - 1; //adjust timestamp 1 sec before selected year to catch 'zero' second of it
-			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
+			$idateSQL = ' AND created < '.$idate.' AND created > '.$ldate;
 		}
 
 		$limit = '';
@@ -75,9 +75,13 @@ if (!$pos or $pos != 'before') {
 			));
 			echo $tk_status;
 			exit(0);
+		} else {
+			$scerr = 'no result!'.'SELECT id,type,title,price,updated FROM "Case" WHERE status >= 4'.$idateSQL.' ORDER BY updated DESC '.$limit.' ;';
 		}
 	} catch(PDOException $ex) {
 		$scerr = "An Error occured!".$ex->getMessage();
+	} catch(Exception $x) {
+		$scerr = "An error occured!".$x->getMessage();
 	}
 }
 

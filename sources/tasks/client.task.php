@@ -18,7 +18,7 @@ if (!$pos or $pos != 'before') {
 							<label for=\"tel1\">Τηλέφωνο1</label> <input type=\"text\" name=\"ecltel1\" value=\"${pcl['tel1']}\" /><br />
 							<label for=\"tel2\">Τηλέφωνο2</label> <input type=\"text\" name=\"ecltel2\" value=\"${pcl['tel2']}\" /><br />
 							<label for=\"email\">email</label> <input type=\"text\" name=\"eclmail\" value=\"${pcl['email']}\" /><br />
-							<label for=\"address\">Διεύθυνση</label> <input type=\"text\" name=\"ecladdr\" value=\"${pcl['address']}\" /><br />
+							<label for=\"address\">Διεύθυνση</label> <textarea name=\"ecladdr\" cols=\"5\" rows=\"8\">${pcl['address']}</textarea><br />
 							<label for=\"info\">Info</label>  <textarea name=\"eclinfo\" >${pcl['info']}</textarea><br />
                             <input type=\"hidden\" name=\"eclid\" id=\"eclid\" value=\"${cid}\" />
 					";

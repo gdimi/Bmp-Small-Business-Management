@@ -811,3 +811,7 @@ span.clname  {
 #stats_data > div.case-types:nth-child(2n+3) {
     clear: left;
 }
+
+.ecl_res {
+    display: block;
+}

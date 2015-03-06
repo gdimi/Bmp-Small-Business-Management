@@ -106,6 +106,7 @@ $(document).ready(function() {
 					$("#add_cost_frm").delay(1000).hide('slow', function() {
                         var delfrm = document.getElementById('ac_frm');
                         delfrm.reset();
+                        refreshCostsTable();
 					});
 				} else if(data.status === "error") {
 					$("#new_cs_frm_error").show();
@@ -160,6 +161,7 @@ $(document).ready(function() {
 					$("#ec_frm").html(data.message).delay(2000);
                     $("#edit_cs_frm_error").hide();
 					$("#edit_cost_frm").delay(1000).hide('slow', function() {
+						refreshCostsTable();
 					});
 				} else if(data.status === "error") {
 					$("#edit_cs_frm_error").show();
@@ -194,6 +196,7 @@ $(document).ready(function() {
                     } else if(data.status === "success") {
                         $("#cres_act").html(data.message);
                         $("#cres_act").show("fast").delay(2000).hide("slow");
+                        refreshCostsTable();
                     }
                 }, "json").fail(function(jqXHR, textStatus, errorThrown){
                     $("#gen_res").show("fast").append(textStatus);
@@ -201,5 +204,24 @@ $(document).ready(function() {
             }
         });
     });
+    
+    function refreshCostsTable() {
+		var im = 0;
+		var iy = 2015;
+		//$("#costs > div#cres").append('<img src="images/loader.gif" />');
+		$.get("index.php",
+		{iy:iy,im:im,task: "costs",pos: "before"},
+		function(data, textStatus, jqXHR){
+			if(data.status === "success") {
+				$("#costs > div#cres").html(data.message);
+				$("#costs").show("fast");
+			} else if(data.status === "error") {
+				$("#costs > div#cres").append(data.message);
+				$("#costs").show("fast").delay(2000).hide("slow");
+			}
+		}, "json").fail(function(jqXHR, textStatus, errorThrown){
+			$("#costs").show("fast").append(textStatus);
+		});
+	}
 });
 </script>

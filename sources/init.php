@@ -70,6 +70,13 @@ if ($tasks[$task] && $pos == 'before') {
 		echo $task_status;
 		exit(1);
 	}
+} elseif ($task && in_array($task,$tasks) == false) {
+	$task_status = json_encode(array(
+	 'status' => 'error',
+	 'message'=> 'Uknown task '.$task
+	));
+	echo $task_status;
+	exit(2);
 } else {//continue normally
 	require_once('sources/class.cache.php');
 	require_once('sources/class.helper.php');

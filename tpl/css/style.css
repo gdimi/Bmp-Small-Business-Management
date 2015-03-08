@@ -815,3 +815,12 @@ span.clname  {
 .ecl_res {
     display: block;
 }
+
+#various .variousContent {
+    margin-bottom: 14px;
+    padding: 1px;
+}
+
+#various .toolbar {
+    margin-bottom: 10px;
+}

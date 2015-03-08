@@ -339,7 +339,7 @@ table#ct_table {
 }
 
 #client textarea {
-    height: 20em;
+    height: 10em;
     overflow: auto;
     width: 99%;
 }
@@ -816,6 +816,13 @@ span.clname  {
     display: block;
 }
 
+#client .cl-cases {
+    height: 14em;
+    overflow: auto;
+}
+
+
+
 #various .variousContent {
     margin-bottom: 14px;
     padding: 1px;
@@ -824,3 +831,6 @@ span.clname  {
 #various .toolbar {
     margin-bottom: 10px;
 }
+
+
+

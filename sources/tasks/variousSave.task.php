@@ -18,7 +18,7 @@
  * @copyright  2014-2015 George Dimitrakopoulos
  * @license    GPLv2
  * @version    1.0
- * @link       http://pear.php.net/package/PackageName
+ * @link       -
  * @see        -
  * @since      Since 0.375-dev
  * @deprecated -

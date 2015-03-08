@@ -39,6 +39,8 @@ $tasks['csd'] = 'dcost.task';
 $tasks['stats'] = 'stats.task';
 $tasks['cms'] = 'cms.task';
 $tasks['cmsupd'] = 'cmsUpdate.task';
+$tasks['evar'] = 'variousSave.task';
+$tasks['uvar'] = 'variousUpdate.task';
 
 //get task and position
 $task = trim($_GET['task']);
@@ -113,7 +115,13 @@ if ($tasks[$task] && $pos == 'before') {
 		} catch(Exception $e) {
 			echo $e->getMessage();
 		}
-		$tickets = $tickets_handler->readAllTicketsnew();
+
+		//check if tickets are to be sorted
+		if (isset($_GET['sr'])) {
+			$sort = $_GET['sr']; //TODO: better security
+		}
+
+		$tickets = $tickets_handler->readAllTicketsnew($sort);
 	}
 
 	//show history

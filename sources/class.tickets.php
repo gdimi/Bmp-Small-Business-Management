@@ -1,6 +1,29 @@
 <?php
+/**
+ * class to handle tickets in case tracker
+ *
+ * this file contains the class that handles cases in tracker and history functionality
+ * 
+ * PHP version 5+
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version
+ *
+ * @category   bmp\sources\ajax handlers
+ * @package    bmp\sources
+ * @author     Original Author <gdimi@hyperworks.gr>
+ * @copyright  2014-2015 George Dimitrakopoulos
+ * @license    GPLv2
+ * @version    1.0
+ * @link       -
+ * @see        -
+ * @since      Initial
+ * @deprecated -
+ */
+
 class tickets extends db {
-	public $ticketfile = 'DEV_TODO.txt';
 	public $historyfile = 'action_history.txt';
 	public $tickets = Array();
 	//public $ticketfiles = Array();
@@ -50,16 +73,20 @@ class tickets extends db {
 			return false;
 		}
 	}
-	
-	function readAllTicketsnew() {
+
+
+	function readAllTicketsnew($sort) {
 		$tickets = Array();
 		$ticket_cnt = 0;
 		try {
-			//$cresult = $this->getConn()->query('SELECT * FROM "Case" LIMIT 0, 30');
-			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID');
+			switch ($sort) {
+				case "updated":
+					$ssql = ' ORDER BY cs.updated DESC';
+					break;
+			}
+			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID'.$ssql);
 			if ($cresult) {
 				foreach($cresult as $case) {
-				//var_dump($ticket);
 					$this->tickets[$case['id']]['id'] = $case['id'];
 					$this->tickets[$case['id']]['title'] = $case['title'];
 					$this->tickets[$case['id']]['model'] = $case['model'];
@@ -74,8 +101,6 @@ class tickets extends db {
 					$this->tickets[$case['id']]['price'] = $case['price'];
 					$this->tickets[$case['id']]['user'] = $case['user'];
 					$this->tickets[$case['id']]['name'] = $case['name'];
-					$this->tickets[$case['id']]['follow'] = $case['follow'];
-					$this->tickets[$case['id']]['closed'] = $case['closed'];
 				}
 				$ticket_cnt++;
 			} else {
@@ -86,6 +111,7 @@ class tickets extends db {
 		}
 		return $this->tickets;
 	}
+
 }
 
 ?>

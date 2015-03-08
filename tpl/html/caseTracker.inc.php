@@ -3,7 +3,7 @@
 			<tr class="thead">
 				<td>Cid</td>
 				<td>Created</td>
-				<td>Updated</td>
+				<td><a href="index.php?action=docache&sr=updated">Updated</a></td>
 				<td>Title</td>
 				<td>model/SN</td>
 				<td>Tag</td>
@@ -18,7 +18,9 @@
 		<?php
 		if (is_array($tickets)) {
 			$total = count($tickets);
-			krsort($tickets,SORT_NUMERIC); // sort  reversed and numeric by key, keys are the stored ids 
+			if (!$sort) {
+				krsort($tickets,SORT_NUMERIC); // sort  reversed and numeric by key, keys are the stored ids 
+			}
 			foreach($tickets as $key=>$ticket) {
 				$tstat = $dss->caseStatus[$ticket['status']];
 				$tstat_class = str_replace(' ','_',$tstat);

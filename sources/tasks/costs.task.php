@@ -2,6 +2,7 @@
 //show expenses table
 if (!defined('_w00t_frm')) die('har har har');
 $pos = $_GET['pos'];
+$scerr = ''; //initialize error variable
 
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
@@ -75,6 +76,8 @@ if (!$pos or $pos != 'before') {
 		}
 	} catch(PDOException $ex) {
 		$scerr = "An Error occured!".$ex->getMessage();
+	} catch(Exception $x) {
+		$scerr = "An error occured!".$x->getMessage();
 	}
 }
 

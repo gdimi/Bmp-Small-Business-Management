@@ -48,7 +48,7 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#new_cl_frm_error").hide();
-					$("#new_cl_frm .frmacl_res").html(data.message);
+					$("#new_cl_frm .frmacl_res").html(data.message).delay(2000).hide('slow');;
 					$("#new_client").delay(3000).hide('slow', function() {
 						//reset form & messages
                         var delclfrm = document.getElementById('new_cl_frm');

@@ -1,5 +1,28 @@
 <?php
-//delete client
+/**
+ * delete a client
+ *
+ * this file deletes a client and stores its data in trash in json format
+ * 
+ * PHP version 5
+ *
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
+ * the PHP License and are unable to obtain it through the web, please
+ * send a note to license@php.net so we can mail you a copy immediately.
+ *
+ * @category   bmp\sources\ajax handlers
+ * @package    bmp\sources
+ * @author     Original Author <gdimi@hyperworks.gr>
+ * @copyright  2014-2015 George Dimitrakopoulos
+ * @license    GPLv2
+ * @version    1.0
+ * @link       -
+ * @see        -
+ * @since      Since 0.375-dev
+ * @deprecated -
+ */
 if (!defined('_w00t_frm')) die('har har har');
 
 if (!$pos or $pos != 'before') {
@@ -21,7 +44,7 @@ if (!$pos or $pos != 'before') {
 				}
 				//store into contents/trashed
 				$clJSONdata = json_encode($clientData2store);
-				if (!file_put_contents("content/trashed/client-$cid",$clJSONdata)) {
+				if (file_put_contents("content/trashed/client-$cid",$clJSONdata) === false) {
 					$storemsg = ',but client data store failed';
 				} else {
 					$storemsg = ',and client data stored at content/trashed/client-'.$cid;

@@ -113,6 +113,7 @@ $(document).ready(function() {
 
 	$("#addtckbtn").click(function(){
 		$(this).hide(); //hide submit button so as to avoid double-clicks
+		$("#new_tk_frm").append('<span class="loader"><img src="images/loader.gif" /></span>');
 		var formData = $("#new_tk_frm").serializeArray();
 		var URL = $("#new_tk_frm").attr("action");
 		$.post(URL,
@@ -120,6 +121,7 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#new_tk_frm_error").hide();
+					$("#new_tk_frm").remove(".loader");
 					$("#new_tk_frm").append(data.message).delay(2000).hide('slow');
 					$("#new_ticket").delay(3000).hide('slow', function() {
 						window.location = 'index.php?action=docache';

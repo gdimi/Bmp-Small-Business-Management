@@ -71,7 +71,7 @@ $(document).ready(function() {
 		var im = $('#cost_month').val();
 		var iy = $('#cost_year').val();
 		if (im != NaN && iy != NaN) {
-			//$("#costs > div#cres").append('<img src="images/loader.gif" />');
+			$("#costs > div#cres").append('<img src="images/loader.gif" />');
 			$.get("index.php",
 			{iy:iy,im:im,task: "costs",pos: "before"},
 			function(data, textStatus, jqXHR){
@@ -97,11 +97,12 @@ $(document).ready(function() {
 		var csam = $("#cAmount").val();
 		var csdate = $("#cDate").val();
 		if (csdescr != '' && csam != '' && csdate != '') {
+			$("#new_cs_frm_error").append('<img src="images/loader.gif" />');
 			$.post(URL,
 			formData,
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
-					$("#new_cs_frm_error").hide();
+					$("#new_cs_frm_error").html('&nbsp;').hide();
 					$("#ac_frm").append(data.message).delay(2000);
 					$("#add_cost_frm").delay(1000).hide('slow', function() {
                         var delfrm = document.getElementById('ac_frm');
@@ -153,19 +154,18 @@ $(document).ready(function() {
 		var csam = $("#ecAmount").val();
 		var csdate = $("#ecDate").val();
 		if (csdescr != '' && csam != '' && csdate != '') {
+			$("#edit_cs_frm_error").append('<img src="images/loader.gif" />');
 			$.post(URL,
 			formData,
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
-					$("#edit_cs_frm_error").hide();
+					$("#edit_cs_frm_error").html('&nbsp;').hide();
 					$("#ec_frm").html(data.message).delay(2000);
-                    $("#edit_cs_frm_error").hide();
 					$("#edit_cost_frm").delay(1000).hide('slow', function() {
 						refreshCostsTable();
 					});
 				} else if(data.status === "error") {
-					$("#edit_cs_frm_error").show();
-					$("#edit_cs_frm_error").html(data.message);
+					$("#edit_cs_frm_error").show().html(data.message);
 				}
 
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
@@ -208,7 +208,7 @@ $(document).ready(function() {
     function refreshCostsTable() {
 		var im = 0;
 		var iy = 2015;
-		//$("#costs > div#cres").append('<img src="images/loader.gif" />');
+		$("#costs > div#cres").append('<img src="images/loader.gif" />');
 		$.get("index.php",
 		{iy:iy,im:im,task: "costs",pos: "before"},
 		function(data, textStatus, jqXHR){
@@ -222,6 +222,7 @@ $(document).ready(function() {
 		}, "json").fail(function(jqXHR, textStatus, errorThrown){
 			$("#costs").show("fast").append(textStatus);
 		});
+		$("#costs > div#cres").html('&nbsp;');
 	}
 });
 </script>

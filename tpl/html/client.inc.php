@@ -29,6 +29,7 @@ $(document).ready(function() {
 	$(".del-cl-b").click(function(){
 		var clid = returnEndId(this);
 		if (clid > 0) {
+			$("#client > .ecl_res").append('<img src="images/loader.gif" />');
 			$.get("index.php",
 			{clid : clid, task: "dclient",pos: "before"},
 			function(data, textStatus, jqXHR){

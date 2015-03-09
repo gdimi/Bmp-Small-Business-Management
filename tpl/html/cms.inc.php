@@ -19,6 +19,7 @@
 
 <script>
 $("#cms_save").click(function(){
+	$("#csm_res").append('<img src="images/loader.gif" />');
     var motdtxt = $("#motd_txt").val();
     var boardtxt = $("#board_txt").val();
     var cURL = "index.php?task=cmsupd&pos=before";

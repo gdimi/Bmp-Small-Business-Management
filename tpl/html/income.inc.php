@@ -29,18 +29,19 @@ $('#esoda').on('change','select',function(){
 	var im = $('#income_month').val();
 	var iy = $('#income_year').val();
 	if (im != NaN && iy != NaN) {
+		$("#esoda").show("fast");
+		$("#esoda div").html('<img src="images/loader.gif" />');
 		$.get("index.php",
 		{iy:iy,im:im,task: "esoda",pos: "before"},
 		function(data, textStatus, jqXHR){
 			if(data.status === "success") {
 				$("#esoda div").html(data.message);
-				$("#esoda").show("fast");
 			} else if(data.status === "error") {
 				$("#esoda div").append(data.message);
-				$("#esoda").show("fast").delay(2000).hide("slow");
+				$("#esoda").delay(2000).hide("slow");
 			}
 		}, "json").fail(function(jqXHR, textStatus, errorThrown){
-			$("#esoda").show("fast").append(textStatus);
+			$("#esoda").append(textStatus);
 		});
 	}
 });

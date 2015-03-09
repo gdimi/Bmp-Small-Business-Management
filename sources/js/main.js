@@ -90,18 +90,19 @@ $(document).ready(function() {
 	});
     //catch stats clicks
 	$("#stats").click(function() {
+			$("#stats_info").show();
+			$("#stats_info > #stats_data").html('<img src="images/loader.gif" />');
 			$.get("index.php",
 			{task: "stats",pos: "before"},
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#stats_info > #stats_data").html(data.message);
-					$("#stats_info").show("fast");
 				} else if(data.status === "error") {
 					$("#stats_info > div").append(data.message);
-					$("#stats_info").show("fast").delay(2000).hide("slow");
+					$("#stats_info").delay(2000).hide("slow");
 				}
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
-				$("#stats_info").show("fast").append(textStatus);
+				$("#stats_info").append(textStatus);
 			});
 	});
     //catch cms clicks
@@ -253,7 +254,22 @@ $(document).ready(function() {
 
     //functions
     
-function returnEndId(elem) {
-   //return the numeric id from the end of a string (eg a class or id of an element)
-   return parseInt(elem.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
+	function returnEndId(elem) {
+	   //return the numeric id from the end of a string (eg a class or id of an element)
+	   return parseInt(elem.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
+	}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
 }

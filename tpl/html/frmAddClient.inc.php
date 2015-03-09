@@ -43,12 +43,13 @@ $(document).ready(function() {
 		var formData = $("#new_cl_frm").serializeArray();
 		var clname = $("#ncl_name").val()
 		if (clname != '') {
+			$("#new_cl_frm .frmacl_res").append('<img src="images/loader.gif" />');
 			$.post(URL,
 			formData,
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#new_cl_frm_error").hide();
-					$("#new_cl_frm .frmacl_res").html(data.message).delay(2000).hide('slow');;
+					$("#new_cl_frm .frmacl_res").html(data.message).delay(2000).hide('slow');
 					$("#new_client").delay(3000).hide('slow', function() {
 						//reset form & messages
                         var delclfrm = document.getElementById('new_cl_frm');

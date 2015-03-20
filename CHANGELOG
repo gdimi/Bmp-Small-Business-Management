@@ -1,5 +1,5 @@
 ## CHANGELOG 
-*0.375-dev - 8/3/2015*
+*0.410 - 8/3/2015*
 issue 48 - uknown task returns parser error 
 issue 46 - deleted cases should be stored in trash 
 issue 45 - income: view all by year returns parser error 

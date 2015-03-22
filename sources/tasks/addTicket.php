@@ -1,7 +1,27 @@
 <?php
-/*history:
- * 27/10/13 - added name in save
- */ 
+/**
+ * add a case 
+ *
+ * this file adds a case
+ * 
+ * PHP version 5.2+
+ *
+ * LICENCE: This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version
+ *
+ * @category   bmp\sources\ajax handlers
+ * @package    bmp\sources
+ * @author     Original Author <gdimi@hyperworks.gr>
+ * @copyright  2014-2015 George Dimitrakopoulos
+ * @license    GPLv2
+ * @version    1.0
+ * @link       -
+ * @see        -
+ * @since      Since 0.375-dev
+ * @deprecated -
+ */
 //TODO: add session validation...
 if (!defined('_w00t_frm')) die('har har har');
 //check position of execution

@@ -1,90 +1,66 @@
+##THIS FILE IS HERE FOR HISTORICAL REASONS
+##COVERS DEVELOPMENT FROM 1/5/2014 TO 15/11/2014
+##LICENCE: This program is free software; you can redistribute it and/or modify
+##  it under the terms of the GNU General Public License as published by
+##   the Free Software Foundation; either version 2 of the License, or
+##   (at your option) any later version
 
-====== FUNCTIONALITY ==========
-<span style="text-decoration:line-through;">(0) calculate and display έσοδα</span> - 2/5/14
-<span style="text-decoration:line-through;">(1)add έξοδο</span> - 2/5/14
-<span style="text-decoration:line-through;">(2)delete έξοδο</span> -18/9/14
-<span style="text-decoration:line-through;">(3) edit έξοδο</span> - 27/10/14
-(4) edit client
-(5) delete client
-(6) add event
-(7) edit event
-(8) del event
-<span style="color:orange">(9) statistics</span> 11/8/2014
-<span style="text-decoration:line-through">(9.1) stats add by case type</span> 11/8/2014
-<span style="color:green">(9.11) statistics add percentage </span> 18/10/2014
-<span style="color:green">(9.12) statistics add graph bar </span> 18/10/2014
-<span style="text-decoration:line-through">(9.2) stats add by case type by income</span> 26/10/2014
-<span style="text-decoration:line-through;">(10) show basic settings</span> 9/5/14
-(11) edit settings
-(12) login with sessions
-(13) advanced search
-<span style="text-decoration:line-through;">(14) κοστολόγιο</span> 27/5/14
-<span style="text-decoration:line-through;">(15) add follow field in cases to allow remote view of case progress</span> 4/8/14
-<span style="text-decoration:line-through;">(16) implement postit, board and notifications</span> 23/10/2014
-(17) edit various page
+OTHER:  add case id in client window - 1/5/14
+FUNCTIONALITY: calculate and display income - 2/5/14
+FUNCTIONALITY: add cost - 2/5/14
+OTHER:  add "various" page -6/5/14
+BUG:  date is not stored correctly in cost - 8/5/14
+BUG:  change timestamp to human date in add expense response - 8/5/14
+FUNCTIONALITY: show basic settings 9/5/14
+BUG:  fix filter case tracker by name - 10/5/14
+OTHER:  drop down with users - 10/5/14
+OTHER:  in emails flags should be translated to appropriate attributes - 11/5/14
+BUG:  when an error is displayed in add case form, the submit button dissappears - 15/5/14
+BUG:  no errors are displayed when editing a ticket -15/5/14
+OTHER:  add tag in add case form - 15/5/14
+OTHER:  add model/serial num to main case tracker - 18/5/14
+BUG:  fix multiple customer ids, only one is active  - 24/5/14
+OTHER:  make closed cases ..closed in case tracker by default with closed filter ticked - 24/5/14
+BUG:  in case id search BUG : cis) change error to model -26/5/14
+DESIGN:  cis: fix table width -26/5/14
+FUNCTIONALITY: price table 27/5/14
+OTHER:  when calculating income, add unfixable too in calculation - 29/5/14
+BUG:  closed filter should handle unfixable too -31/5/14
+SECURITY: There should be a type check or type casting in addTicket adn editTicket - 8/6/14
+DESIGN:  all users: change table to div based output -7/8/14
+OTHER:  add field "follow" in cases to be seen by customers - 20/7/14
+FUNCTIONALITY: add follow field in cases to allow remote view of case progress 4/8/14
+FUNCTIONALITY: statistics 11/8/2014
+FUNCTIONALITY: stats add by case type 11/8/2014
+BUG:  do not show all client info in delete client div - 12/9/14
+OTHER:  in client window,  'info' should be textarea not input - 12/9/14
+DESIGN:  delete client: make no delete choice much bigger -12/9/14
+FUNCTIONALITY: delete cost -18/9/14
+DESIGN:  all labels should be topped -21/9/14
+DESIGN:  make form in edit case fixed length so to avoid rich editor over lock/unlock buttons -22/9/14
+BUG:  add cost: when adding a cost, is not possible to add another cause the form is hidden - 14/10/14
+FUNCTIONALITY: statistics add percentage  18/10/2014
+FUNCTIONALITY: statistics add graph bar  18/10/2014
+OTHER:  statistics properly load config for case types - 18/10/14
+DESIGN:  statistics fix span length inside case types -18/10/14
+FUNCTIONALITY: implement postit, board and notifications 23/10/2014
+BUG:  in client window the case types are not normalized (- prefix if < ) so they are not searchable - 25/10/14
+SECURITY: Security audit with unicast - 25/10/14
+FUNCTIONALITY: stats add by case type by income 26/10/2014
+DESIGN:  statistics add headings -26/10/14
+DESIGN:  statistics change min-length inside case types -26/10/14
+FUNCTIONALITY: edit cost - 27/10/14
+BUG:  add cost: do not show timestamp in return message - 27/10/14
+OTHER:  various: move contents to content/ folder 1-11-14
+DESIGN:  cms: fix response overlapping with save board button -1/11/14
+OTHER:  delete client: "yes" should contain the current clients id - 2/11/14 
+BUG:  add cost: clear form after insert - 4/11/14
+BUG:  cms: trim content of motd so no fake span appears if there is actually no content -1/11/14
+BUG:  edit cost: clear form after edit - 4/11/14
+OTHER:  add/edit case: model and category OTHER: tag) should have default value "-"  - 15/11/14
+DESIGN:  move board over stats and give it an icon -15/11/14
+DESIGN:  fix header height so filters do not fall off -15/11/14
 
-
-========== BUGS ============
-<span style="text-decoration:line-through;">(1) fix filter case tracker by name</span> - 10/5/14
-<span style="text-decoration:line-through;">(2) fix multiple customer ids, only one is active ...</span> - 24/5/14
-<span style="text-decoration:line-through;">(3) i imerominia sta exoda den apothikeuetai swsta...</span> - 8/5/14
-<span style="text-decoration:line-through;">(4) change timestamp to human date in add expense response </span>- 8/5/14
-<span style="text-decoration:line-through;">(5) add cost: otan kataxwreitai ena e3odo meta den mporeis na valeis allo giati einai krymmenh i forma</span> - 14/10/14
-<span style="text-decoration:line-through;">(6) otan vgainei sfalma sto add case xanetai to koumpi submit</span> - 15/5/14
-<span style="text-decoration:line-through;">(7) sto edit enos ticket den emfanizontai ta errors kata to submit</span> -15/5/14
-<span style="text-decoration:line-through;">(8) in case id search (cis) change error to model</span> -26/5/14
-<span style="text-decoration:line-through;">(9) closed filter should handle unfixable too</span> -31/5/14
-(10) auto-refresh e3oda otan kataxwreitai i allazei i svinetai ena e3odo
-<span style="text-decoration:line-through;">(11) do not show all client info in delete client div</span> - 12/9/14
-<span style="text-decoration:line-through;">(12) stin cartela pelati ta types twn cases den ginontai normalize (dld prefix if <10) opote den einai searchable</span> - 25/10/
-<span style="text-decoration:line-through;">(13) add cost: do not show timestamp in return message</span> - 27/10/14
-<span style="text-decoration:line-through;">(14) add cost: clear form after insert</span> - 4/11/14
-<span style="text-decoration:line-through;">(15) edit cost: clear form after edit</span> - 4/11/14
-<span style="text-decoration:line-through;">(16) cms: trim content of motd so no fake span appears if there is actually no content</span> -1/11/14
-
-
-
-========== OTHER TODO =============
-<span style="text-decoration:line-through;">(1) πρόσθεση του case id στην καρτέλα πελάτη</span> - 1/5/14
-<span style="text-decoration:line-through;">(2) add field "follow" in cases to be seen by customers</span> - 20/7/14
-<span style="text-decoration:line-through;">(3) rich editor in certain textareas</span> - 21/9/14
-<span style="text-decoration:line-through;">(4) add "diafora" link me diafora stoixeia pou tha xreiazomaste (passwords,tilefwna,trapezes klp)</span> -6/5/14
-<span style="text-decoration:line-through;">(5) sta email pou stelnontai na einai oxi flags, alla ta translated attributes</span> - 11/5/14
-<span style="text-decoration:line-through;">(6) drop down me tous users anti na tous grafoume</span> - 10/5/14
-<span style="text-decoration:line-through;">(7) to pedio problem na ginei modelo/serial num kai na prostethei ston main case tracker</span> - 18/5/14
-<span style="text-decoration:line-through;">(8) category na ginei tag sti forma add case</span> - 15/5/14
-(9) add "closed" field to avoid wrong profit calc when a case is updated thus its ending date gets pushed forward
-<span style="text-decoration:line-through;">(10) make closed cases ..closed in case tracker by default with closed filter ticked</span> - 24/5/14
-<span style="text-decoration:line-through;">(11) ston ypologismo esodwn na ypologizontai kai ta unfixable ektos twn closed</span> - 29/5/14
-<span style="text-decoration:line-through;">(12) sta alert mails to 'category' na ginei 'tag'</span> - 20/7/14
-<span style="text-decoration:line-through;">(13) stin kartela pelath, to 'info' tha eprepe na einai textarea oxi input</span> - 12/9/14
-<span style="text-decoration:line-through;">(14) statistics properly load config for case types</span> - 18/10/14
-(15) in case id search (cis) add cclient class to fire client event
-<span style="text-decoration:line-through;">(16) delete client: "yes" should contain the current clients id</span> - 2/11/14 
-(17) edit client: there should be a form to populate in tpl instead of returning the whole html
-<span style="text-decoration:line-through;">(18) various: move contents to content/ folder</span> 1-11-14
-(19) cases : add upload file attachment capability
-(20) cases : add upload file attachment removal
-<span style="text-decoration:line-through;">(21) add/edit case: model and category (tag) should have default value "-" </span> - 15/11/14
-
-
-====== DESIGN ======
-<span style="text-decoration:line-through;">(1) cis: fix table width</span> -26/5/14
-<span style="text-decoration:line-through;">(2) all users: change table to div based output</span> -7/8/14
-<span style="text-decoration:line-through;">(3) delete client: make no delete choice much bigger</span> -12/9/14
-<span style="text-decoration:line-through;">(4) all labels should be topped</span> -21/9/14
-<span style="text-decoration:line-through;">(5) make form in edit case fixed length so to avoid rich editor over lock/unlock buttons</span> -22/9/14
-<span style="text-decoration:line-through;">(6) statistics fix span length inside case types</span> -18/10/14
-<span style="text-decoration:line-through;">(7) statistics change min-length inside case types</span> -26/10/14
-<span style="text-decoration:line-through;">(8) statistics add headings</span> -26/10/14
-<span style="text-decoration:line-through;">(9) cms: fix response overlapping with save board button</span> -1/11/14
-<span style="text-decoration:line-through;">(10) move board over stats and give it an icon</span> -15/11/14
-(11) responsive 320x480 up to 821xY
-<span style="text-decoration:line-through;">(12) fix header height so filters do not fall off</span> -15/11/14
-
-====== security =====
-<span style="text-decoration:line-through;">There should be a type check or type casting in addTicket adn editTicket</span> - 8/6/14
-<span style="text-decoration:line-through;">Security audit with unicast</span> - 25/10/14
 
 
 last edit: 15/11/14 9:47

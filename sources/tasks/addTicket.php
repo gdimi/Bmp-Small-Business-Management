@@ -153,7 +153,7 @@ try {
 		 'message'=> $schtml
 		));
         mail($to,$subject,$newTicket,$headers); //send notification mail
-        file_put_contents('action_history.txt',$ahistory,FILE_APPEND); //update history file
+        file_put_contents('content/action_history.txt',$ahistory,FILE_APPEND); //update history file
 		echo $tk_status;
 		exit(0);
 	}

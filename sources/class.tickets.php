@@ -24,7 +24,7 @@
  */
 
 class tickets extends db {
-	public $historyfile = 'action_history.txt';
+	public $historyfile = 'content/action_history.txt';
 	public $tickets = Array();
 	//public $ticketfiles = Array();
 	//public $ticketfolder = 'tickets';

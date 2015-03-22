@@ -24,7 +24,7 @@ if (!$pos or $pos != 'before') {
 			if ($scres) {
 				$cs_short_descr = substr($cost['description'],0,40);
 				$schtml = ' Το έξοδο <strong>'.$cs_short_descr."</strong> ενημερώθηκε επιτυχώς \n";
-				file_put_contents('action_history.txt',$today.' '.$schtml,FILE_APPEND); //update history file
+				file_put_contents('content/action_history.txt',$today.' '.$schtml,FILE_APPEND); //update history file
 				$cs_status = json_encode(array(
 				 'status' => 'success',
 				 'message'=> $schtml

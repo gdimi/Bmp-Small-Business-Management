@@ -19,7 +19,7 @@ if (!$pos or $pos != 'before') {
 				 'status' => 'success',
 				 'message'=> 'Η λυπητερή με id '.$cid.' έχει ΔΙΑΓΡΑΦΕΙ.'
 				));
-				file_put_contents('action_history.txt',$ahistory,FILE_APPEND); //update history file
+				file_put_contents('content/action_history.txt',$ahistory,FILE_APPEND); //update history file
 				echo $c_status;
 				exit(0);
 			}

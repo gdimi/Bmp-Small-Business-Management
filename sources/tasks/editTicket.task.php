@@ -147,7 +147,7 @@ try {
 		if ($_POST['ctnotify'] != '1') {
 			mail($to,$subject,$edTicket,$headers);
 		}
-        file_put_contents('action_history.txt',$ahistory,FILE_APPEND); //update history file
+        file_put_contents('content/action_history.txt',$ahistory,FILE_APPEND); //update history file
 		echo $tk_status;
 		exit(0);
 	}

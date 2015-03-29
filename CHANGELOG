@@ -1,6 +1,7 @@
 ## CHANGELOG 
 *0.410-dev - 22/3/2015*
 issue 49 - move action history file in content folder
+fix a bug introduced in 0.410 version, where the 'follow' field was not retrieved from db in case tracker
 moved DEV_TODO file to content
 
 

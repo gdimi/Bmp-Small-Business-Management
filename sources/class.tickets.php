@@ -101,6 +101,7 @@ class tickets extends db {
 					$this->tickets[$case['id']]['price'] = $case['price'];
 					$this->tickets[$case['id']]['user'] = $case['user'];
 					$this->tickets[$case['id']]['name'] = $case['name'];
+					$this->tickets[$case['id']]['follow'] = $case['follow'];
 				}
 				$ticket_cnt++;
 			} else {

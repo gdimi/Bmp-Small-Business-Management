@@ -149,7 +149,7 @@ $edTicket = "\n
 [name: ${ticket['user']}]\n
 [follow: ${ticket['follow']}]\n";
 
-$ahistory = "${ticket['updated']} ${ticket['user']} updated case ${ticket['title']} \n";
+$ahistory = time()." ${ticket['user']} updated case ${ticket['title']} \n";
 
 try {
     $sccon = new PDO('sqlite:pld/HyperLAB.db3');

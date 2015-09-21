@@ -1,5 +1,6 @@
 ## CHANGELOG 
-*0.410-dev - 28/5/2015*
+*0.410-dev - 21/9/2015*
+issue 14 - hide 2 buttons that do not work anyway
 issue 51 - chunked title when updating/adding an expense
 issue 50 - history wrong date when updating case
 issue 49 - move action history file in content folder

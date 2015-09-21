@@ -8,10 +8,10 @@
     <form>
         <label for="motd"><?php echo $lang['cms-motd']; ?></label><br />
         <textarea id="motd_txt" name="motd"></textarea><br />
-        <span class="fake-button" id="cms_save_motd"><?php echo $lang['cms-motd-save']; ?></span><br /><br />
+        <span class="fake-button" id="cms_save_motd" style="display:none"><?php echo $lang['cms-motd-save']; ?></span><br /><br />
         <label for="board"><?php echo $lang['cms-board']; ?></label><br />
         <textarea id="board_txt" name="board"></textarea><br />
-        <span class="fake-button" id="cms_save_board"><?php echo $lang['cms-board-save']; ?></span><br />
+        <span class="fake-button" id="cms_save_board" style="display:none"><?php echo $lang['cms-board-save']; ?></span><br />
     </form>
     <span class="fake-button" style="float:right;" id="cms_save"><?php echo $lang['cms-save-all']; ?></span>
     <div id="cms_res"></div>

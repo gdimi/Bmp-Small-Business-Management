@@ -411,7 +411,7 @@ table#ct_table {
 	left: 128px;
 	margin-top: -1px;
 	overflow: hidden;
-	padding: 10px;
+	padding: 6px;
 	position: absolute;
 	width: 240px;
 }
@@ -419,6 +419,10 @@ table#ct_table {
 #ntk_client_res div:hover, .autocomplete:hover {
 	background-color: lightgray;
 	cursor: pointer;
+}
+
+#ntk_client_res > div {
+    padding: 2px;
 }
 
 .ct-flags > select {

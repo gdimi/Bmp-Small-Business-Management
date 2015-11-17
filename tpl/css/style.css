@@ -640,13 +640,19 @@ table#ct_table {
   top: 5%;
 }
 
+#allclients .grid {
+    max-height: 600px;
+    overflow: auto;
+}
+
 #allclients > div > div > div {
     background-color: #FFFFFF;
+    color: dimgray;
     border: thin solid #808080;
-    float: left;
+    /*float: left;*/
     margin: 2px;
     min-width: 220px;
-    padding: 9px;
+    padding: 3px;
 }
 
 #allclients a {

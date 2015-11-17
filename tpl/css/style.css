@@ -416,7 +416,7 @@ table#ct_table {
 	width: 240px;
 }
 
-#ntk_client_res:hover, .autocomplete:hover {
+#ntk_client_res div:hover, .autocomplete:hover {
 	background-color: lightgray;
 	cursor: pointer;
 }

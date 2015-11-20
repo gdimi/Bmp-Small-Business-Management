@@ -53,6 +53,9 @@ require_once('sources/init.php');
 		  } ?>
         </div>
 	</section>
+    <section id="trash">
+        <?php include('tpl/html/trashMain.inc.php'); ?>
+    </section>
 	<footer>Version <?php include('VERSION'); ?></footer>
 	<div id="new_ticket" class="elevate menu-dialog">
 		<?php include('tpl/html/frmAddTicket.inc.php'); ?>

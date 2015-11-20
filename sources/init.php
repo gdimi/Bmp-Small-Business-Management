@@ -41,6 +41,7 @@ $tasks['cms'] = 'cms.task';
 $tasks['cmsupd'] = 'cmsUpdate.task';
 $tasks['evar'] = 'variousSave.task';
 $tasks['uvar'] = 'variousUpdate.task';
+$tasks['trash'] = 'trash.task';
 
 //get task and position
 $task = trim($_GET['task']);
@@ -85,6 +86,7 @@ if ($tasks[$task] && $pos == 'before') {
 	require_once('sources/class.db.php');
 	require_once('sources/class.tickets.php');
 	require_once('sources/class.cms.php');
+	require_once('sources/class.trash.php');
 
 	//now load language
 	if ($dss->lang) {
@@ -133,6 +135,19 @@ if ($tasks[$task] && $pos == 'before') {
     $cms = new cms;
     $cms->getMotd();
     $cms->readBoard();
+
+    //load trash 
+    if (is_dir("content/trashed")) {
+        $Trash = new Trash;
+        $Trash->initTrash();
+        $trashSize = round(($Trash->trashSize)/1024,2);
+        $trashFiles = $Trash->trashFiles;
+        if ($Trash->trashErr) {
+            echo $Trash->trashErr;
+        }
+    } else {
+        $scerr = 'Trash folder not found';
+    }
 
 	//handle after tasks
 	if ($tasks[$task] && $pos == 'after') {

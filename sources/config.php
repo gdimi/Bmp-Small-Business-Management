@@ -24,6 +24,8 @@ class DSConfig {
 	var $debug = false;
 	var $startYear = 2014;
 	var $lang = 'gr';
+    var $trashWarn = 100; //trash warning size in MB
+    var $trashOWarn = 500; //trash object number warning
 	var $caseType = array(
 		'1'=>'case type 1',
 		'2'=>'case type 2',
@@ -59,7 +61,9 @@ class DSConfig {
         '<br />take backup: '.$this->backup.
         '<br />store revisions: '.$this->revisions.
         '<br />revision number: '.$this->rev_num.
-        '<br />valid users: '.implode(',',$this->users);
+        '<br />valid users: '.implode(',',$this->users).
+        '<br />trash size warning'.$this->trashWarn.
+        '<br />trash objects warning'.$this->trashOWarn;
     }
 }
 ?>

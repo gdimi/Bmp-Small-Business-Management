@@ -1,5 +1,6 @@
 ## CHANGELOG 
-*0.410-dev - 17/11/2015*
+*0.410-dev - 20/11/2015*
+issue 53 - trash: show trash info in main page
 issue 56 - add case: minor styling in clients autocomplete
 issue 55 - case: clients autocomplete wrong focus 
 issue 54 - all clients should be an ordered list  
@@ -7,6 +8,7 @@ issue 14 - hide 2 buttons that do not work anyway
 issue 51 - chunked title when updating/adding an expense
 issue 50 - history wrong date when updating case
 issue 49 - move action history file in content folder
+started implementation of trash handling
 fix a bug introduced in 0.410 version, where the 'follow' field was not retrieved from db in case tracker
 moved DEV_TODO file to content
 

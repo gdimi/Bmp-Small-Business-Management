@@ -120,6 +120,22 @@ $(document).ready(function() {
 				$("#cms_data").append(textStatus);
 			});
 	});
+    //catch trash clicks
+	$("#trash_show").click(function() {
+			$.get("index.php",
+			{task: "trash",pos: "before"},
+			function(data, textStatus, jqXHR){
+				if(data.status === "success") {
+					$("#trash_info div#trash_data").html(data.files);
+					$("#trash_info").show("fast");
+				} else if(data.status === "error") {
+					$("#trash_info div#trash_data").append(data.message);
+					$("#trash_info").show("fast").delay(2000).hide("slow");
+				}
+			}, "json").fail(function(jqXHR, textStatus, errorThrown){
+				$("#trash_info").show("fast").append(textStatus);
+			});
+	});
 	//case id search
 	$("#cisubmit").click(function() {
 		var csid = document.getElementById('cisearch').value;

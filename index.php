@@ -104,6 +104,10 @@ require_once('sources/init.php');
    		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
 <?php @include('tpl/html/cms.inc.php'); ?>
 	</div>
+	<div id="trash_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;">
+   		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+<?php @include('tpl/html/trash.inc.php'); ?>
+	</div>
     
 	<div id="this_todo" class="elevate menu-dialog" style="display:none;">
 		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>

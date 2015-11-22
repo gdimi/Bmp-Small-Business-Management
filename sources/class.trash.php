@@ -44,7 +44,7 @@ class Trash {
     }
 
     protected function showObjectDetails($obj) {
-        
+        return json_decode(file_get_contents($obj));
     }
 
     private function restoreFromTrash() {

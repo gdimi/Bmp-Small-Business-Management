@@ -97,5 +97,9 @@ $lang['case-add-price'] = 'Price';
 $lang['case-add-follow'] = 'Follow';
 $lang['case-add-user'] = 'Your name';
 $lang['case-add-submit'] = 'submit Case!';
+$lang['trash'] = 'Κάδος';
+$lang['trash-objects'] = 'Αντικείμενα';
+$lang['in-trash'] = 'στον κάδο';
+$lang['trash-size'] = 'Μέγεθος κάδου';
 
 ?> 

@@ -811,7 +811,6 @@ span.clname  {
   margin-top: 12px;
 }
 
-
 #stats_data .case-types {
     float: left;
     min-width: 412px;
@@ -831,8 +830,6 @@ span.clname  {
     overflow: auto;
 }
 
-
-
 #various .variousContent {
     margin-bottom: 14px;
     padding: 1px;
@@ -842,5 +839,8 @@ span.clname  {
     margin-bottom: 10px;
 }
 
-
-
+#trash_data > ul {
+    list-style: outside none none;
+    margin-left: 0;
+    padding-left: 16px;
+}

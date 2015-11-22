@@ -97,5 +97,9 @@ $lang['case-add-price'] = 'Price';
 $lang['case-add-follow'] = 'Follow';
 $lang['case-add-user'] = 'Your name';
 $lang['case-add-submit'] = 'submit Case!';
+$lang['trash'] = 'Trash';
+$lang['trash-objects'] = 'Objects';
+$lang['in-trash'] = 'in trash';
+$lang['trash-size'] = 'Trash size';
 
 ?>

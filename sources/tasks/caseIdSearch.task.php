@@ -39,7 +39,7 @@ if (!$pos or $pos != 'before') {
                             <td>Model/SN</td><td style=\"background-color:white\">${case['model']}</td>
                         </tr>
                         <tr>
-                            <td>Info</td><td style=\"background-color:white\">${case['info']}</td>
+                            <td>Info</td><td style=\"background-color:white\">".nl2br($case['info'])."</td>
                         </tr>
                         <tr>
                             <td>Tag</td><td style=\"background-color:white\">${case['category']}</td>

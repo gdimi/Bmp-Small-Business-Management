@@ -844,3 +844,15 @@ span.clname  {
     margin-left: 0;
     padding-left: 16px;
 }
+
+.gen-success {
+	padding: 8px;
+	color:green;
+	border:medium solid green;
+}
+
+.gen-error {
+	padding: 8px;
+	color:red;
+	border:medium solid red;
+}

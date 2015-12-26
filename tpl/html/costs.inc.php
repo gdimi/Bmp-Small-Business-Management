@@ -39,7 +39,7 @@
 				<span class="fake-button" id="addcsbtn"><?php echo $lang['costs-add-msg']; ?></span><br /><br />
 				<span class="cl-b" onclick="$(this).parent().parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 			</form>
-			<div id="new_cs_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
+			<div id="new_cs_frm_res" style="display:none;" class=""></div>
 		</span>
 		<span id="edit_cost_frm" style="display:none;">
 			<form name="ec_frm" id="ec_frm" action="index.php?task=ecost&pos=before">
@@ -56,7 +56,7 @@
 				<span class="fake-button" id="editcsbtn"><?php echo $lang['costs-save']; ?></span><br /><br />
 				<span class="cl-b" onclick="$(this).parent().parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 			</form>
-			<div id="edit_cs_frm_error" style="color:red;border:medium solid red;padding:8px;display:none;"></div>
+			<div id="edit_cs_frm_res" style="display:none;" class=""></div>
 		</span>
         <div class="elevate menu-dialog" style="display:none;" id="dcost_dialog">
             <h2><?php echo $lang['costs-delete']; ?></h2>
@@ -97,25 +97,23 @@ $(document).ready(function() {
 		var csam = $("#cAmount").val();
 		var csdate = $("#cDate").val();
 		if (csdescr != '' && csam != '' && csdate != '') {
-			$("#new_cs_frm_error").append('<img src="images/loader.gif" />');
+			$("#new_cs_frm_res").removeClass().append('<img src="images/loader.gif" />').show();
 			$.post(URL,
 			formData,
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
-					$("#new_cs_frm_error").html('&nbsp;').hide();
-					$("#ac_frm").append(data.message).delay(2000);
+					$("#new_cs_frm_res").addClass("gen-success").html(data.message).delay(2000).hide('slow');
 					$("#add_cost_frm").delay(1000).hide('slow', function() {
                         var delfrm = document.getElementById('ac_frm');
                         delfrm.reset();
                         refreshCostsTable();
 					});
 				} else if(data.status === "error") {
-					$("#new_cs_frm_error").show();
-					$("#new_cs_frm_error").html(data.message);
+					$("#new_cs_frm_res").html(data.message).addClass("gen-error");
 				}
 
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
-				$("#cs_frm").append(textStatus);
+				$("#gen_res").append(textStatus).show().delay(2000).hide('slow');
 			});
 		} else {
 			alert('<?php echo $lang['costs-error1']; ?>');
@@ -154,22 +152,21 @@ $(document).ready(function() {
 		var csam = $("#ecAmount").val();
 		var csdate = $("#ecDate").val();
 		if (csdescr != '' && csam != '' && csdate != '') {
-			$("#edit_cs_frm_error").append('<img src="images/loader.gif" />');
+			$("#edit_cs_frm_res").removeClass().append('<img src="images/loader.gif" />').show();
 			$.post(URL,
 			formData,
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
-					$("#edit_cs_frm_error").html('&nbsp;').hide();
-					$("#ec_frm").html(data.message).delay(2000);
+					$("#edit_cs_frm_res").addClass("gen-success").html(data.message).delay(2000).hide();
 					$("#edit_cost_frm").delay(1000).hide('slow', function() {
 						refreshCostsTable();
 					});
 				} else if(data.status === "error") {
-					$("#edit_cs_frm_error").show().html(data.message);
+					$("#edit_cs_frm_res").addClass("gen-error").html(data.message).show();
 				}
 
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
-				$("#ecs_frm").append(textStatus);
+				$("#gen_res").append(textStatus).show().delay(2000).hide("fast");
 			});
 		} else {
 			alert('<?php echo $lang['costs-error1']; ?>');

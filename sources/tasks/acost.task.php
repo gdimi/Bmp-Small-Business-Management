@@ -34,7 +34,10 @@ if (!$pos or $pos != 'before') {
 			}
 		} catch(PDOException $ex) {
 			$acerr = "An Error occured!".$ex->getMessage();
-		}
+		} catch(Exception $x) {
+            $acerr = "An error occured!".$x->getMessage();
+        }
+
 	} 
 }
 

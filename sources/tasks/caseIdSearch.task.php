@@ -7,7 +7,7 @@ if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
 	if ($_GET['ci']) {
-		$cid = $_GET['ci'];
+		$cid = trim($_GET['ci']);
 		if (is_numeric($cid)) {
             require_once('sources/config.php');
             $dss = new DSconfig;

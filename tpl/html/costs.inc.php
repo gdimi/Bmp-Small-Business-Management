@@ -204,7 +204,7 @@ $(document).ready(function() {
     
     function refreshCostsTable() {
 		var im = 0;
-		var iy = 2015;
+		var iy = <?php echo $thisYear; ?>;
 		$("#costs > div#cres").append('<img src="images/loader.gif" />');
 		$.get("index.php",
 		{iy:iy,im:im,task: "costs",pos: "before"},

@@ -42,6 +42,7 @@ $tasks['cmsupd'] = 'cmsUpdate.task';
 $tasks['evar'] = 'variousSave.task';
 $tasks['uvar'] = 'variousUpdate.task';
 $tasks['trash'] = 'trash.task';
+$tasks['upload'] = 'upload.task';
 
 //get task and position
 $task = trim($_GET['task']);

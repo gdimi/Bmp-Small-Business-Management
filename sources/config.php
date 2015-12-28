@@ -26,6 +26,8 @@ class DSConfig {
 	var $lang = 'gr';
     var $trashWarn = 100; //trash warning size in MB
     var $trashOWarn = 500; //trash object number warning
+    var $maxUploadSize = 8192; // max upload size in KB
+    var $uploadTypes = array('jpg','jpeg','png','bmp','tiff','gif','docx','doc','pdf','txt','zip','rar');
 	var $caseType = array(
 		'1'=>'case type 1',
 		'2'=>'case type 2',

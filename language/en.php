@@ -1,6 +1,6 @@
 <?php
 /**
- * greek main language file
+ * english main language file
  **/
 
 if (!defined('_w00t_frm')) die('har har har');
@@ -101,5 +101,6 @@ $lang['trash'] = 'Trash';
 $lang['trash-objects'] = 'Objects';
 $lang['in-trash'] = 'in trash';
 $lang['trash-size'] = 'Trash size';
-
+$lang['upload-file'] = 'Attach a file';
+$lang['ajax-fail'] = 'Request failed:';
 ?>

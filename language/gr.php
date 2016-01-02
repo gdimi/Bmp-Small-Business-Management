@@ -49,8 +49,7 @@ $lang['client-edit-btn'] = 'Ενημέρωση πελάτη';
 $lang['client-edit-error'] = 'invalid or no client id!';
 $lang['cms'] = 'CMS';
 $lang['cms-msg'] = '(δλδ Content Management System)';
-$lang['cms-intro'] = 'Εδώ μπορείτε να κάνετε edit το message of the day (motd) και τον πίνακα που γράφουμε γενικώς διάφορα (board)
-';
+$lang['cms-intro'] = 'Εδώ μπορείτε να κάνετε edit το message of the day (motd) και τον πίνακα που γράφουμε γενικώς διάφορα (board)';
 $lang['cms-motd'] = 'Message of the day';
 $lang['cms-motd-save'] = 'Save motd';
 $lang['cms-board'] = 'Board';
@@ -101,5 +100,7 @@ $lang['trash'] = 'Κάδος';
 $lang['trash-objects'] = 'Αντικείμενα';
 $lang['in-trash'] = 'στον κάδο';
 $lang['trash-size'] = 'Μέγεθος κάδου';
+$lang['upload-file'] = 'Προσαρτήστε ένα αρχείο';
+$lang['ajax-fail'] = 'Request failed:';
 
 ?> 

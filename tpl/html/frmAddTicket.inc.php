@@ -68,7 +68,13 @@ if (!defined('_w00t_frm')) die('har har har');
 						echo '<option value="'.$oneuser.'">'.$oneuser.'</option>';
 					} ?>
 				</select><br />
-			</fieldset><br />
+			</fieldset>
+			<fieldset id="tfupload">
+				<?php echo $lang['upload-file']; ?><br />
+				<input type="file" name="fileToUpload" id="fileToUpload">
+				<input type="hidden" name="fileUploaded" id="fileUploaded">
+				<div class="" style="display:none;"></div>
+			</fieldset>
 			<!--<input type="hidden" name="id" id="id" value="<?php echo ($total+1); ?>" />-->
 			<input type="hidden" name="pos" id="pos" value="before" />
 			<span class="fake-button" id="addtckbtn"><?php echo $lang['case-add-submit']; ?></span><br />
@@ -136,6 +142,38 @@ $(document).ready(function() {
 				$("#new_tk_frm").append(textStatus);
 				$("#addtckbtn").show();
 			});
+	});
+	
+	$('#fileToUpload').on('change', function() {
+		var file_data = $('#new_tk_frm').prop('files')[0];
+		var filename = this.value;
+		var form_data = new FormData();                  
+		form_data.append('file', file_data);
+		$("#new_tk_frm #tfupload div").addClass("loader").show();
+		alert(form_data);                             
+		var request = $.ajax({
+			url: 'index.php?task=upload&pos=before', 
+			dataType: 'text',  
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: form_data,                         
+			type: 'post',
+			success: function(response){
+				$("#new_tk_frm #tfupload div").removeClass("loader");
+				if (data.status === "success") {
+					$("#new_tk_frm #tfupload div").addClass("gen-success").html(response.message).show();
+					$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
+					$("#new_tk_frm #tfupload #fileToUpload").remove(); //remove file input
+				} else if(data.status === "error") {
+					$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
+				}
+			}
+		 });
+
+		 request.fail(function( jqXHR, textStatus ) {
+			alert( "<?php echo $lang['ajax-fail']; ?> " + textStatus );
+		});
 	});
 });
 </script>

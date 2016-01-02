@@ -14,7 +14,7 @@
  * @category   bmp\sources\ajax handlers
  * @package    bmp\sources
  * @author     Original Author <gdimi@hyperworks.gr>
- * @copyright  2014-2015 George Dimitrakopoulos
+ * @copyright  2014-2016 George Dimitrakopoulos
  * @license    GPLv2
  * @version    1.0
  * @link       -
@@ -57,6 +57,7 @@ $ticket['user'] = $_POST['your-name'];
 $ticket['category'] = $_POST['cat'];
 $ticket['price'] = (float)$_POST['price'];
 $ticket['follow'] = $_POST['follow'];
+$ticket['fileUploaded'] = $_POST['fileUploaded'];
 //$ticket['id'] = $_POST['id'];
 //print_r($tickets);
 //make default values for non-required fields
@@ -167,10 +168,31 @@ try {
 	$sth = $sccon->prepare($insert);
 	$scres = $sth->execute($ticket);
 	if ($scres) {
+		$lastId = $sccon->lastInsertId(); //get the id of the INSERT
+		//handle attachments if any
+		if ($ticket['fileUploaded']) {
+			$fmsgerr = '';
+			$target_dir = 'content/uploads/'.$lastId;
+			$ourFile = 'content/uploads/tmp/'.$ticket['fileUploaded'];
+			if (file_exists($ourFile)) {
+				if (!file_exists($target_dir)) {
+					if (!mkdir($target_dir, 0777, true)) {
+						$fmsgerr = '<br />could not create directory:'.$target_dir;
+					} else {
+						if (!rename($ourFile,$target_dir.'/'.$ticket['fileUploaded'])) {
+							$fmsgerr = '<br />Could not copy uploaded file('.$ticket['fileUploaded'].') to '.$target_dir;
+						}
+					}
+				}
+			} else {
+				$fmsgerr = '<br />Uploaded file not found:'.$ourFile;
+			}
+		}
+
 		$schtml = 'Case <strong>'.$ticket['title'].'</strong> added successfuly';
 		$tk_status = json_encode(array(
 		 'status' => 'success',
-		 'message'=> $schtml
+		 'message'=> $schtml.$fmsgerr
 		));
         mail($to,$subject,$newTicket,$headers); //send notification mail
         file_put_contents('content/action_history.txt',$ahistory,FILE_APPEND); //update history file

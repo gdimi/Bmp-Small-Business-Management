@@ -13,9 +13,7 @@ if (!$pos or $pos != 'before') {
 	if (!$caseId || $caseId < 0) {
 		$scerr = 'No or invalid case id supplied!';
 	} else {
-		require_once('sources/config.php');
-		$dss = new DSconfig;
-		
+
 		$target_dir = "content/uploads/${thisYear}/${caseId}";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -23,20 +21,20 @@ if (!$pos or $pos != 'before') {
 		$fileTmpName = $_FILES["fileToUpload"]["tmp_name"];
 
 		$scerr = validate_upload($target_dir,$fileType,$fileTmpName,$fileSize,$dss->maxUploadSize,$dss->uploadTypes);
-	}
 
-	// Check if we have an error and if not try to upload the file!
-	if (!$scerr) {
-		if (move_uploaded_file($fileTmpName, $target_file)) {
-			$msg = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-			$tk_status = json_encode(array(
-			 'status' => 'success',
-			 'message'=> $msg
-			));
-			echo $tk_status;
-			exit(0);
-		} else {
-			$scerr = "Sorry, there was an error uploading your file.";
+		// Check if we have an error and if not try to upload the file!
+		if (!$scerr) {
+			if (move_uploaded_file($fileTmpName, $target_file)) {
+				$msg = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+				$tk_status = json_encode(array(
+				 'status' => 'success',
+				 'message'=> $msg
+				));
+				echo $tk_status;
+				exit(0);
+			} else {
+				$scerr = "Sorry, there was an error uploading your file.";
+			}
 		}
 	}
 }

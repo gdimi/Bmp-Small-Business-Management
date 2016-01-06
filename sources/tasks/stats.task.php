@@ -2,8 +2,8 @@
 //search for client
 if (!defined('_w00t_frm')) die('har har har');
 
-require_once('sources/config.php');
-$dss = new DSconfig;
+//require_once('sources/config.php');
+//$dss = new DSconfig;
 
 $caseType = $dss->caseType;
 

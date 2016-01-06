@@ -57,7 +57,6 @@ if (!$pos && $task) {
 	echo $task_status;
 	exit(1);
 }
-//echo "$task | $pos <br/>";
 //handle before tasks
 if ($tasks[$task] && $pos == 'before') {
 	$task_file = 'sources/tasks/'.$tasks[$task].'.php';

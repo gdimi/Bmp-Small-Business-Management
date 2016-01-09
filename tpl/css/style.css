@@ -27,11 +27,12 @@ aside#menu {
 	float:left;
 	background-color: #6B8E23;
 	min-height: 100px;
-	width: 132px;
+	width: 10%;
 }
 
 section {
-	margin-left:132px;
+	/*margin-left:132px;*/
+	margin-left: 10%;
 	padding:2px;
 }
 
@@ -71,7 +72,7 @@ section#status {
 
 section#history {
     border: thin solid #808080;
-    margin-left: 136px;
+    margin-left: 10%;
     margin-top: 4px;
     min-width: 760px;
     width: 48%;
@@ -226,9 +227,10 @@ tr.tbody td {
 
 #menu ul li {
    color: #FFFFFF;
-    padding-left: 0;
-    text-shadow: 1px 1px 2px #000000;
-    vertical-align: middle;
+   /*padding-left: 0;*/
+   padding: 0 3px;
+   text-shadow: 1px 1px 2px #000000;
+   vertical-align: middle;
 }
 .elevate {
 	box-shadow: 2px 2px 6px #000000;
@@ -737,7 +739,7 @@ span.clname  {
 
 #board {
   margin-bottom: 4px;
-  margin-left: 134px;
+  margin-left: 10%;
   padding: 2px;
 }
 

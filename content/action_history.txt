@@ -3,3 +3,4 @@
 1417765994 gdimi added case <strong> Test case </strong> 
 1417766528 vader added case <strong> test case closed </strong> 
 1417766622  Το έξοδο <strong>an expense</strong> προστέθηκε επιτυχώς 
+1452083548 gdimi added case <strong> test case </strong> 

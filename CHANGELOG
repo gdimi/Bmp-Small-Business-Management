@@ -1,5 +1,6 @@
 ## CHANGELOG 
 *0.438-dev - 26/12/2015*
+issue 61 - when viewing a past closed case through find, the text in input is without nl2br
 issue 60 - case id in find should be trimmed
 issue 32 - expenses: result is appended not replacing existing html
 

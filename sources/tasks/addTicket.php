@@ -170,7 +170,7 @@ try {
 	if ($scres) {
 		$lastId = $sccon->lastInsertId(); //get the id of the INSERT
 		//handle attachments if any
-		if ($ticket['fileUploaded']) {
+		if ($ticket['fileUploaded'] && $lastId) {
 			$fmsgerr = '';
 			$target_dir = 'content/uploads/'.$lastId;
 			$ourFile = 'content/uploads/tmp/'.$ticket['fileUploaded'];
@@ -185,7 +185,7 @@ try {
 					}
 				}
 			} else {
-				$fmsgerr = '<br />Uploaded file not found:'.$ourFile;
+				$fmsgerr = '<br />Uploaded file not found:'.$ourFile.' or lastId invalid '.$lastId;
 			}
 		}
 

@@ -145,12 +145,12 @@ $(document).ready(function() {
 	});
 	
 	$('#fileToUpload').on('change', function() {
-		var file_data = $('#new_tk_frm').prop('files')[0];
+		var file_data = this.files[0];
 		var filename = this.value;
 		var form_data = new FormData();                  
 		form_data.append('file', file_data);
 		$("#new_tk_frm #tfupload div").addClass("loader").show();
-		alert(form_data);                             
+                             
 		var request = $.ajax({
 			url: 'index.php?task=upload&pos=before', 
 			dataType: 'text',  
@@ -161,11 +161,12 @@ $(document).ready(function() {
 			type: 'post',
 			success: function(response){
 				$("#new_tk_frm #tfupload div").removeClass("loader");
-				if (data.status === "success") {
+				alert(response.status);
+				if (response.status === "success") {
 					$("#new_tk_frm #tfupload div").addClass("gen-success").html(response.message).show();
 					$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
 					$("#new_tk_frm #tfupload #fileToUpload").remove(); //remove file input
-				} else if(data.status === "error") {
+				} else if(response.status === "error") {
 					$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
 				}
 			}

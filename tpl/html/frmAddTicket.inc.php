@@ -153,24 +153,25 @@ $(document).ready(function() {
                              
 		var request = $.ajax({
 			url: 'index.php?task=upload&pos=before', 
-			dataType: 'text',  
+			dataType: 'json',  
 			cache: false,
 			contentType: false,
 			processData: false,
 			data: form_data,                         
-			type: 'post',
-			success: function(response){
-				$("#new_tk_frm #tfupload div").removeClass("loader");
-				alert(response.status);
-				if (response.status === "success") {
-					$("#new_tk_frm #tfupload div").addClass("gen-success").html(response.message).show();
-					$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
-					$("#new_tk_frm #tfupload #fileToUpload").remove(); //remove file input
-				} else if(response.status === "error") {
-					$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
-				}
-			}
+			type: 'post'
 		 });
+
+		request.done(function( response ) {
+			$("#new_tk_frm #tfupload div").removeClass("loader");
+			alert(response);
+			if (response.status === "success") {
+				$("#new_tk_frm #tfupload div").addClass("gen-success").html(response.message).show();
+				$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
+				$("#new_tk_frm #tfupload #fileToUpload").remove(); //remove file input
+			} else if(response.status === "error") {
+				$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
+			}
+		});
 
 		 request.fail(function( jqXHR, textStatus ) {
 			alert( "<?php echo $lang['ajax-fail']; ?> " + textStatus );

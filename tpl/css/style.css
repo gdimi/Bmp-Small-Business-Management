@@ -858,7 +858,7 @@ span.clname  {
 }
 
 .loader {
-    background-image: url("images/loader.gif");
+    background-image: url("../../images/loader.gif");
     background-repeat: no-repeat;
     float: right;
     height: 16px;

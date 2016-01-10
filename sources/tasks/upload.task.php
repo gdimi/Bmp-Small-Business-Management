@@ -26,9 +26,8 @@ if (!defined('_w00t_frm')) die('har har har');
 
 $scerr = '';
 $msg = '';
-$pos = $_POST['pos'];
+$pos = $_GET['pos'];
 $caseId = (int)$_POST['cid'];
-
 
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
@@ -40,17 +39,17 @@ if (!$pos or $pos != 'before') {
 		$target_dir = "content/uploads/${thisYear}/${caseId}";
 	}
 
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
 	$fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-	$fileSize = $_FILES["fileToUpload"]["size"];
-	$fileTmpName = $_FILES["fileToUpload"]["tmp_name"];
+	$fileSize = $_FILES["file"]["size"];
+	$fileTmpName = $_FILES["file"]["tmp_name"];
 
 	$scerr = validate_upload($target_dir,$fileType,$fileTmpName,$fileSize,$dss->maxUploadSize,$dss->uploadTypes);
 
 	// Check if we have an error and if not try to upload the file!
 	if (!$scerr) {
 		if (move_uploaded_file($fileTmpName, $target_file)) {
-			$msg = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+			$msg = "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
 			$tk_status = json_encode(array(
 			 'status' => 'success',
 			 'message'=> $msg

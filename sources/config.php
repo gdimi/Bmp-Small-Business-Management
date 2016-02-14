@@ -64,8 +64,8 @@ class DSConfig {
         '<br />store revisions: '.$this->revisions.
         '<br />revision number: '.$this->rev_num.
         '<br />valid users: '.implode(',',$this->users).
-        '<br />trash size warning'.$this->trashWarn.
-        '<br />trash objects warning'.$this->trashOWarn;
+        '<br />trash size warning: '.$this->trashWarn.
+        '<br />trash objects warning: '.$this->trashOWarn;
     }
 }
 ?>

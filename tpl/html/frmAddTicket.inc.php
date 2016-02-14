@@ -165,7 +165,7 @@ $(document).ready(function() {
 			$("#new_tk_frm #tfupload div").removeClass("loader");
 			alert(response);
 			if (response.status === "success") {
-				$("#new_tk_frm #tfupload div").addClass("gen-success").html(response.message).show();
+				$("#new_tk_frm #tfupload div").removeClass("gen-error").addClass("gen-success").html(response.message).show();
 				$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
 				$("#new_tk_frm #tfupload #fileToUpload").remove(); //remove file input
 			} else if(response.status === "error") {

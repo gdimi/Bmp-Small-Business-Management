@@ -26,8 +26,8 @@
 class tickets extends db {
 	public $historyfile = 'content/action_history.txt';
 	public $tickets = Array();
-	//public $ticketfiles = Array();
-	//public $ticketfolder = 'tickets';
+	public $attachDir;
+
 
 	function readHistory() {
 		try {
@@ -45,7 +45,7 @@ class tickets extends db {
 			 $hdate = (int)substr($line,0,strpos($line,' '));
 			 $hline = str_replace($hdate,'',$line);
 			 $hdate = date('Y/m/j-H:i',$hdate);
-			 $rh .=$hdate.' '.$hline.'<br />';
+			 $rh .= $hdate.' '.$hline.'<br />';
 		 }
 		 return ($rh);
 		} catch(Exception $e) {
@@ -53,24 +53,28 @@ class tickets extends db {
 		}
 	}
 	
-	function ScanforTickets() {
-		if ($this->ticketfolder) {
-			if (is_dir($this->ticketfolder)) {
-				$files1 = scandir($this->ticketfolder);
-				if ($this->ticketfolder != '.') {
-					$path = $this->ticketfolder.'/';
-				} else {
-					$path = '';
-				}
-				foreach ($files1 as $ifiles) {
-					if ($ifiles !='.' && $ifiles !='..') {
-						$this->ticketfiles[] = $ifiles;
+	function checkForAttachment($cid) {
+		$defUploadDir = $this->attachDir;
+		$caseDir = $defUploadDir.'/'.$cid;
+		if ($cid && $cid > 0) {
+			if ($defUploadDir) {
+				if (is_dir($caseDir)) {
+
+					$files1 = scandir($caseDir);
+
+					foreach ($files1 as $ifiles) {
+						if ($ifiles !='.' && $ifiles !='..') {
+							$ticketfiles = $ifiles;
+						}
 					}
+
+					return $ticketfiles;
 				}
-				return true;
+			} else {
+				return 'no defUploadDir';
 			}
 		} else {
-			return false;
+			return 'invalid cid';
 		}
 	}
 
@@ -87,6 +91,8 @@ class tickets extends db {
 			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID'.$ssql);
 			if ($cresult) {
 				foreach($cresult as $case) {
+					$attach = $this->checkForAttachment($case['id']);
+
 					$this->tickets[$case['id']]['id'] = $case['id'];
 					$this->tickets[$case['id']]['title'] = $case['title'];
 					$this->tickets[$case['id']]['model'] = $case['model'];
@@ -102,6 +108,7 @@ class tickets extends db {
 					$this->tickets[$case['id']]['user'] = $case['user'];
 					$this->tickets[$case['id']]['name'] = $case['name'];
 					$this->tickets[$case['id']]['follow'] = $case['follow'];
+					$this->tickets[$case['id']]['attachment'] = $attach;
 				}
 				$ticket_cnt++;
 			} else {
@@ -112,7 +119,6 @@ class tickets extends db {
 		}
 		return $this->tickets;
 	}
-
 }
 
 ?>

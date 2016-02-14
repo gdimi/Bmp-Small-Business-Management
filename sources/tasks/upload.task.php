@@ -33,8 +33,7 @@ if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
 	if (!$caseId || $caseId < 0) {
-		//$scerr = 'No or invalid case id supplied!';
-		$target_dir = "content/uploads/tmp";
+		$target_dir = "content/uploads/tmp/";
 	} else {
 		$target_dir = "content/uploads/${thisYear}/${caseId}";
 	}
@@ -44,7 +43,7 @@ if (!$pos or $pos != 'before') {
 	$fileSize = $_FILES["file"]["size"];
 	$fileTmpName = $_FILES["file"]["tmp_name"];
 
-	$scerr = validate_upload($target_dir,$fileType,$fileTmpName,$fileSize,$dss->maxUploadSize,$dss->uploadTypes);
+	$scerr = validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSize,$dss->maxUploadSize,$dss->uploadTypes);
 
 	// Check if we have an error and if not try to upload the file!
 	if (!$scerr) {
@@ -57,7 +56,7 @@ if (!$pos or $pos != 'before') {
 			echo $tk_status;
 			exit(0);
 		} else {
-			$scerr = "Sorry, there was an error uploading your file.";
+			$scerr = 'Failed to move uploaded file!';
 		}
 	}
 }
@@ -71,7 +70,7 @@ if ($scerr) {
 	exit(1);
 }
 
-function validate_upload($target_dir,$fileType,$fileTmpName,$fileSize,$maxUploadSize,$uploadTypes=array()) {
+function validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSize,$maxUploadSize,$uploadTypes=array()) {
     
     clearstatcache(); //to avoid file_exists false reports
 
@@ -100,6 +99,8 @@ function validate_upload($target_dir,$fileType,$fileTmpName,$fileSize,$maxUpload
 	if(!in_array($fileType,$uploadTypes)) {
 		return  "Sorry, this file type ($fileType) is not allowed.";
 	}
+	
+	return null;
 }
 
 ?>

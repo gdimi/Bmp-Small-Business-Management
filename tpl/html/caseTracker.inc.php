@@ -33,6 +33,10 @@
 				$tudate = date("j/m/Y H:i",$ticket['updated']);
 				//TODO: adjust priority check with proper dss array
 				if ($ticket['priority'] == 1) { $tprior = 'Low'; } elseif ($ticket['priority'] == 2) { $tprior = 'Medium'; } else { $tprior = 'High'; }
+				
+				if ($ticket['attachment']) {
+					$attachHTML = 'Attachment:'.$ticket['attachment'];
+				}
 				$ticket_data .=  "
 				<tr class=\"tbody $tstat_class $tprior ${ticket['user']}\">
 					<td>$tcid</td>
@@ -124,7 +128,7 @@
 				<div class="ct-price"> <label for="price">Price:</label> <input type="text" name="price" value="'.$ticket['price'].'" maxlength="4"  disabled /><br /></div>
 				<div class="ct-follow"><label for="user">Follow:</label> <input type="text" name="follow" disabled value="'.$ticket['follow'].'" /></div>
 				<div class="ct-user"> <label for="user">User:</label> <input type="text" name="user" disabled value="'.$ticket['user'].'" /></div>
-				<div class="">Attachment: '.$ticket['attachment'].'</div>
+				<div class="ct-attachment">'.$attachHTML.'</div>
 				<div class="ct-update"><input type="checkbox" name="ctupdate" value="1" style="width:auto" disabled> Don\'t change updated date </div>
 				<div class="ct-notify"><input type="checkbox" name="ctnotify" value="1" style="width:auto" disabled> Don\'t send notification about this update </div>
 				<input type="hidden" name="cid" value="'.$ticket['client'].'" id="et_client_'.$key.'"/>

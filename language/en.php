@@ -102,5 +102,7 @@ $lang['trash-objects'] = 'Objects';
 $lang['in-trash'] = 'in trash';
 $lang['trash-size'] = 'Trash size';
 $lang['upload-file'] = 'Attach a file';
+$lang['remove-attachment'] = 'Remove attachment?';
 $lang['ajax-fail'] = 'Request failed:';
+$lang['delete'] = 'Delete';
 ?>

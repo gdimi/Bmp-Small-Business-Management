@@ -184,7 +184,7 @@ try {
 					}
 				}
 			} else {
-				$fmsgerr = '<br />Upload error:  uploaded file not found:'.$ourFile.' or lastId invalid:'.$lastId;
+				$fmsgerr = '<br />Upload error:  uploaded file not found:'.$ourFile;
 			}
 		} elseif (!$lastId) {
 			$fmsgerr = '<br>Upload error: invalid last id '.$lastId;

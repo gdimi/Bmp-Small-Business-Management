@@ -71,7 +71,8 @@ if (!defined('_w00t_frm')) die('har har har');
 			</fieldset>
 			<fieldset id="tfupload">
 				<?php echo $lang['upload-file']; ?><br />
-				<input type="file" name="fileToUpload" id="fileToUpload">
+				<span class="removeAt" style="color:red;padding:4px;display:none;"><?php echo $lang['delete']; ?></span>
+				<input type="file" name="fileToUpload" class="fileToUpload">
 				<input type="hidden" name="fileUploaded" id="fileUploaded">
 				<div class="" style="display:none;"></div>
 			</fieldset>
@@ -143,8 +144,8 @@ $(document).ready(function() {
 				$("#addtckbtn").show();
 			});
 	});
-	
-	$('#fileToUpload').on('change', function() {
+	//file upload stuff
+	$('#tfupload .fileToUpload').on('change', function() {
 		var file_data = this.files[0];
 		var filename = this.value;
 		var form_data = new FormData();                  
@@ -163,11 +164,12 @@ $(document).ready(function() {
 
 		request.done(function( response ) {
 			$("#new_tk_frm #tfupload div").removeClass("loader");
-			alert(response);
+			//alert(response);
 			if (response.status === "success") {
 				$("#new_tk_frm #tfupload div").removeClass("gen-error").addClass("gen-success").html(response.message).show();
 				$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
-				$("#new_tk_frm #tfupload #fileToUpload").remove(); //remove file input
+				$("#new_tk_frm #tfupload .fileToUpload").val(null).hide(); //remove file input
+				$("#new_tk_frm #tfupload .removeAt").show('fast'); //show delete file label
 			} else if(response.status === "error") {
 				$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
 			}
@@ -176,6 +178,17 @@ $(document).ready(function() {
 		 request.fail(function( jqXHR, textStatus ) {
 			alert( "<?php echo $lang['ajax-fail']; ?> " + textStatus );
 		});
+	});
+
+	$("#tfupload .removeAt").on('click',function() {
+		var removeAt = confirm('<?php echo $lang['remove-attachment']; ?>');
+		if (removeAt) {
+			$(this).hide('fast'); //hide remove button
+			$("#tfupload #fileUploaded").val(null); //set hidden value of what we uploaded to nothing
+			$("#tfupload div").remove(); //remove result div
+			$("#tfupload .fileToUpload").show();
+			$("#tfupload").append('<div style="display:none"></div>'); //re-add result div
+		}
 	});
 });
 </script>

@@ -101,6 +101,8 @@ $lang['trash-objects'] = 'Αντικείμενα';
 $lang['in-trash'] = 'στον κάδο';
 $lang['trash-size'] = 'Μέγεθος κάδου';
 $lang['upload-file'] = 'Προσαρτήστε ένα αρχείο';
+$lang['remove-attachment'] = 'Διαγραφή αρχείου;';
 $lang['ajax-fail'] = 'Request failed:';
+$lang['delete'] = 'Διαγραφή';
 
 ?> 

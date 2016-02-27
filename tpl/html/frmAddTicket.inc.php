@@ -183,11 +183,35 @@ $(document).ready(function() {
 	$("#tfupload .removeAt").on('click',function() {
 		var removeAt = confirm('<?php echo $lang['remove-attachment']; ?>');
 		if (removeAt) {
+			var whichAtt = $("#tfupload #fileUploaded").val(); //store uploaded file's name
+
 			$(this).hide('fast'); //hide remove button
 			$("#tfupload #fileUploaded").val(null); //set hidden value of what we uploaded to nothing
 			$("#tfupload div").remove(); //remove result div
 			$("#tfupload .fileToUpload").show();
 			$("#tfupload").append('<div style="display:none"></div>'); //re-add result div
+			//now physically remove previously uploaded file to tmp folder
+			var request = $.ajax({
+				url: 'index.php?task=unlink&pos=before', 
+				dataType: 'json',  
+				cache: false,
+				contentType: false,
+				processData: false,
+				data: {fln,whichAtt},                         
+				type: 'post'
+			 });
+
+			request.done(function( response ) {
+				if (response.status === "success") {
+					$("#new_tk_frm #tfupload div").removeClass("gen-error").addClass("gen-success").html(response.message).show();
+				} else if(response.status === "error") {
+					$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
+				}
+			});
+
+			request.fail(function() {
+					alert( 'SYSTEM: '+'<?php echo $lang['ajax-fail']; ?>' );
+			})
 		}
 	});
 });

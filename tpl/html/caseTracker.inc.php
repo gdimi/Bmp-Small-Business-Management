@@ -35,7 +35,7 @@
 				if ($ticket['priority'] == 1) { $tprior = 'Low'; } elseif ($ticket['priority'] == 2) { $tprior = 'Medium'; } else { $tprior = 'High'; }
 				
 				if ($ticket['attachment']) {
-					$attachHTML = 'Attachment:'.$ticket['attachment'];
+					$attachHTML = $lang['attachment'].$ticket['attachment'];
 				}
 				$ticket_data .=  "
 				<tr class=\"tbody $tstat_class $tprior ${ticket['user']}\">

@@ -71,10 +71,10 @@ class tickets extends db {
 					return $ticketfiles;
 				}
 			} else {
-				return 'no defUploadDir';
+				return 'SYSTEM: no defUploadDir';
 			}
 		} else {
-			return 'invalid cid';
+			return 'SYSTEM: invalid cid';
 		}
 	}
 
@@ -115,7 +115,7 @@ class tickets extends db {
 				var_dump($cresult);
 			}
 		} catch(PDOException $ex) {
-			echo "An Error occured!".$ex->getMessage(); //user friendly message
+			echo "SYSTEM: An Error occured!".$ex->getMessage(); //user friendly message
 		}
 		return $this->tickets;
 	}

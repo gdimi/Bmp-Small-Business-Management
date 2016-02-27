@@ -104,5 +104,5 @@ $lang['upload-file'] = 'Προσαρτήστε ένα αρχείο';
 $lang['remove-attachment'] = 'Διαγραφή αρχείου;';
 $lang['ajax-fail'] = 'Request failed:';
 $lang['delete'] = 'Διαγραφή';
-
+$lang['attachment'] = 'Attachment:';
 ?> 

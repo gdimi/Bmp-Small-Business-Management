@@ -105,4 +105,5 @@ $lang['upload-file'] = 'Attach a file';
 $lang['remove-attachment'] = 'Remove attachment?';
 $lang['ajax-fail'] = 'Request failed:';
 $lang['delete'] = 'Delete';
+$lang['attachment'] = 'Attachment:';
 ?>

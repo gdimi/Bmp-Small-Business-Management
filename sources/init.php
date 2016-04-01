@@ -17,6 +17,7 @@ $dss = new DSconfig;
 //globally used variables
 $thisYear = date("Y");
 $curTimestamp = time();
+$defUploadDir = 'content/uploads';
 
 //first register possible tasks
 $tasks = Array();
@@ -42,6 +43,7 @@ $tasks['cmsupd'] = 'cmsUpdate.task';
 $tasks['evar'] = 'variousSave.task';
 $tasks['uvar'] = 'variousUpdate.task';
 $tasks['trash'] = 'trash.task';
+$tasks['upload'] = 'upload.task';
 
 //get task and position
 $task = trim($_GET['task']);
@@ -100,6 +102,7 @@ if ($tasks[$task] && $pos == 'before') {
 
 	//load tickets and cache
 	$tickets_handler = tickets::getInstance();
+	$tickets_handler->attachDir = $defUploadDir;
 	$cache = new Cache;
 	$cache->cachefile = 'tickets.html';
 	$cache->cacheInit();

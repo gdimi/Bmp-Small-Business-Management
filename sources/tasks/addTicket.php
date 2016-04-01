@@ -14,7 +14,7 @@
  * @category   bmp\sources\ajax handlers
  * @package    bmp\sources
  * @author     Original Author <gdimi@hyperworks.gr>
- * @copyright  2014-2015 George Dimitrakopoulos
+ * @copyright  2014-2016 George Dimitrakopoulos
  * @license    GPLv2
  * @version    1.0
  * @link       -
@@ -57,8 +57,8 @@ $ticket['user'] = $_POST['your-name'];
 $ticket['category'] = $_POST['cat'];
 $ticket['price'] = (float)$_POST['price'];
 $ticket['follow'] = $_POST['follow'];
-//$ticket['id'] = $_POST['id'];
-//print_r($tickets);
+$fileUploaded = $_POST['fileUploaded'];
+
 //make default values for non-required fields
 if ($ticket['price'] == '') { $ticket['price'] = "0.0"; }
 if ($ticket['info'] == '') { $ticket['info'] = '-'; }
@@ -162,51 +162,60 @@ if ($ticket['status'] == 4) {
 
 try {
     $sccon = new PDO('sqlite:pld/HyperLAB.db3');
-    $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+    $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     $insert ='INSERT INTO "Case" (title, model, info, clientID, category, priority, type, status, created, updated , user, price, follow, closed) VALUES (:title, :model, :info, :clientID, :category, :priority, :type, :status, :created, :updated, :user, :price, :follow, :closed)';
 	$sth = $sccon->prepare($insert);
 	$scres = $sth->execute($ticket);
 	if ($scres) {
-		$schtml = 'Case <strong>'.$ticket['title'].'</strong> added successfuly';
-		$tk_status = json_encode(array(
-		 'status' => 'success',
-		 'message'=> $schtml
-		));
-        mail($to,$subject,$newTicket,$headers); //send notification mail
-        file_put_contents('content/action_history.txt',$ahistory,FILE_APPEND); //update history file
-		echo $tk_status;
-		exit(0);
+		$lastId = $sccon->lastInsertId(); //get the id of the INSERT
+		//handle attachments if any
+		if ($fileUploaded && $lastId) {
+			$fmsgerr = '';
+			$target_dir = 'content/uploads/'.$lastId;
+			$ourFile = 'content/uploads/tmp/'.$fileUploaded;
+			if (file_exists($ourFile)) {
+				if (!file_exists($target_dir)) {
+					if (!mkdir($target_dir, 0777, true)) {
+						$fmsgerr = '<br />Upload error: could not create directory:'.$target_dir;
+					} else {
+						if (!rename($ourFile,$target_dir.'/'.$fileUploaded)) {
+							$fmsgerr = '<br />Upload error: Could not copy uploaded file('.$fileUploaded.') to '.$target_dir;
+						}
+					}
+				}
+			} else {
+				$fmsgerr = '<br />Upload error:  uploaded file not found:'.$ourFile;
+			}
+		} elseif (!$lastId) {
+			$fmsgerr = '<br>Upload error: invalid last id '.$lastId;
+		}
+
+		if (!$fmsgerr) {
+			$schtml = 'Case <strong>'.$ticket['title'].'</strong> added successfuly';
+			$tk_status = json_encode(array(
+			 'status' => 'success',
+			 'message'=> $schtml
+			));
+			mail($to,$subject,$newTicket,$headers); //send notification mail
+			file_put_contents('content/action_history.txt',$ahistory,FILE_APPEND); //update history file
+			echo $tk_status;
+			exit(0);
+		} else {
+			$tk_status = json_encode(array(
+			'status' => 'error',
+			'message'=> $fmsgerr
+			));
+		}
 	}
 } catch(PDOException $ex) {
 	$tk_status = json_encode(array(
     'status' => 'error',
     'message'=> $ex->getMessage()
     ));
-	mail($to, $subject, $ex->getMessage(), $headers);
-    echo $tk_status;
-	exit(1) ;
 }
-/*
-try {
-  //$ticket_json = json_encode($ticket);
-  //file_put_contents('DEV_TODO.txt',$newTicket,FILE_APPEND);
-  //file_put_contents("tickets/".str_replace('/','-',$ticket['cat']).'_'.str_replace('/','-',$today)."_".str_replace(' ','-',$ticket['title']),$ticket_json);
-  $tk_status = json_encode(array(
-    'status' => 'success',
-    'message'=>'<div id="tkt_success" style="color:green; border:medium solid green;padding:8px;">Case <strong>'.$ticket['title'].'</strong> stored successfuly</div>'
-  ));
-  mail($to,$subject,$newTicket,$headers);
-  echo $tk_status;
-  exit(0);
-} catch(Exception $e) {
-	$tk_status = json_encode(array(
-    'status' => 'error',
-    'message'=> $e->getMessage()
-    ));
-	mail($to, $subject, $e->getMessage(), $headers);
-    echo $tk_status;
-	exit(1) ;
-}
-*/
+
+mail($to, $subject, $ex->getMessage(), $headers);
+echo $tk_status;
+exit(1) ;
 
 ?>

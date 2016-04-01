@@ -68,7 +68,14 @@ if (!defined('_w00t_frm')) die('har har har');
 						echo '<option value="'.$oneuser.'">'.$oneuser.'</option>';
 					} ?>
 				</select><br />
-			</fieldset><br />
+			</fieldset>
+			<fieldset id="tfupload">
+				<?php echo $lang['upload-file']; ?><br />
+				<span class="removeAt" style="color:red;padding:4px;display:none;"><?php echo $lang['delete']; ?></span>
+				<input type="file" name="fileToUpload" class="fileToUpload">
+				<input type="hidden" name="fileUploaded" id="fileUploaded">
+				<div class="" style="display:none;"></div>
+			</fieldset>
 			<!--<input type="hidden" name="id" id="id" value="<?php echo ($total+1); ?>" />-->
 			<input type="hidden" name="pos" id="pos" value="before" />
 			<span class="fake-button" id="addtckbtn"><?php echo $lang['case-add-submit']; ?></span><br />
@@ -136,6 +143,76 @@ $(document).ready(function() {
 				$("#new_tk_frm").append(textStatus);
 				$("#addtckbtn").show();
 			});
+	});
+	//file upload stuff
+	$('#tfupload .fileToUpload').on('change', function() {
+		var file_data = this.files[0];
+		var filename = this.value;
+		var form_data = new FormData();                  
+		form_data.append('file', file_data);
+		$("#new_tk_frm #tfupload div").addClass("loader").show();
+                             
+		var request = $.ajax({
+			url: 'index.php?task=upload&pos=before', 
+			dataType: 'json',  
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: form_data,                         
+			type: 'post'
+		 });
+
+		request.done(function( response ) {
+			$("#new_tk_frm #tfupload div").removeClass("loader");
+			//alert(response);
+			if (response.status === "success") {
+				$("#new_tk_frm #tfupload div").removeClass("gen-error").addClass("gen-success").html(response.message).show();
+				$("#new_tk_frm #tfupload #fileUploaded").val(filename); //store filename so to move it to cid folder in uploads
+				$("#new_tk_frm #tfupload .fileToUpload").val(null).hide(); //remove file input
+				$("#new_tk_frm #tfupload .removeAt").show('fast'); //show delete file label
+			} else if(response.status === "error") {
+				$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
+			}
+		});
+
+		 request.fail(function( jqXHR, textStatus ) {
+			alert( "<?php echo $lang['ajax-fail']; ?> " + textStatus );
+		});
+	});
+
+	$("#tfupload .removeAt").on('click',function() {
+		var removeAt = confirm('<?php echo $lang['remove-attachment']; ?>');
+		if (removeAt) {
+			var whichAtt = $("#tfupload #fileUploaded").val(); //store uploaded file's name
+
+			$(this).hide('fast'); //hide remove button
+			$("#tfupload #fileUploaded").val(null); //set hidden value of what we uploaded to nothing
+			$("#tfupload div").remove(); //remove result div
+			$("#tfupload .fileToUpload").show();
+			$("#tfupload").append('<div style="display:none"></div>'); //re-add result div
+			//now physically remove previously uploaded file to tmp folder
+			var request = $.ajax({
+				url: 'index.php?task=unlink&pos=before', 
+				dataType: 'json',  
+				cache: false,
+				contentType: false,
+				processData: false,
+				data: {fln,whichAtt},                         
+				type: 'post'
+			 });
+
+			request.done(function( response ) {
+				if (response.status === "success") {
+					$("#new_tk_frm #tfupload div").removeClass("gen-error").addClass("gen-success").html(response.message).show();
+				} else if(response.status === "error") {
+					$("#new_tk_frm #tfupload div").addClass("gen-error").html(response.message).show();
+				}
+			});
+
+			request.fail(function() {
+					alert( 'SYSTEM: '+'<?php echo $lang['ajax-fail']; ?>' );
+			})
+		}
 	});
 });
 </script>

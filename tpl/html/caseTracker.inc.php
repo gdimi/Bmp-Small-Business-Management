@@ -35,7 +35,7 @@
 				if ($ticket['priority'] == 1) { $tprior = 'Low'; } elseif ($ticket['priority'] == 2) { $tprior = 'Medium'; } else { $tprior = 'High'; }
 				
 				if ($ticket['attachment']) {
-					$attachHTML = $lang['attachment'].$ticket['attachment'];
+					$attachHTML = $lang['attachment'].'&nbsp; <a href="'.$defUploadDir.'/'.$key.'/'.$ticket['attachment'].'">'.$ticket['attachment'].'</a>'; // use $key for actual db id and not constructed $tcid
 				}
 				$ticket_data .=  "
 				<tr class=\"tbody $tstat_class $tprior ${ticket['user']}\">

@@ -33,7 +33,7 @@ if (!$pos or $pos != 'before') {
 			$iy = $_GET['iy'];
 			$idate = strtotime(($iy).'-12-31');
 			$ldate = strtotime($iy.'-1-1') - 1; //adjust timestamp 1 sec before selected year to catch 'zero' second of it
-			$idateSQL = ' AND created < '.$idate.' AND created > '.$ldate;
+			$idateSQL = ' AND updated < '.$idate.' AND updated > '.$ldate;
 		}
 
 		$limit = '';

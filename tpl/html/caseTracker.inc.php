@@ -38,7 +38,7 @@
 					$attachHTML = $lang['attachment'].'&nbsp; <a href="'.$defUploadDir.'/'.$key.'/'.$ticket['attachment'].'">'.$ticket['attachment'].'</a>'; // use $key for actual db id and not constructed $tcid
 				}
 				$ticket_data .=  "
-				<tr class=\"tbody $tstat_class $tprior ${ticket['user']}\">
+				<tr class=\"tbody $tstat_class $tprior ${ticket['user']} cl-${ticket['client']}\">
 					<td>$tcid</td>
 					<td>$tdate</td>
 					<td>$tudate</td>

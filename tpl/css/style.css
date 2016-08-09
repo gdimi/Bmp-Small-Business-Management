@@ -280,6 +280,7 @@ tr.tbody td {
     min-width: 400px;
     width: 50%;
     left: 26% !important;
+    z-index: 1000;
 }
 
 #settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms {

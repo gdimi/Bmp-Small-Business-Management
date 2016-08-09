@@ -281,6 +281,7 @@ tr.tbody td {
     width: 50%;
     left: 26% !important;
     z-index: 1000;
+    display:none;
 }
 
 #settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms {

@@ -105,4 +105,5 @@ $lang['remove-attachment'] = 'Διαγραφή αρχείου;';
 $lang['ajax-fail'] = 'Request failed:';
 $lang['delete'] = 'Διαγραφή';
 $lang['attachment'] = 'Attachment:';
+$lang['client-highlight-btn'] = 'Highlight this client cases';
 ?> 

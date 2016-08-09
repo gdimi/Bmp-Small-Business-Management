@@ -106,4 +106,6 @@ $lang['remove-attachment'] = 'Remove attachment?';
 $lang['ajax-fail'] = 'Request failed:';
 $lang['delete'] = 'Delete';
 $lang['attachment'] = 'Attachment:';
+$lang['client-highlight-btn'] = 'Highlight this client cases';
+
 ?>

@@ -6,6 +6,7 @@
 				</form>
 			</div>
 			<div class="cl-cases"></div>
+            <span class="fake-button" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-highlight-btn']; ?></span>
 		</div>
 		<span class="ecl_res"></span>
 		<span class="ecl_frm_error"></span>

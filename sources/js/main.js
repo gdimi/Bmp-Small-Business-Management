@@ -166,8 +166,9 @@ $(document).ready(function() {
 	//case id search
 	$("#client").on('click', "a" ,function() {
         var cclass = $(this).attr('class');
-        var cclid = parseInt(cclass.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string;
-		if (cclid) {
+        var cclid = cclass.slice(-5); //parseInt(cclass.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string;
+ 
+ 		if (cclid) {
 			$.get("index.php",
 			{ci : cclid, task: "cis",pos: "before"},
 			function(data, textStatus, jqXHR){

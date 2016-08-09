@@ -2,6 +2,7 @@
 if (!defined('_w00t_frm')) die('har har har');
 
 class DSConfig {
+    var $timezone = 'Europe/Athens';
 	var $require_pass = false;
 	var $project_name = 'Business management pro';
 	var $sitename = 'BMP';

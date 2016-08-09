@@ -14,6 +14,9 @@ if (!defined('_w00t_frm')) die('har har har');
 require_once('sources/config.php');
 $dss = new DSconfig;
 
+//set timezone
+date_default_timezone_set($dss->timezone);
+
 //globally used variables
 $thisYear = date("Y");
 $curTimestamp = time();

@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    
+    // Return today's date and time
+    var currentTime = new Date()
+    var thisYear = currentTime.getFullYear();
+    var thisMonth = currentTime.getMonth()+1;
+    
     $("#add_tk").click(function() {
 		$("#new_ticket").toggle('fast');
 	});
@@ -59,7 +65,7 @@ $(document).ready(function() {
     //catch income clicks
 	$("#income").click(function() {
 			$.get("index.php",
-			{task: "esoda",pos: "before"},
+			{iy:thisYear,task: "esoda",pos: "before"},
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#esoda div").html(data.message);
@@ -75,7 +81,7 @@ $(document).ready(function() {
     //catch costs clicks
 	$("#expenses").click(function() {
 			$.get("index.php",
-			{task: "costs",pos: "before"},
+			{iy:thisYear, task: "costs",pos: "before"},
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#costs div#cres").html(data.message);

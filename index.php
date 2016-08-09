@@ -13,11 +13,13 @@ require_once('sources/init.php');
 	<meta name="Reply-to" content="info@hybridwebs.gr" />
 	<meta name="Author" content="George Dimitrakopoulos" />
 	<link rel="shortcut icon" href="favicon.ico" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
+    <script src="sources/js/jquery.min.js"></script>
     <!--<script src="sources/js/tinymce/tinymce.gzip.js"></script>
 	<script>tinymce.init({selector:'textarea.rich'});</script>-->
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.13.0/build/cssbase/cssbase-min.css">
+    <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.13.0/build/cssbase/cssbase-min.css">-->
     
+	<link href="tpl/css/cssbase-min.css" rel="stylesheet" type="text/css" />
 	<link href="tpl/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="tpl/css/responsive.css" rel="stylesheet" type="text/css" />
 </head>

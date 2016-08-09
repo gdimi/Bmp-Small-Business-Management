@@ -36,13 +36,16 @@
 				
 				if ($ticket['attachment']) {
 					$attachHTML = $lang['attachment'].'&nbsp; <a href="'.$defUploadDir.'/'.$key.'/'.$ticket['attachment'].'">'.$ticket['attachment'].'</a>'; // use $key for actual db id and not constructed $tcid
-				}
+                    $att_class = 'hasAttachment';
+				} else {
+                    $att_class = '';
+                }
 				$ticket_data .=  "
 				<tr class=\"tbody $tstat_class $tprior ${ticket['user']} cl-${ticket['client']}\">
 					<td>$tcid</td>
 					<td>$tdate</td>
 					<td>$tudate</td>
-					<td><a href=\"javascript:void(0);\" id=\"ctdummyhref_$key\">${ticket['title']}</a></td>
+					<td class=\"${att_class}\"><a href=\"javascript:void(0);\" id=\"ctdummyhref_$key\">${ticket['title']}</a></td>
                     <td>${ticket['model']}</td>
 					<td>${ticket['cat']}</td>
 					<td><a href=\"javascript:void(0);\" class=\"cclient\" id=\"cl_${ticket['client']}\">${ticket['name']}</a></td>

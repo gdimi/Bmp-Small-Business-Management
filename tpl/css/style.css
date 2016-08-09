@@ -872,3 +872,8 @@ span.clname  {
     height: 16px;
     width: 16px;
 }
+
+.hasAttachment::before {
+  content: "§";
+  padding-right: 8px;
+}

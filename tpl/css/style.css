@@ -1,4 +1,4 @@
-body {
+cisbody {
 	font-family: arial;
 	font-size: 1em;
 	margin: 0;
@@ -270,10 +270,16 @@ tr.tbody td {
   font-size: 0.9em;
 }
 
-#new_ticket, #new_client, #settings, #client, #gen_res, #allclients, #cis_res, #esoda, #costs, #various, #stats_info, #prices {
+#new_ticket, #new_client, #settings, #client, #gen_res, #allclients, #esoda, #costs, #various, #stats_info, #prices {
 	min-width: 400px;
 	width: 34%;
 	display:none;
+}
+
+#cis_res {
+    min-width: 400px;
+    width: 50%;
+    left: 26% !important;
 }
 
 #settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms {

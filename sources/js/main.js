@@ -161,6 +161,29 @@ $(document).ready(function() {
 			});
 		}
 	});
+    
+    // cases links in client details
+	//case id search
+	$("#client").on('click', "a" ,function() {
+        var cclass = $(this).attr('class');
+        var cclid = parseInt(cclass.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string;
+		if (cclid) {
+			$.get("index.php",
+			{ci : cclid, task: "cis",pos: "before"},
+			function(data, textStatus, jqXHR){
+				if(data.status === "success") {
+					$("#cis_res div").html(data.message);
+					$("#cis_res").show("fast");
+				} else if(data.status === "error") {
+					$("#cis_res div").append(data.message);
+					$("#cis_res").show("fast").delay(2000).hide("slow");
+				}
+			}, "json").fail(function(jqXHR, textStatus, errorThrown){
+				$("#cis_res").show("fast").append(textStatus);
+			});
+		}
+	});
+    
 	//catch delete case click events
 	$("#dt_tk").on('click', '.del-tk-b' ,function(){
 		var dtkid = parseInt(this.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string

@@ -43,7 +43,7 @@ if (!$pos or $pos != 'before') {
 						} else {
 							$cct = $ccl['type'];
 						}
-						$cases .='<div>'.$updated.' '.$ccl['title'].' ( '.$cct.$ccl['id'].' )</div>';
+						$cases .='<div>'.$updated.' '.$ccl['title'].' <a href="javascript:void(0);" class="ccl'.$cct.$ccl['id'].'">( '.$cct.$ccl['id'].' )</a></div>';
 					}
 					$cases .="</div>";
 				}

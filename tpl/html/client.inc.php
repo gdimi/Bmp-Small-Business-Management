@@ -6,7 +6,7 @@
 				</form>
 			</div>
 			<div class="cl-cases"></div>
-            <span class="fake-button" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-highlight-btn']; ?></span>
+            <span class="fake-button hl-cl-b" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-highlight-btn']; ?></span>
 		</div>
 		<span class="ecl_res"></span>
 		<span class="ecl_frm_error"></span>
@@ -23,11 +23,22 @@ $(document).ready(function() {
 	if ($("#client .cldel").css('display') == 'none') {
 		$("#client .cldel").show(); //show delete button in case it got hidden during a delete
 	}
+    //highlight
+    $(".hl-cl-b").click(function() {
+		var clid = $("#ecl_frm #eclid").val();
+		if (clid > 0) {
+            var clclass = 'cl-'+clid;
+            var clelem = '#ct_table tr.'+clclass;
 
-	$(".cldel").click(function(){
+            $(clelem).css('background-color','#FFFF88');
+        }
+    });
+	//show delete dialog
+    $(".cldel").click(function(){
 		$("#dt_cl").show();
 	});
-	$(".del-cl-b").click(function(){
+	//delete client
+    $(".del-cl-b").click(function(){
 		var clid = returnEndId(this);
 		if (clid > 0) {
 			$("#client > .ecl_res").append('<img src="images/loader.gif" />');
@@ -50,7 +61,7 @@ $(document).ready(function() {
 			});
 		}
 	});
-
+    //edit client
 	$("#client .cledit").click(function(){
 		var clid = $("#ecl_frm #eclid").val();
 		if (clid > 0) {

@@ -1,10 +1,14 @@
 ## CHANGELOG 
-*0.438-dev - 8/8/2016*
+*0.438-dev - 12/8/2016*
 issue 68 - income: on refresh doesnt get this year
+issue 67 - case tracker: add sign for cases with attachment
 issue 65 - income: show all wrong calculation
 issue 64 - expenses: on refresh doesnt get this year
+issue 62 - client: cases should be links
 issue 61 - when viewing a past closed case through find, the text in input is without nl2br
 issue 60 - case id in find should be trimmed
+issue 59 - case tracker: hightlight cases only for one client
+isseu 43 - case tracker: add "close" action button
 issue 32 - expenses: result is appended not replacing existing html
 isseu 5 - cases : add upload file attachment capability
 other changes:

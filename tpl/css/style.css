@@ -708,12 +708,16 @@ span.clname  {
     min-width: 180px;
 }
 
-.cost-delete, .del-tck {
+.cost-delete, .del-tck, .close-tck {
     background-color: #FF6347;
     color: #FFFFFF;
     cursor: pointer;
     font-weight: bold;
     padding: 2px;
+}
+
+.del-tck {
+    background-color: brown !important;
 }
 
 .cost-edit {

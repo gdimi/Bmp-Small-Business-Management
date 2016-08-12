@@ -54,7 +54,9 @@
 					<td class=\"ct-type${ticket['type']}\">${ttype}</td>
 					<td class=\"ct-price\">${ticket['price']}</td>
 					<td class=\"ct-user\">${ticket['user']}</td>
-					<td><span class=\"del-tck\" id=\"dt_s${key}\">D</span></td>
+					<td><span title=\"close this case\" class=\"close-tck\" id=\"ct_s${key}\">C</span>&nbsp;<span title=\"delete this case\" class=\"del-tck\" id=\"dt_s${key}\">D</span>
+                    
+                    </td>
 				</tr>";
 				
 				$js .= '
@@ -77,6 +79,11 @@
 					$("#dt_tk_msg").html("Do you want really to delete ticket <strong>'.$key.'</strong> - <strong>'.$ticket['title'].'</strong> ?");
 					$(".del-tk-b").attr("id","dt_'.$key.'"); //change current id to include case id
 					$("#dt_tk").show();
+				});
+				$("#ct_s'.$key.'").click(function(){
+					$("#ct_tk_msg").html("Do you really want to close ticket <strong>'.$key.'</strong> - <strong>'.$ticket['title'].'</strong> ?");
+					$(".close-tk-b").attr("id","dt_'.$key.'"); //change current id to include case id
+					$("#ct_tk").show();
 				});';
 
 				$actual_ticket_data .= '
@@ -148,6 +155,12 @@
 					<div id="dt_tk_msg"></div><br /><br />
 					<span class="cl-b b-sblue del-tk-b" id="">YES</span>
 					<span class="cl-b b-sblue" onclick="document.getElementById(\'dt_tk\').style.display = \'none\';">NO</span>
+				</div>
+				<div id="ct_tk" style="display:none;" class="elevate menu-dialog">
+					<h2>Close this ticket</h2>
+					<div id="ct_tk_msg"></div><br /><br />
+					<span class="cl-b b-sblue close-tk-b" id="">YES</span>
+					<span class="cl-b b-sblue" onclick="document.getElementById(\'ct_tk\').style.display = \'none\';">NO</span>
 				</div>';
 			$cache->cacheData = $ticket_data.$actual_ticket_data.'<script>$(document).ready(function() {'.$js.'});</script>';
 			if (!$cache->doCache()) { 

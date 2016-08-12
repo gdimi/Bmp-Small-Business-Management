@@ -205,6 +205,28 @@ $(document).ready(function() {
 			});
 		}
 	});
+	//catch close case click events
+	$("#ct_tk").on('click', '.close-tk-b' ,function(){
+		var ctkid = parseInt(this.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
+		$("#ct_tk").hide('fast');
+		if (ctkid > 0) {
+			$.get("index.php",
+			{tid : ctkid, task: "ctk",pos: "before"},
+			function(data, textStatus, jqXHR){
+				if(data.status === "error") {
+					$("#gen_res div").html(data.message);
+					$("#gen_res").show("fast");
+				} else if(data.status === "success") {
+					$("#gen_res div").append(data.message);
+					$("#gen_res").show("fast").delay(2000).hide("slow");
+                    var spanct = '#ct_s'+ctkid;
+                    $(spanct).parent().parent().hide('slow'); //hide this case's tr from table
+				}
+			}, "json").fail(function(jqXHR, textStatus, errorThrown){
+				$("#gen_res").show("fast").append(textStatus);
+			});
+		}
+	});
 	//client object
 	var ClientObj = new Object();
 	ClientObj.id = 0;

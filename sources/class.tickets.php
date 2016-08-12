@@ -88,7 +88,7 @@ class tickets extends db {
 					$ssql = ' ORDER BY cs.updated DESC';
 					break;
 			}
-			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID'.$ssql);
+			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID AND cs.status < 4'.$ssql);
 			if ($cresult) {
 				foreach($cresult as $case) {
 					$attach = $this->checkForAttachment($case['id']);

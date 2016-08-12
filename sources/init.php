@@ -31,6 +31,7 @@ $tasks['dclient'] = 'dclient.task';
 $tasks['eclient'] = 'eclient.task';
 $tasks['atk'] = 'addTicket';
 $tasks['dtk'] = 'delTicket';
+$tasks['ctk'] = 'closeTicket.task';
 $tasks['acl'] = 'allClients.task';
 $tasks['etk'] = 'editTicket.task';
 $tasks['cis'] = 'caseIdSearch.task';

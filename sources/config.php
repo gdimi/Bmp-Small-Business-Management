@@ -54,6 +54,7 @@ class DSConfig {
     
     public function __toString() {
         return '<br />require password: '.$this->require_pass.
+        '<br />timezone: '.$this->timezone.
         '<br />project name: '.$this->project_name.
         '<br />site name: '.$this->sitename.
         '<br />show history: '.$this->show_history.
@@ -66,7 +67,8 @@ class DSConfig {
         '<br />revision number: '.$this->rev_num.
         '<br />valid users: '.implode(',',$this->users).
         '<br />trash size warning: '.$this->trashWarn.
-        '<br />trash objects warning: '.$this->trashOWarn;
+        '<br />trash objects warning: '.$this->trashOWarn.
+        '<br />maximum upload size: '.$this->maxUploadSize;
     }
 }
 ?>

@@ -9,7 +9,7 @@ if (!$pos or $pos != 'before') {
 	try {
 		$sccon = new PDO('sqlite:pld/HyperLAB.db3');
 		$sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-		$scres = $sccon->query('SELECT id,name,tel1,email FROM "Client" ORDER BY name;');
+		$scres = $sccon->query('SELECT id,name,tel1,tel2,email FROM "Client" ORDER BY name;');
 		if ($scres) {
 			$msg = '<div class="grid">';
 			foreach ($scres as $client) {
@@ -18,7 +18,7 @@ if (!$pos or $pos != 'before') {
                 } else {
                     $cmail = $client['email'];
                 }
-				$msg .= '<div><a class="show-client" href="javascript:$(this).preventDefault();" id="cl'.$client['id'].'">'.$client['name'].' ('.$client['id'].')</a> - '.$client['tel1'].' - '.$cmail.'</div>';
+			  $msg .= '<div><a class="show-client" href="javascript:$(this).preventDefault();" id="cl'.$client['id'].'">'.$client['name'].' ('.$client['id'].')</a> - '.$client['tel1'].' | '.$client['tel2'].' - '.$cmail.'</div>';
 			}
 			$msg .= '</table>';
 			$tk_status = json_encode(array(

@@ -1,5 +1,9 @@
 ## CHANGELOG 
-*0.438-dev - 12/8/2016*
+*0.479-dev - 30/8/2016*
+#issue 69 - allclients: telephone 2 in list
+added maximum upload size and timezone when viewing settings
+
+*0.479 - 12/8/2016*
 issue 68 - income: on refresh doesnt get this year
 issue 67 - case tracker: add sign for cases with attachment
 issue 65 - income: show all wrong calculation

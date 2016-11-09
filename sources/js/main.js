@@ -218,7 +218,7 @@ $(document).ready(function() {
 					$("#gen_res").show("fast");
 				} else if(data.status === "success") {
 					$("#gen_res div").append(data.message);
-					$("#gen_res").show("fast").delay(2000).hide("slow");
+					$("#gen_res").show("fast").delay(2000).hide("slow").html('&nbsp;');
                     var spanct = '#ct_s'+ctkid;
                     $(spanct).parent().parent().hide('slow'); //hide this case's tr from table
 				}

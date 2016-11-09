@@ -29,14 +29,18 @@ if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
 	if ($_GET['tid']) {
+		$taqry = '';
 		$tid = (int)$_GET['tid'];
 		$today = time();
+		if ($_GET['ttime']) {
+			$taqry = ', updated="'.$today.'" ';
+		}
 
 		try {
             $sccon = new PDO('sqlite:pld/HyperLAB.db3');
             $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
             //close status in database
-            $scres = $sccon->query('UPDATE "Case" SET status = 4 WHERE id = '.$tid.';');
+            $scres = $sccon->query('UPDATE "Case" SET status = 4'.$taqry.' WHERE id = '.$tid.';');
             if ($scres) {
                 $ahistory = "$today Case with id $tid is closed \n";
                 $tk_status = json_encode(array(

@@ -211,7 +211,7 @@ $(document).ready(function() {
 		$("#ct_tk").hide('fast');
 		if (ctkid > 0) {
 			$.get("index.php",
-			{tid : ctkid, task: "ctk",pos: "before"},
+			{tid : ctkid, ttime : "1", task: "ctk",pos: "before"},
 			function(data, textStatus, jqXHR){
 				if(data.status === "error") {
 					$("#gen_res div").html(data.message);

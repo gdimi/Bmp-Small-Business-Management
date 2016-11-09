@@ -1,6 +1,9 @@
 ## CHANGELOG 
-*0.479-dev - 30/8/2016*
+*0.479-dev - 9/11/2016*
+#issue 71 - case tracker: close result is appended bug 
+#issue 70 - case tracker: close does not update "updated" timestamp bug 
 #issue 69 - allclients: telephone 2 in list
+#issue 34 - case: upon delete result is appended bug 
 added maximum upload size and timezone when viewing settings
 
 *0.479 - 12/8/2016*

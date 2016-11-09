@@ -198,7 +198,7 @@ $(document).ready(function() {
 					$("#gen_res").show("fast");
 				} else if(data.status === "success") {
 					$("#gen_res div").append(data.message);
-					$("#gen_res").show("fast").delay(2000).hide("slow");
+					$("#gen_res").show("fast").delay(2000).hide("slow").html("&nbsp;");
 				}
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
 				$("#gen_res").show("fast").append(textStatus);

@@ -39,6 +39,7 @@
                     $att_class = 'hasAttachment';
 				} else {
                     $att_class = '';
+                    $attachHTML = '';
                 }
 				$ticket_data .=  "
 				<tr class=\"tbody $tstat_class $tprior ${ticket['user']} cl-${ticket['client']}\">

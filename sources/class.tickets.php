@@ -55,8 +55,9 @@ class tickets extends db {
 	
 	function checkForAttachment($cid) {
 		$defUploadDir = $this->attachDir;
-		$caseDir = $defUploadDir.'/'.$cid;
+		
 		if ($cid && $cid > 0) {
+			$caseDir = $defUploadDir.'/'.$cid;
 			if ($defUploadDir) {
 				if (is_dir($caseDir)) {
 

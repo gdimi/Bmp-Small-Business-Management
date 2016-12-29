@@ -22,7 +22,9 @@ if (!$pos or $pos != 'before') {
 			$sth = $sccon->prepare($insert);
 			$scres = $sth->execute($cost);
 			if ($scres) {
-				$cs_short_descr = strip_tags(mb_substr($cost['description'],0,40));
+				//make shorter description for output message and action history line
+				$cs_short_descr = trim(preg_replace('/\s\s+/', ' ', $cost['description']));
+				$cs_short_descr = mb_substr($cs_short_descr,0,mb_strpos($cs_short_descr,' ')).'...';
 				$schtml = ' Το έξοδο <strong>'.$cs_short_descr."</strong> προστέθηκε επιτυχώς \n";
 				file_put_contents('content/action_history.txt',$today.' '.$schtml,FILE_APPEND); //update history file
 				$cs_status = json_encode(array(

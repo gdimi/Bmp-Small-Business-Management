@@ -1,10 +1,15 @@
 ## CHANGELOG 
-*0.479-dev - 11/11/2016*
+*0.479-dev - 29/12/2016*
+#issue 75 - all cases seem to have an attachment bug
+#issue 74 - multiline in action history doesnt store well bug
+#issue 73 - delete action does not show result bug introduced after issue 71 fix
+#issue 72 - price table should be a seperate file
 #issue 71 - case tracker: close result is appended bug 
 #issue 70 - case tracker: close does not update "updated" timestamp bug 
 #issue 69 - allclients: telephone 2 in list
 #issue 63 - statistics: query by year enhancement 
 #issue 34 - case: upon delete result is appended bug 
+some improvements in file upload handling
 added maximum upload size and timezone when viewing settings
 
 *0.479 - 12/8/2016*

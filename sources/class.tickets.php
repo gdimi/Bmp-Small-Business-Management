@@ -70,6 +70,8 @@ class tickets extends db {
 					}
 
 					return $ticketfiles;
+				} else {
+					return '';
 				}
 			} else {
 				return 'SYSTEM: no defUploadDir';

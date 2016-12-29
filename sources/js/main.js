@@ -210,6 +210,7 @@ $(document).ready(function() {
 		var ctkid = parseInt(this.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
 		$("#ct_tk").hide('fast');
 		if (ctkid > 0) {
+			$("#gen_res div").html('&nbsp;'); //erase possibly previous messages in result div
 			$.get("index.php",
 			{tid : ctkid, ttime : "1", task: "ctk",pos: "before"},
 			function(data, textStatus, jqXHR){
@@ -218,7 +219,7 @@ $(document).ready(function() {
 					$("#gen_res").show("fast");
 				} else if(data.status === "success") {
 					$("#gen_res div").append(data.message);
-					$("#gen_res").show("fast").delay(2000).hide("slow").html('&nbsp;');
+					$("#gen_res").show("fast").delay(2000).hide("slow");
                     var spanct = '#ct_s'+ctkid;
                     $(spanct).parent().parent().hide('slow'); //hide this case's tr from table
 				}

@@ -3,6 +3,14 @@
   Order allow,deny
 </FilesMatch>
 
+<FilesMatch "\.(html|htm|js|css|php)>
+FileETag None
+Header unset ETag
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</FilesMatch>
+
 # Don't show directory listings for URLs which map to a directory.
 Options -Indexes
 
@@ -11,4 +19,3 @@ Options -Indexes
 #RewriteBase /dev/bm/
 #RewriteCond %{QUERY_STRING} ^$
 #RewriteRule ([A-Za-z0-9\-]+)/?$ index.php?action=$1 [L]
-

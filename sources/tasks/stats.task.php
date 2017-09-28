@@ -30,7 +30,7 @@ if (!$pos or $pos != 'before') {
             foreach ($scall as $all) {
                 $all = $all['theAll'];
             }
-            $schtml = '<strong>Σύνολο cases: '.$all.'</strong>';
+            $schtml = '<strong>'.$lang['stats-nofcases'].' '.$all.'</strong>';
         }
 		if ($all > 0) {
 			//get total current income
@@ -39,12 +39,12 @@ if (!$pos or $pos != 'before') {
 				foreach ($scinc as $allinc) {
 					$allinc = $allinc['theIncome'];
 				}
-				$schtml .= ' | <strong>Σύνολο τζίρου: '.$allinc.'</strong><br /><hr size="1" />';
+				$schtml .= ' | <strong>'.$lang['stats-gross'].' '.$allinc.'</strong><br /><hr size="1" />';
 			}
 			//make list by case type
 			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount FROM "Case" WHERE updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY "type" ORDER BY theCount  DESC;');
 			if ($scres) {
-				$schtml .= '<div class="case-types"><h3>Ανάλυση ανά είδος</h3>';
+				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytype'].'</h3>';
 				foreach ($scres as $ctl) {
 					$ctype = $caseType[$ctl['type']];
 					$perc = ($ctl['theCount']/$all)*100;
@@ -63,7 +63,7 @@ if (!$pos or $pos != 'before') {
 			// get list by case by tziros 
 			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY "type" ORDER BY theTotal DESC;');
 			if ($scres) {
-				$schtml .= '<div class="case-types"><h3>Ανάλυση ανά είδος ανά τζίρο</h3>';
+				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytypebygross'].'</h3>';
 				foreach ($scres as $ctli) {
 					$ctype = $caseType[$ctli['type']];
 					$perc = ($ctli['theTotal']/$allinc)*100;
@@ -80,7 +80,7 @@ if (!$pos or $pos != 'before') {
 			// get top 8 customers by total income and display
 			$scres = $sccon->query('SELECT  cl.name, SUM("price") as theSUM FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY cs.clientID ORDER BY theSUM DESC LIMIT 8;');
 			if ($scres) {
-				$schtml .= '<div class="case-types"><h3>Ανάλυση ανά πελάτη ανά τζίρο (τοπ 8)</h3>';
+				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient'].'</h3>';
 				foreach ($scres as $cli) {
 					$schtml .="
 					<div>
@@ -93,7 +93,7 @@ if (!$pos or $pos != 'before') {
 			// get top 8 customers by # of cases and display
 			$scres = $sccon->query('SELECT  cl.name, COUNT(0) as theCount FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY cs.clientID ORDER BY theCount DESC LIMIT 8;');
 			if ($scres) {
-				$schtml .= '<div class="case-types"><h3>Ανάλυση ανά πελάτη με αριθμό cases (τοπ 8)</h3>';
+				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient-noc'].'</h3>';
 				foreach ($scres as $clcn) {
 					$schtml .="
 					<div>

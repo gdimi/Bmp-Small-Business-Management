@@ -107,5 +107,11 @@ $lang['ajax-fail'] = 'Request failed:';
 $lang['delete'] = 'Delete';
 $lang['attachment'] = 'Attachment:';
 $lang['client-highlight-btn'] = 'Highlight this client cases';
+$lang['stats-nofcases'] = 'Number of cases:';
+$lang['stats-gross'] = 'Total gross income:';
+$lang['stats-listbytype'] = 'List by type';
+$lang['stats-listbytypebygross'] = 'List by type and by gross';
+$lang['stats-listbyclient'] = 'List by client (top 8)';
+$lang['stats-listbyclient-noc'] = 'List by client number of cases (top 8)';
 
 ?>

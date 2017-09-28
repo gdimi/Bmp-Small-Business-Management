@@ -1,5 +1,5 @@
 ## CHANGELOG 
-*0.479-dev - 29/12/2016*
+*0.589 - 28/9/2017*
 #issue 76 - division by zero in stats when no results bug
 #issue 75 - all cases seem to have an attachment bug
 #issue 74 - multiline in action history doesnt store well bug

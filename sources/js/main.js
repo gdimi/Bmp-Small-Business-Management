@@ -99,7 +99,7 @@ $(document).ready(function() {
 			$("#stats_info").show();
 			$("#stats_info > #stats_data").html('<img src="images/loader.gif" />');
 			$.get("index.php",
-			{task: "stats",pos: "before"},
+			{task: "stats",pos: "before",lang: "en"},
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#stats_info > #stats_data").html(data.message);

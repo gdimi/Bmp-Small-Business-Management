@@ -25,7 +25,7 @@ $(document).ready(function() {
 		if (iy != NaN) {
 			$("#stats_info > div#statres").append('<img src="images/loader.gif" />');
 			$.get("index.php",
-			{iy:iy,task: "stats",pos: "before"},
+			{iy:iy,task: "stats",pos: "before",lang: "<?php echo $activeLanguage; ?>"},
 			function(data, textStatus, jqXHR){
 				$("#stats_info > div#statres").html('&nbsp;');
 				if(data.status === "success") {

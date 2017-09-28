@@ -22,7 +22,16 @@ if (isset($_GET['iy']) && $_GET['iy'] > 0) {
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
-    try { //get number of cases
+	//check if lang is set and if not load english
+	$lang = array();
+	if (isset($_GET['lang'])) {
+		$language = trim(strip_tags($_GET['lang']));
+		include("language/${language}.php");
+	} else {
+		include("language/en.php");
+	}
+    
+	try { //get number of cases
         $sccon = new PDO('sqlite:pld/HyperLAB.db3');
         $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
         $scall = $sccon->query('SELECT COUNT(0) as theAll FROM "Case" WHERE updated >= '.$from_time.' AND updated <= '.$to_time.';');
@@ -101,7 +110,7 @@ if (!$pos or $pos != 'before') {
 					</div>
 					";
 				}
-				$schtml .="</div>";
+				$schtml .="</div>"; //lang:".$_GET['lang'];
 			}
 		}
     } catch(PDOException $ex) {

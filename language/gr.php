@@ -106,4 +106,11 @@ $lang['ajax-fail'] = 'Request failed:';
 $lang['delete'] = 'Διαγραφή';
 $lang['attachment'] = 'Attachment:';
 $lang['client-highlight-btn'] = 'Highlight this client cases';
+$lang['stats-nofcases'] = 'Σύνολο cases:';
+$lang['stats-gross'] = 'Σύνολο τζίρου:';
+$lang['stats-listbytype'] = 'Ανάλυση ανά είδος';
+$lang['stats-listbytypebygross'] = 'Ανάλυση ανά είδος ανά τζίρο';
+$lang['stats-listbyclient'] = 'Ανάλυση ανά πελάτη ανά τζίρο (τοπ 8)';
+$lang['stats-listbyclient-noc'] = 'Ανάλυση ανά πελάτη με αριθμό cases (τοπ 8)';
+
 ?> 

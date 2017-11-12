@@ -26,9 +26,9 @@ if (!$pos or $pos != 'before') {
 					$iy++;
 				}
 			}
-			if (!$idate) { $idate = strtotime($iy.'-'.$im); }
-			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth); }
-			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
+			if (!$idate) { $idate = strtotime($iy.'-'.$im.'-1'); }
+			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth.'-1'); }
+			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate >= '.$ldate;
 		} elseif ($_GET['iy'] && (int)$_GET['im'] == 0) {
 			$iy = (int)$_GET['iy'];
 			$idate = strtotime(($iy).'-12-31');

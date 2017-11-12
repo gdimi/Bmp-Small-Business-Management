@@ -14,9 +14,9 @@ if (!$pos or $pos != 'before') {
 			$curMonth = date('n')+1;
 			$curYear = date('Y');
 			$curDay = date('d');
-			$im = $_GET['im']+1;
+			$im = (int)$_GET['im']+1;
 			$lastMonth = $im - 1;
-			$iy = $_GET['iy'];
+			$iy = (int)$_GET['iy'];
 			$ly = $iy;
 			if ($iy > $curYear) {
 				$idate = $now;
@@ -30,7 +30,7 @@ if (!$pos or $pos != 'before') {
 			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth); }
 			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;
 		} elseif ($_GET['iy'] && (int)$_GET['im'] == 0) {
-			$iy = $_GET['iy'];
+			$iy = (int)$_GET['iy'];
 			$idate = strtotime(($iy).'-12-31');
 			$ldate = strtotime($iy.'-1-1') - 1; //adjust timestamp 1 sec before selected year to catch 'zero' second of it
 			$idateSQL = ' WHERE cdate < '.$idate.' AND cdate > '.$ldate;

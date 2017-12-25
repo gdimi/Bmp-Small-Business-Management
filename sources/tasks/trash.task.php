@@ -17,7 +17,8 @@ if (!$pos or $pos != 'before') {
         if (!$Trash->trashErr) {
             $trashFiles = $Trash->showObjectList();
             foreach ($trashFiles as $trashFile) {
-                $tfData .= '<li>'.$trashFile.'</li>';
+				$to_class = str_replace("content/trashed/","",$trashFile);
+                $tfData .= '<li><a href="javascript:void(0);" class="to '.$to_class.'">'.$trashFile.'</a></li>';
             }
             
             $tfData = '<ul id="trash_files">'.$tfData.'</ul>';

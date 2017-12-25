@@ -142,6 +142,37 @@ $(document).ready(function() {
 				$("#trash_info").show("fast").append(textStatus);
 			});
 	});
+	
+	
+	//catch trashed items click
+	$("#trash_data").on('click', '.to' ,function(){
+		var tobjname = '';
+        //Get list of CSS class names
+        //var classNames = $(this).attr("class").toString().split(' '); //beware the only one space!!!
+        var classNames = $(this).prop("classList"); //beware the only one space!!!
+        $.each(classNames, function (i, className) {
+            if (className !== 'to') {
+				tobjname = className;
+			}
+        });
+        if (tobjname !== '') {
+			$.get("index.php",
+			{to : tobjname, task: "trashObj",pos: "before"},
+			function(data, textStatus, jqXHR){
+				if(data.status === "success") {
+					var tobjdata = data.data;
+					var tobjdetails = 'address:'+tobjdata['address']+'<br>email:'+tobjdata.email+'<br>.id:'+tobjdata.id+'<br>info:'+tobjdata.info+'<br>name:'+tobjdata+'<br>tel1:'+tobjdata.tel1+'<br>tel2:'+tobjdata.tel2;
+					$("#trash_data").append('<div>'+tobjdetails+'</div>');
+				} else if(data.status === "error") {
+					$("#trash_data").append('<div>'+data.message+'</div>');
+				}
+			}, "json").fail(function(jqXHR, textStatus, errorThrown){
+				$("#trash_data").append(textStatus);
+			});			
+		}
+		alert("a trash file is clicked!"+tobjname);
+	});	
+
 	//case id search
 	$("#cisubmit").click(function() {
 		var csid = document.getElementById('cisearch').value;

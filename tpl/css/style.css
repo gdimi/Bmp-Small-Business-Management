@@ -883,3 +883,8 @@ span.clname  {
   content: "§";
   padding-right: 8px;
 }
+
+input#cisearch {
+    margin-top: 5px;
+    margin-right: 8px;
+}

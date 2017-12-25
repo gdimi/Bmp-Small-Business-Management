@@ -1,7 +1,8 @@
 ## CHANGELOG 
-*0.589-dev - 12/11/2017*
+*0.589-dev - 26/12/2017*
 #issue 79 - bug expenses when viewing per month
-work on issue #17 statistics section
+work on issue #58 trash: view object details
+work on issue #17 statistics section, index
 
 *0.589 - 28/9/2017*
 #issue 76 - division by zero in stats when no results bug

@@ -36,10 +36,10 @@ require_once('sources/init.php');
 			<span class="cisearch">
 				<form>
 					<input type="text" name="cisearch" id="cisearch" value="" />
-					<span class="fake-button" id="cisubmit">Find</span>
+					<span class="fake-button" id="cisubmit"><?php echo $lang['find']; ?></span>
 				</form>
 			</span>
-			Case Tracker
+			<?php echo $lang['case-tracker']; ?>
 			<span class="filters"><?php include('tpl/html/caseFilter.inc.php'); ?></span>
 		</header>
 		<?php include_once('tpl/html/caseTracker.inc.php'); ?>
@@ -48,7 +48,7 @@ require_once('sources/init.php');
 		<?php echo $cms->board; ?>
 	</div>
 	<section id="history">
-		<header>Action history</header>
+		<header></header>
         <div>
 		<?php if ($dev_history) {
 			echo $dev_history;
@@ -72,8 +72,8 @@ require_once('sources/init.php');
 		<?php include('tpl/html/client.inc.php'); ?>
 	</div>
 	<div id="allclients" class="elevate menu-dialog">
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
-		<h2>Όλοι οι πελάτες</h2>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
+		<h2><?php echo $lang['all-clients']; ?></h2>
 		<div></div>
 	</div>
 	<div id="esoda" class="elevate menu-dialog">
@@ -83,15 +83,15 @@ require_once('sources/init.php');
 <?php include('tpl/html/costs.inc.php'); ?>
 	</div>
 	<div id="gen_res" class="elevate menu-dialog">
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<div></div>
 	</div>
 	<div id="cis_res" class="elevate menu-dialog">
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<div></div>
 	</div>
 	<div id="stats_info" class="elevate menu-dialog">
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php include('tpl/html/stats.inc.php'); ?>
 		<div></div>
 	</div>
@@ -99,20 +99,20 @@ require_once('sources/init.php');
 <?php include('tpl/html/various.inc.php'); ?>
 	</div>
 	<div id="prices" class="elevate menu-dialog" contenteditable="true">
-   		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+   		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php include('tpl/html/prices.inc.php'); ?>
 	</div>
 	<div id="cms_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 1%;">
-   		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+   		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/cms.inc.php'); ?>
 	</div>
 	<div id="trash_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;">
-   		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+   		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/trash.inc.php'); ?>
 	</div>
     
 	<div id="this_todo" class="elevate menu-dialog" style="display:none;">
-		<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
+		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<h2>Development</h2>
 		<hr size="1" />
 		<div><pre>

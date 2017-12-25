@@ -47,6 +47,7 @@ $tasks['cmsupd'] = 'cmsUpdate.task';
 $tasks['evar'] = 'variousSave.task';
 $tasks['uvar'] = 'variousUpdate.task';
 $tasks['trash'] = 'trash.task';
+$tasks['trashObj'] = 'trashObj.task';
 $tasks['upload'] = 'upload.task';
 
 //get task and position

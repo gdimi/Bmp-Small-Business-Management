@@ -43,8 +43,12 @@ class Trash {
         return $this->trashFilesArr;
     }
 
-    protected function showObjectDetails($obj) {
-        return json_decode(file_get_contents($obj));
+    public function showObjectDetails($obj) {
+		if (is_file($obj)) {
+			return file_get_contents($obj);
+		} else {
+			$this->trashErr = 'Object not found!';
+		}
     }
 
     private function restoreFromTrash() {

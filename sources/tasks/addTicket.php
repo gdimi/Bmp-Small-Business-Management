@@ -214,7 +214,12 @@ try {
     ));
 }
 
-mail($to, $subject, $ex->getMessage(), $headers);
+if (is_object($ex) && method_exists($ex,getMessage)) {
+        mail($to, $subject, $ex->getMessage(), $headers);
+} else {
+        mail($to, $subject, $tk_status, $headers);
+}
+
 echo $tk_status;
 exit(1) ;
 

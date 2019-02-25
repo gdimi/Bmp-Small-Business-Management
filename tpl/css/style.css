@@ -218,6 +218,16 @@ tr.tbody td {
     border: medium solid #FF0000 !important;
 }
 
+.blue-btn {
+    background-color: #FFFFFF !important;
+    border: medium solid steelblue !important;
+}
+
+.green-btn {
+    background-color: white !important;
+    border: medium solid green !important;
+}
+
 #menu ul {
 	list-style-type: none;
 	padding-left: 0px;
@@ -883,9 +893,3 @@ span.clname  {
   content: "§";
   padding-right: 8px;
 }
-
-input#cisearch {
-    margin-top: 5px;
-    margin-right: 8px;
-}
-

@@ -40,9 +40,11 @@ $lang['case-filter-open'] = 'Open';
 $lang['case-filter-high'] = 'High';
 $lang['case-filter-user'] = 'User';
 $lang['client-card'] = 'Καρτέλα Πελάτη';
-$lang['client-delete-btn'] = 'Delete Client';
+$lang['client-vcard-btn'] = 'Client to VCF';
+$lang['client-export-btn'] = 'Export Cases CSV';
+$lang['client-delete-btn'] = 'Διαγραφή Πελάτη';
 $lang['client-delete-title'] = 'DELETE CLIENT!';
-$lang['client-delete-msg'] = 'Sigoura i tha kaneis xazomara? Delete';
+$lang['client-delete-msg'] = 'Σίγουρα θέλετε να διαγράψετε τον πελάτη; Delete';
 $lang['client-delete-yes'] = 'YES';
 $lang['client-delete-no'] = 'no';
 $lang['client-edit-btn'] = 'Ενημέρωση πελάτη';
@@ -112,10 +114,5 @@ $lang['stats-listbytype'] = 'Ανάλυση ανά είδος';
 $lang['stats-listbytypebygross'] = 'Ανάλυση ανά είδος ανά τζίρο';
 $lang['stats-listbyclient'] = 'Ανάλυση ανά πελάτη ανά τζίρο (τοπ 8)';
 $lang['stats-listbyclient-noc'] = 'Ανάλυση ανά πελάτη με αριθμό cases (τοπ 8)';
-$lang['find'] = 'Εύρεση με ID';
-$lang['action-history'] = 'Ιστορικό';
-$lang['case-tracker'] = 'Case Tracker';
-$lang['all-clients'] = 'Όλοι οι πελάτες';
-$lang['close-me'] = 'Κλείσιμο';
 
 ?> 

@@ -40,9 +40,11 @@ $lang['case-filter-open'] = 'Open';
 $lang['case-filter-high'] = 'High';
 $lang['case-filter-user'] = 'User';
 $lang['client-card'] = 'Client Card';
+$lang['client-vcard-btn'] = 'Client to VCF';
+$lang['client-export-btn'] = 'Export Cases CSV';
 $lang['client-delete-btn'] = 'Delete Client';
 $lang['client-delete-title'] = 'DELETE CLIENT!';
-$lang['client-delete-msg'] = 'Sigoura i tha kaneis xazomara? Delete';
+$lang['client-delete-msg'] = 'Are you sure? Delete';
 $lang['client-delete-yes'] = 'YES';
 $lang['client-delete-no'] = 'no';
 $lang['client-edit-btn'] = 'Update client';
@@ -113,9 +115,5 @@ $lang['stats-listbytype'] = 'List by type';
 $lang['stats-listbytypebygross'] = 'List by type and by gross';
 $lang['stats-listbyclient'] = 'List by client (top 8)';
 $lang['stats-listbyclient-noc'] = 'List by client number of cases (top 8)';
-$lang['find'] = 'Find by case ID';
-$lang['action-history'] = 'Action history';
-$lang['case-tracker'] = 'Case Tracker';
-$lang['all-clients'] = 'All Clients';
-$lang['close-me'] = 'Close';
+
 ?>

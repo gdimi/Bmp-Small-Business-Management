@@ -11,7 +11,7 @@
 		<span class="ecl_res"></span>
 		<span class="ecl_frm_error"></span>
 	<span class="fake-button red-btn cldel" style="display:inline-block"><?php echo $lang['client-delete-btn']; ?></span>
-	<span class="fake-button cledit" style="display:inline-block"><?php echo $lang['client-edit-btn']; ?></span>
+	<span class="fake-button blue-btn cledit" style="display:inline-block"><?php echo $lang['client-edit-btn']; ?></span>
 	<span class="elevate menu-dialog" style="display:none;" id="dt_cl">
     <h2><?php echo $lang['client-delete-title']; ?></h2>
     <div id="dt_cl_msg"><?php echo $lang['client-delete-msg']; ?> <strong></strong>-<strong></strong> ?</div><br><br>

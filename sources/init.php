@@ -29,6 +29,7 @@ $tasks['client'] = 'client.task';
 $tasks['aclient'] = 'aclient.task';
 $tasks['dclient'] = 'dclient.task';
 $tasks['eclient'] = 'eclient.task';
+$tasks['clvcf'] = 'client2vcf.task';
 $tasks['atk'] = 'addTicket';
 $tasks['dtk'] = 'delTicket';
 $tasks['ctk'] = 'closeTicket.task';
@@ -47,7 +48,6 @@ $tasks['cmsupd'] = 'cmsUpdate.task';
 $tasks['evar'] = 'variousSave.task';
 $tasks['uvar'] = 'variousUpdate.task';
 $tasks['trash'] = 'trash.task';
-$tasks['trashObj'] = 'trashObj.task';
 $tasks['upload'] = 'upload.task';
 
 //get task and position

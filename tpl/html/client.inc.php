@@ -7,6 +7,8 @@
 			</div>
 			<div class="cl-cases"></div>
             <span class="fake-button hl-cl-b" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-highlight-btn']; ?></span>
+            <!--<span class="fake-button csv-cl-b" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-export-btn']; ?></span>-->
+            <a href="#" class="vcf-cl-b" target="_blank"><span class="fake-button " style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-vcard-btn']; ?></span></a>
 		</div>
 		<span class="ecl_res"></span>
 		<span class="ecl_frm_error"></span>
@@ -23,6 +25,15 @@ $(document).ready(function() {
 	if ($("#client .cldel").css('display') == 'none') {
 		$("#client .cldel").show(); //show delete button in case it got hidden during a delete
 	}
+	//handle vcf link
+	$(".vcf-cl-b").click(function(e) {
+		if ($(this).attr('href') == '#') {
+			e.preventDefault();
+			var clid = $("#ecl_frm #eclid").val();
+			$(this).prop('href','index.php?task=clvcf&pos=before&clid='+clid);
+		}
+	});
+
     //highlight
     $(".hl-cl-b").click(function() {
 		var clid = $("#ecl_frm #eclid").val();
@@ -84,6 +95,5 @@ $(document).ready(function() {
 			alert('<?php echo $lang['client-edit-error']; ?>');
 		}
 	});
-
 });
 </script>

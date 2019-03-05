@@ -6,6 +6,7 @@
 if (!defined('_w00t_frm')) die('har har har');
 
 $lang['controls-close'] = 'Close me';
+$lang['close-me'] = 'Κλείσιμο';
 $lang['month-all'] = 'All';
 $lang['month-dec'] = 'Δεκέμβρης';
 $lang['month-nov'] = 'Νοέμβρης';
@@ -39,6 +40,7 @@ $lang['case-filter-closed'] = 'Closed';
 $lang['case-filter-open'] = 'Open';
 $lang['case-filter-high'] = 'High';
 $lang['case-filter-user'] = 'User';
+$lang['all-clients'] = 'Όλοι οι πελάτες';
 $lang['client-card'] = 'Καρτέλα Πελάτη';
 $lang['client-vcard-btn'] = 'Client to VCF';
 $lang['client-export-btn'] = 'Export Cases CSV';
@@ -114,5 +116,5 @@ $lang['stats-listbytype'] = 'Ανάλυση ανά είδος';
 $lang['stats-listbytypebygross'] = 'Ανάλυση ανά είδος ανά τζίρο';
 $lang['stats-listbyclient'] = 'Ανάλυση ανά πελάτη ανά τζίρο (τοπ 8)';
 $lang['stats-listbyclient-noc'] = 'Ανάλυση ανά πελάτη με αριθμό cases (τοπ 8)';
-
+$lang['find'] = 'Αναζήτηση με ID';
 ?> 

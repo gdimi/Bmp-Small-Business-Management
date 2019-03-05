@@ -55,6 +55,8 @@ section {
     font-size: 1em;
     font-weight: normal;
     padding: 2px;
+    margin-left: 4px;
+    margin-top: 3px;
 }
 
 #cis_res table {
@@ -450,7 +452,7 @@ table#ct_table {
 }
 
 .fake-button {
-	background-color: #EEE8AA;
+	background-color: #FCF7C2;
 	border: medium solid #808080;
 	border-radius: 4px 4px 4px 4px;
 	cursor: pointer;
@@ -535,7 +537,7 @@ table#ct_table {
   border-right: medium solid #808080;
 }
 
-.ct-error, .ct-details, .ct-info, .ct-user, .ct-where {
+.ct-error, .ct-details, .ct-info, .ct-user, .ct-where, .ct-client, .ct-price, .ct-model, .ct-follow {
 	padding: 2px;
 }
 
@@ -546,7 +548,7 @@ table#ct_table {
 }
 
 .ct-date > input {
-	width: 78px;
+	width:110px;
 }
 
 .ct-cat > input{
@@ -892,4 +894,14 @@ span.clname  {
 .hasAttachment::before {
   content: "§";
   padding-right: 8px;
+}
+
+cl-cases h3 {
+    margin-top: 0.1em;
+    background-color: lightsteelblue;
+    padding-left: 4px;
+}
+
+.cl-cases > div > div {
+    padding-left: 2px;
 }

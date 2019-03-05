@@ -63,7 +63,7 @@ if (!$pos or $pos != 'before') {
                             <td>User</td><td class=\"ct-user\" style=\"background-color:white\">${case['user']}</td>
                         </tr>
                         <tr>
-                            <td>Action</td><td style=\"background-color:white\"><span class=\"del-tck\" id=\"dt_ss${case['id']}\">D</span></td>
+                            <td>Action</td><td style=\"background-color:white\"><span title=\"Delete this case\" class=\"del-tck\" id=\"dt_ss${case['id']}\">D</span></td>
                         </tr>";
 					}
                     $msg .= $ticket_data.'</table>';

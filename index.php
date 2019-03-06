@@ -24,11 +24,15 @@ require_once('sources/init.php');
 	<link href="tpl/css/responsive.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<header id="top"> 
+   <header id="top" <?php if ($dss->style['top_bar_bg']) { echo 'style="background-color: '.$dss->style['top_bar_bg'].';"';} ?>>
+	<?php if ($dss->style['logo']) { ?>
+	<img src="<?php echo $dss->style['logo'];?>" alt="<?php echo $dss->project_name; ?>" title="<?php echo $dss->project_name; ?>" style="width:130px">
+	<? } else { ?>
         <h1><?php echo $dss->project_name; ?></h1>
+	<?php } ?>
         <?php if ($cms->motd) { echo '<span class="motd">'.$cms->motd.'</span>'; } ?>
     </header>
-	<aside id="menu">
+    <aside id="menu">
 		<?php include('tpl/html/left-menu.inc.php'); ?>
     </aside>
 	<section id="status">

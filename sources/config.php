@@ -51,7 +51,13 @@ class DSConfig {
         'vader',
         'spok'
     );
-    
+
+    var $style = array(
+        'logo'=>'', //path to logo file
+        'top_bar_bg'=>'', //top bar bg color
+        'left_bar_bg'=>'' //left bar bg color
+    );
+
     public function __toString() {
         return '<br />require password: '.$this->require_pass.
         '<br />timezone: '.$this->timezone.

@@ -6,6 +6,7 @@
 if (!defined('_w00t_frm')) die('har har har');
 
 $lang['controls-close'] = 'Close me';
+$lang['close-me'] = 'Close';
 $lang['month-all'] = 'All';
 $lang['month-dec'] = 'December';
 $lang['month-nov'] = 'November';
@@ -39,6 +40,7 @@ $lang['case-filter-closed'] = 'Closed';
 $lang['case-filter-open'] = 'Open';
 $lang['case-filter-high'] = 'High';
 $lang['case-filter-user'] = 'User';
+$lang['all-clients'] = 'All Clients';
 $lang['client-card'] = 'Client Card';
 $lang['client-vcard-btn'] = 'Client to VCF';
 $lang['client-export-btn'] = 'Export Cases CSV';
@@ -51,8 +53,7 @@ $lang['client-edit-btn'] = 'Update client';
 $lang['client-edit-error'] = 'invalid or no client id!';
 $lang['cms'] = 'CMS';
 $lang['cms-msg'] = '(Content Management System)';
-$lang['cms-intro'] = 'Εδώ μπορείτε να κάνετε edit το message of the day (motd) και τον πίνακα που γράφουμε γενικώς διάφορα (board)
-';
+$lang['cms-intro'] = 'Εδώ μπορείτε να κάνετε edit το message of the day (motd) και τον πίνακα που γράφουμε γενικώς διάφορα (board)';
 $lang['cms-motd'] = 'Message of the day';
 $lang['cms-motd-save'] = 'Save motd';
 $lang['cms-board'] = 'Board';
@@ -115,5 +116,5 @@ $lang['stats-listbytype'] = 'List by type';
 $lang['stats-listbytypebygross'] = 'List by type and by gross';
 $lang['stats-listbyclient'] = 'List by client (top 8)';
 $lang['stats-listbyclient-noc'] = 'List by client number of cases (top 8)';
-
+$lang['find'] = 'Find by ID';
 ?>

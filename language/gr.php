@@ -116,5 +116,5 @@ $lang['stats-listbytype'] = 'Ανάλυση ανά είδος';
 $lang['stats-listbytypebygross'] = 'Ανάλυση ανά είδος ανά τζίρο';
 $lang['stats-listbyclient'] = 'Ανάλυση ανά πελάτη ανά τζίρο (τοπ 8)';
 $lang['stats-listbyclient-noc'] = 'Ανάλυση ανά πελάτη με αριθμό cases (τοπ 8)';
-$lang['find'] = 'Αναζήτηση με ID';
+$lang['find'] = 'Εύρεση με ID';
 ?>

@@ -1,5 +1,8 @@
 ## CHANGELOG 
-*0.589-dev - 26/12/2017*
+*0.589-dev - 17/9/2019*
+add total remainder in client's card (for frozen cases)
+add option to show closed cases (warning for large # of cases this can be sloooow)
+some styling
 #issue 79 - bug expenses when viewing per month
 work on issue #58 trash: view object details
 work on issue #17 statistics section, index

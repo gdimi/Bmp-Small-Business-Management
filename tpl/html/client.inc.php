@@ -5,7 +5,9 @@
 				<form id="ecl_frm" name="ecl-frm" action="index.php?task=eclient&pos=before">
 				</form>
 			</div>
+			
 			<div class="cl-cases"></div>
+			<div class="remainder"></div>
             <span class="fake-button hl-cl-b" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-highlight-btn']; ?></span>
             <!--<span class="fake-button csv-cl-b" style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-export-btn']; ?></span>-->
             <a href="#" class="vcf-cl-b" target="_blank"><span class="fake-button " style="margin-bottom:20px;display:inline-block"><?php echo $lang['client-vcard-btn']; ?></span></a>

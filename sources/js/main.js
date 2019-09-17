@@ -310,6 +310,7 @@ $(document).ready(function() {
                     $("#dt_cl span.del-cl-b").attr( 'id', 'dlc_' + cid ); //set id with current client's id
 					$("#client #ecl_frm").html(data.message);
 					$("#client > div > .cl-cases").html(data.cases);
+					$("#client .remainder").html('Remainder: '+data.remainder+' &euro;');
 					$("#client").show("fast");
 				} else if(data.status === "error") {
 					$("#client > div").append(data.message);

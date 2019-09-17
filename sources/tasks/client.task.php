@@ -47,10 +47,17 @@ if (!$pos or $pos != 'before') {
 					}
 					$cases .="</div>";
 				}
- 
+
+				//now calc remainder for frozen cases
+				$scres = $sccon->query('SELECT SUM(price) AS total FROM "Case" WHERE clientID = '.$cid.' AND status = 3');
+				foreach ($scres as $rem) {
+					$remainder = $rem['total'];
+					if (is_null($remainder)) { $remainder = 0; }
+				}
 				$tk_status = json_encode(array(
 				 'status' => 'success',
 				 'cases' => $cases,
+				 'remainder' => $remainder,
 				 'message'=> $schtml
 				));
 				echo $tk_status;

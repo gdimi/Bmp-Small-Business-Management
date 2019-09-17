@@ -831,6 +831,7 @@ span.clname  {
   position: fixed;
   top: 25%;
   width: 80%;
+  text-align: center;
 }
 
 #cms_data > div {
@@ -854,6 +855,13 @@ span.clname  {
 #client .cl-cases {
     height: 14em;
     overflow: auto;
+}
+
+.cl-cases h3 {
+    margin: 0 0 0.5em 0;
+    text-align: center;
+    color: white;
+    background-color: gray;
 }
 
 #various .variousContent {

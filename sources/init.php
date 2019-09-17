@@ -111,6 +111,12 @@ if ($tasks[$task] && $pos == 'before') {
 	//load tickets and cache
 	$tickets_handler = tickets::getInstance();
 	$tickets_handler->attachDir = $defUploadDir;
+    if ($dss->show_closed == 1) {
+        $tickets_handler->sclosed = 10;
+    } else {
+        $tickets_handler->sclosed = 4;
+    }
+
 	$cache = new Cache;
 	$cache->cachefile = 'tickets.html';
 	$cache->cacheInit();

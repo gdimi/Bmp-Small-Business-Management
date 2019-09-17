@@ -29,6 +29,7 @@ class DSConfig {
     var $trashOWarn = 500; //trash object number warning
     var $maxUploadSize = 8192; // max upload size in KB
     var $uploadTypes = array('jpg','jpeg','png','bmp','tiff','gif','docx','doc','pdf','txt','zip','rar');
+    var $show_closed = 1; //1 = include closed cases , 0 = only open
 	var $caseType = array(
 		'1'=>'case type 1',
 		'2'=>'case type 2',

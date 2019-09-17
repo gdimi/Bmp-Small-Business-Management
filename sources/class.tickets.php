@@ -27,7 +27,7 @@ class tickets extends db {
 	public $historyfile = 'content/action_history.txt';
 	public $tickets = Array();
 	public $attachDir;
-
+	public $sclosed;
 
 	function readHistory() {
 		try {
@@ -91,7 +91,7 @@ class tickets extends db {
 					$ssql = ' ORDER BY cs.updated DESC';
 					break;
 			}
-			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID AND cs.status < 4'.$ssql);
+			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID AND cs.status < '.$this->sclosed.''.$ssql);
 			if ($cresult) {
 				foreach($cresult as $case) {
 					$attach = $this->checkForAttachment($case['id']);

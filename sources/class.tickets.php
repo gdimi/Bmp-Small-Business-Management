@@ -90,6 +90,8 @@ class tickets extends db {
 				case "updated":
 					$ssql = ' ORDER BY cs.updated DESC';
 					break;
+				default:
+					$ssql = ' ORDER BY cs.id DESC';
 			}
 			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs INNER JOIN "Client" AS cl ON  cl.id = cs.clientID AND cs.status < '.$this->sclosed.''.$ssql);
 			if ($cresult) {

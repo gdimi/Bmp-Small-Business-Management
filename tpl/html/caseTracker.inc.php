@@ -18,9 +18,9 @@
 		<?php
 		if (is_array($tickets)) {
 			$total = count($tickets);
-			if (!$sort) {
-				krsort($tickets,SORT_NUMERIC); // sort  reversed and numeric by key, keys are the stored ids 
-			}
+			//if (!$sort) {
+			//	krsort($tickets,SORT_NUMERIC); // sort  reversed and numeric by key, keys are the stored ids 
+			//}
 			foreach($tickets as $key=>$ticket) {
 				$tstat = $dss->caseStatus[$ticket['status']];
 				$tstat_class = str_replace(' ','_',$tstat);

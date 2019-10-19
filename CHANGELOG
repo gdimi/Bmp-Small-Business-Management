@@ -1,7 +1,12 @@
 ## CHANGELOG 
-*0.589-dev - 17/9/2019*
+*0.589-dev - 19/10/2019*
+upgrade jquery to version 1.12.4 from 1.10.2 (due to vulenrabilities in 1.10.2)
+FIX: fix doctype
+FIX: remove active lang js from init to index
+FIX: closed checkbox should be unchecked by default
+sort by case id by default
 add total remainder in client's card (for frozen cases)
-add option to show closed cases (warning for large # of cases this can be sloooow)
+add option to show closed cases (warning still cannot edit closed cases)
 some styling
 #issue 79 - bug expenses when viewing per month
 work on issue #58 trash: view object details

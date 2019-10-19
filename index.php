@@ -2,7 +2,7 @@
 define('_w00t_frm',true);
 require_once('sources/init.php');
 ?>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
 <title><?php echo $dss->sitename; ?></title>

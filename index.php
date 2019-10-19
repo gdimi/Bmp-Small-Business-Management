@@ -13,6 +13,7 @@ require_once('sources/init.php');
 	<meta name="Reply-to" content="info@hybridwebs.gr" />
 	<meta name="Author" content="George Dimitrakopoulos" />
 	<link rel="shortcut icon" href="favicon.ico" />
+	<script type="text/javascript"> var activeLanguage = "<?php echo $activeLanguage; ?>"; </script>
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
     <script src="sources/js/jquery.min.js"></script>
     <!--<script src="sources/js/tinymce/tinymce.gzip.js"></script>

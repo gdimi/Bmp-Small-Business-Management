@@ -104,9 +104,6 @@ if ($tasks[$task] && $pos == 'before') {
 	$lang = array();
 
 	include_once('language/'.$activeLanguage.'.php');
-	
-	//echo javascript variable
-	echo '<script type="text/javascript"> var activeLanguage = "'.$activeLanguage.'"; </script>';
 
 	//load tickets and cache
 	$tickets_handler = tickets::getInstance();

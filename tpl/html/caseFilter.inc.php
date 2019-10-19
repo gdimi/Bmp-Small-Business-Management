@@ -19,9 +19,9 @@
 </form>
 <script>
 $(document).ready(function() {
-	//close closed & unfixable cases by default
-	$("#ct_table .Closed").toggle('fast');
-	$("#ct_table .Unfixable").toggle('fast');
+	//do not close closed & unfixable cases by default, they are already closed!
+	//$("#ct_table .Closed").toggle('fast');
+	//$("#ct_table .Unfixable").toggle('fast');
 	$("#toggle_closed").change(function(){
 		$("#ct_table .Closed").toggle('fast');
 		$("#ct_table .Unfixable").toggle('fast');

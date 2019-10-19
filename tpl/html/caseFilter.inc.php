@@ -6,7 +6,7 @@
 <form>
     <strong><?php echo $lang['case-filter-filter']; ?></strong>&nbsp;
 	<label for="toggle_closed"><?php echo $lang['case-filter-closed']; ?></label>
-	<input type="checkbox" name="toggle_closed" id="toggle_closed" checked/>
+	<input type="checkbox" name="toggle_closed" id="toggle_closed" />
 	<label for="toggle_open"><?php echo $lang['case-filter-open']; ?></label>
 	<input type="checkbox" name="toggle_open" id="toggle_open" />
 	<label for="toggle_high"><?php echo $lang['case-filter-high']; ?></label>

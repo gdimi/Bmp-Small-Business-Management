@@ -1,4 +1,9 @@
 /cache/tickets*
+/content/various.html
+/content/prices.html
+/content/board
+/content/motd
+/content/action_history.txt
 /pld/AlternateBlue/*
 /pld/Default/*
 /pld/Dynamic/*

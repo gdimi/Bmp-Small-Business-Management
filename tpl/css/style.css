@@ -820,18 +820,19 @@ span.clname  {
 }
 
 .sos {
-  background-color: red;
-  border: 2px solid white;
-  box-shadow: 0 0 4px black;
-  color: white;
-  font-weight: bold;
-  left: 10%;
-  margin: 0 auto;
-  padding: 6px;
-  position: fixed;
-  top: 25%;
-  width: 80%;
-  text-align: center;
+    background-color: red;
+    border: 2px solid white;
+    box-shadow: 0 0 4px black;
+    color: white;
+    font-weight: bold;
+    left: 25%;
+    margin: 0 auto;
+    padding: 6px 12px;
+    position: fixed;
+    top: 25%;
+    width: auto;
+    text-align: center;
+    min-width: 50%;
 }
 
 #cms_data > div {

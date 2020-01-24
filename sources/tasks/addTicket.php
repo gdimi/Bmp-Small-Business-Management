@@ -45,6 +45,9 @@ $ttype = $dss->caseType;
 $tstatus = $dss->caseStatus;
 $tpriority = $dss->casePriority;
 
+$terror = '';
+$fmsgerr = '';
+
 $ticket['title'] = $_POST['title'];
 $ticket['model'] = $_POST['model'];
 $ticket['info'] = $_POST['info'];
@@ -154,11 +157,10 @@ $ahistory = "${ticket['created']} ${ticket['user']} added case <strong> ${ticket
 //print_r($ticket);
 
 //as this is adding for 1st time, we only need to check if it is already closed case so to update accordingly "closed" field.
+$ticket['closed'] = '';
 if ($ticket['status'] == 4) {
 	$ticket['closed'] == $ticket['created'];
-} else {
-	$ticket['closed'] == '';
-}
+} 
 
 try {
     $sccon = new PDO('sqlite:pld/HyperLAB.db3');

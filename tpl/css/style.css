@@ -6,6 +6,15 @@ body {
 
 header {background-color:lightgray;}
 
+h3.general-title {
+    font-size: 100%;
+    margin: 0 auto;
+    padding: 0px 8px;
+    text-align: center;
+    background-color: steelblue;
+    color: white;
+}
+
 header#top {
 	height:40px;
 	font-size: 1.2em;
@@ -138,12 +147,16 @@ tr.tbody td {
 .ct-Medium {
 	background-color: orange;
     width:60px; /*this here is giving the rest td's the max width*/
+    text-align:center;
 }
 .ct-Low {
 	background-color: lightgreen;
+    text-align:center;
 }
 .ct-High {
-	background-color: red
+	background-color: red;
+    color: white;
+    text-align:center;
 }
 .ct-Fatal {
 	background-color: darkred
@@ -244,6 +257,7 @@ tr.tbody td {
    text-shadow: 1px 1px 2px #000000;
    vertical-align: middle;
 }
+
 .elevate {
 	box-shadow: 2px 2px 6px #000000;
 	z-index:2;
@@ -860,9 +874,14 @@ span.clname  {
 
 .cl-cases h3 {
     margin: 0 0 0.5em 0;
+    margin-top: 0.1em;
+    padding-left: 4px;
     text-align: center;
     color: white;
-    background-color: gray;
+    background-color: lightsteelblue;}
+
+.cl-cases > div > div {
+    padding-left: 2px;
 }
 
 #various .variousContent {
@@ -874,12 +893,20 @@ span.clname  {
     margin-bottom: 10px;
 }
 
-#trash_data > ul {
+#trash_info ul {
     list-style: outside none none;
     margin-left: 0;
     padding-left: 16px;
 }
 
+#trash_obj_view li {
+    padding: 2px;
+}
+
+#trash_obj_view li > span {
+    display:inline-block;
+    min-width:64px;
+}
 .gen-success {
 	padding: 8px;
 	color:green;
@@ -905,12 +932,38 @@ span.clname  {
   padding-right: 8px;
 }
 
-cl-cases h3 {
-    margin-top: 0.1em;
-    background-color: lightsteelblue;
-    padding-left: 4px;
+
+
+#trash_info {
+    width: auto;
+    max-width: 848px;
+    min-width: 30%;
+    min-height: 200px
+    left: 20%;
+    top: 30%;
+;
 }
 
-.cl-cases > div > div {
-    padding-left: 2px;
+#trash_data {
+    max-height: 8em;
+    overflow: auto;
+}
+
+#trash_obj_view {
+    margin-top: 10px;
+    padding: 14px;
+    border: medium solid cadetblue;
+}
+
+#trash_data li {
+	margin: 6px;
+	float: left;
+}
+
+#trash_data li a.to {
+    text-decoration: none;
+    color: white;
+    background-color: gray;
+    padding: 2px;
+    border-radius: 4px;
 }

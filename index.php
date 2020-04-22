@@ -19,6 +19,7 @@ require_once('sources/init.php');
     <!--<script src="sources/js/tinymce/tinymce.gzip.js"></script>
 	<script>tinymce.init({selector:'textarea.rich'});</script>-->
     <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.13.0/build/cssbase/cssbase-min.css">-->
+	<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     
 	<link href="tpl/css/cssbase-min.css" rel="stylesheet" type="text/css" />
 	<link href="tpl/css/style.css" rel="stylesheet" type="text/css" />
@@ -33,7 +34,7 @@ require_once('sources/init.php');
 	<?php } ?>
         <?php if ($cms->motd) { echo '<span class="motd">'.$cms->motd.'</span>'; } ?>
     </header>
-    <aside id="menu">
+    <aside id="menu" <?php echo ($dss->style['left_bar_bg']) ? 'style="background-color: '.$dss->style['left_bar_bg'].';"' : '';?>>
 		<?php include('tpl/html/left-menu.inc.php'); ?>
     </aside>
 	<section id="status">

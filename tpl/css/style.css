@@ -302,6 +302,12 @@ tr.tbody td {
 	display:none;
 }
 
+#various {
+    max-width: 1000px;
+    width: 60%;
+    left: 26%;
+}
+
 #cis_res {
     min-width: 400px;
     width: 50%;

@@ -10,6 +10,10 @@ if (!defined('_w00t_frm')) die('har har har');
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
+    
+    $tfData = '';
+    $tfColor = '';
+    
     include_once('sources/class.trash.php');
     if (is_dir("content/trashed")) {
         $Trash = new Trash;
@@ -18,7 +22,10 @@ if (!$pos or $pos != 'before') {
             $trashFiles = $Trash->showObjectList();
             foreach ($trashFiles as $trashFile) {
 				$to_class = str_replace("content/trashed/","",$trashFile);
-                $tfData .= '<li><a href="javascript:void(0);" class="to '.$to_class.'">'.$trashFile.'</a></li>';
+                if (strpos($to_class,'case') === false) {
+                    $tfColor = 'style="background-color: slategray"';
+                }
+                $tfData .= '<li><a href="javascript:void(0);" alt="View" title="View" class="to '.$to_class.'" '.$tfColor.'>'.$to_class.'</a></li>';
             }
             
             $tfData = '<ul id="trash_files">'.$tfData.'</ul>';

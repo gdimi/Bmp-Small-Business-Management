@@ -117,4 +117,25 @@ $lang['stats-listbytypebygross'] = 'List by type and by gross';
 $lang['stats-listbyclient'] = 'List by client (top 8)';
 $lang['stats-listbyclient-noc'] = 'List by client number of cases (top 8)';
 $lang['find'] = 'Find by ID';
+$lang['id'] = 'previous Id';
+$lang['title'] = 'Title';
+$lang['model'] = 'Model/SN';
+$lang['info'] = 'Additional Info';
+$lang['clientID'] = 'Client';
+$lang['category'] = 'Tag';
+$lang['priority'] = 'Priority';
+$lang['type'] = 'Type';
+$lang['status'] = 'Status';
+$lang['created'] = 'Created';
+$lang['updated'] = 'Updated';
+$lang['user'] = 'User';
+$lang['price'] = 'Price';
+$lang['follow'] = 'Follow';
+$lang['closed'] = 'Closed';
+$lang['name'] = 'Name';
+$lang['tel1'] = 'Telephone 1';
+$lang['tel2'] = 'Telephone 2';
+$lang['email'] = 'Email';
+$lang['address'] = 'Address';
+
 ?>

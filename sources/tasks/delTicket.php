@@ -38,14 +38,18 @@ if (!$pos or $pos != 'before') {
 			$scres = $sccon->query('SELECT * FROM "Case" WHERE id = '.$tid.';');
 			if ($scres) {
 				$storemsg = '';
-				$caseData2store = array();
+				$objData2store = array();
 
 				foreach ($scres as $key=>$value) {
-					$caseData2store[$key] = $value;
+                    foreach ($value as $kkey => $vvalue) {
+                        if (is_numeric($kkey)) continue; //FIXME why there are these numeric keys in result?
+                        $objData2store[$kkey] = $vvalue;
+                    }
 				}
+
 				//store into contents/trashed
-				$csJSONdata = json_encode($caseData2store);
-				if (file_put_contents("content/trashed/case-$tid",$csJSONdata) === false) {
+				$objJSONdata = json_encode($objData2store);
+				if (file_put_contents("content/trashed/case-$tid",$objJSONdata) === false) {
 					$storemsg = ',but case data store failed';
 				} else {
 					$storemsg = ',and case data stored at content/trashed/case-'.$tid;

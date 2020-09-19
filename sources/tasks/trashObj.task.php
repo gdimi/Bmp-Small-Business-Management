@@ -16,9 +16,18 @@ if (!$pos or $pos != 'before') {
 			$Trash->initTrash();
 			if (!$Trash->trashErr) {
 				$to_data = $Trash->showObjectDetails('content/trashed/'.$to);
+                                
+                //determine data type in trash file
+                if (strpos($to,'case') !== false) { 
+                    $type = 'case';
+                } elseif (strpos($to,'client') !== false) {
+                    $type = 'client';
+                } 
+                
 				if (!$Trash->trashErr) {
 					$tk_status = json_encode(array(
 					 'status'=>'success',
+                     'type'=>$type,
 					 'data' => $to_data
 					));
 					echo $tk_status;

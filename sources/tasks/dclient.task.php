@@ -40,10 +40,13 @@ if (!$pos or $pos != 'before') {
 				$clientData2store = array();
 
 				foreach ($scres as $key=>$value) {
-					$clientData2store[$key] = $value;
+                    foreach ($value as $kkey => $vvalue) {
+                        if (is_numeric($kkey)) continue; //FIXME why there are these numeric keys in result?
+                        $objData2store[$kkey] = $vvalue;
+                    }
 				}
 				//store into contents/trashed
-				$clJSONdata = json_encode($clientData2store);
+				$clJSONdata = json_encode($objData2store);
 				if (file_put_contents("content/trashed/client-$cid",$clJSONdata) === false) {
 					$storemsg = ',but client data store failed';
 				} else {

@@ -1,5 +1,10 @@
 ## CHANGELOG 
-*0.589-dev - 19/10/2019*
+*0.589-dev - 22/04/2020*
+various page is wider
+now the left sidebar color can be changed from config
+some language fixes
+minor SOS styling fixes
+htaccess deny direct access to sources folder
 upgrade jquery to version 1.12.4 from 1.10.2 (due to vulenrabilities in 1.10.2)
 FIX: fix doctype
 FIX: remove active lang js from init to index

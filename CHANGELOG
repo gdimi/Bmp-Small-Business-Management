@@ -1,5 +1,6 @@
 ## CHANGELOG 
-*0.589-dev - 22/04/2020*
+*0.658 - 19/09/2020*
+client export to vcf file
 various page is wider
 now the left sidebar color can be changed from config
 some language fixes
@@ -12,10 +13,11 @@ FIX: closed checkbox should be unchecked by default
 sort by case id by default
 add total remainder in client's card (for frozen cases)
 add option to show closed cases (warning still cannot edit closed cases)
-some styling
-#issue 79 - bug expenses when viewing per month
-work on issue #58 trash: view object details
+some general styling
+issue #79 - bug expenses when viewing per month
+issue #58 - trash: view object details
 work on issue #17 statistics section, index
+performance improvement by changing html js output
 
 *0.589 - 28/9/2017*
 #issue 76 - division by zero in stats when no results bug

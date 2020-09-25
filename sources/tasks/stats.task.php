@@ -6,6 +6,7 @@ $caseType = $dss->caseType;
 
 $from_time = '';
 $to_time = $curTimestamp;
+$sc_err = '';
 
 //see if there's a year we're intrested in
 if (isset($_GET['iy']) && $_GET['iy'] > 0) {

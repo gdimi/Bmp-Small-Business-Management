@@ -17,6 +17,10 @@
 			</tr>
 		<?php
 		if (is_array($tickets)) {
+            $ticket_data = '';
+            $actual_ticket_data = '';
+            $js = '';
+            
 			$total = count($tickets);
 			//if (!$sort) {
 			//	krsort($tickets,SORT_NUMERIC); // sort  reversed and numeric by key, keys are the stored ids 

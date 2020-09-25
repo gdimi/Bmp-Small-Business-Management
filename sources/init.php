@@ -10,6 +10,7 @@ if (!defined('_w00t_frm')) die('har har har');
  * load language
  * load cases and cache
  */
+
 //load settings
 require_once('sources/config.php');
 $dss = new DSconfig;
@@ -21,6 +22,11 @@ date_default_timezone_set($dss->timezone);
 $thisYear = date("Y");
 $curTimestamp = time();
 $defUploadDir = 'content/uploads';
+
+//init vars
+$task = '';
+$pos = '';
+$action = '';
 
 //first register possible tasks
 $tasks = Array();
@@ -52,10 +58,11 @@ $tasks['trashObj'] = 'trashObj.task';
 $tasks['upload'] = 'upload.task';
 
 //get task and position
-$task = trim($_GET['task']);
-$pos = trim($_GET['pos']);
+if ($_GET['task']) $task = trim($_GET['task']);
+if ($_GET['pos']) $pos = trim($_GET['pos']);
 //get action
-$action = trim($_GET['action']);
+if ($_GET['action']) $action = trim($_GET['action']);
+
 //check if position
 if (!$pos && $task) {
 	$task_status = json_encode(array(

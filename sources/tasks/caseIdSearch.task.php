@@ -8,10 +8,11 @@ if (!$pos or $pos != 'before') {
 } else {
 	if ($_GET['ci']) {
 		$cid = trim($_GET['ci']);
+        $cid = substr($cid,3);
+        
 		if (is_numeric($cid)) {
             require_once('sources/config.php');
             $dss = new DSconfig;
-			$cid = substr($cid,2);
 			try {
 				$sccon = new PDO('sqlite:pld/HyperLAB.db3');
 				$sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );

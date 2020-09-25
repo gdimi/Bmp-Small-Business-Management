@@ -55,27 +55,30 @@ class DSConfig {
 
     var $style = array(
         'logo'=>'', //path to logo file
-        'top_bar_bg'=>'', //top bar bg color
-        'left_bar_bg'=>'' //left bar bg color
+        'top_bar_bg'=>'yellow', //top bar bg color
+        'left_bar_bg'=>'pink' //left bar bg color
     );
 
     public function __toString() {
-        return '<br />require password: '.$this->require_pass.
-        '<br />timezone: '.$this->timezone.
-        '<br />project name: '.$this->project_name.
-        '<br />site name: '.$this->sitename.
-        '<br />show history: '.$this->show_history.
-        '<br />mailer: '.$this->mailer.
-        '<br />mail to: '.$this->mailto.
-        '<br />mail from: '.$this->mailfrom.
-        '<br />from name: '.$this->fromname.
-        '<br />take backup: '.$this->backup.
-        '<br />store revisions: '.$this->revisions.
-        '<br />revision number: '.$this->rev_num.
-        '<br />valid users: '.implode(',',$this->users).
-        '<br />trash size warning: '.$this->trashWarn.
-        '<br />trash objects warning: '.$this->trashOWarn.
-        '<br />maximum upload size: '.$this->maxUploadSize;
+        return '<br />Require password: '.$this->require_pass.
+        '<br />Timezone: '.$this->timezone.
+        '<br />Project name: '.$this->project_name.
+        '<br />Site name: '.$this->sitename.
+        '<br />Show history: '.$this->show_history.
+        '<br />Mailer: '.$this->mailer.
+        '<br />Mail to: '.$this->mailto.
+        '<br />Mail from: '.$this->mailfrom.
+        '<br />From name: '.$this->fromname.
+        '<br />Take backup: '.$this->backup.
+        '<br />Store revisions: '.$this->revisions.
+        '<br />Revision number: '.$this->rev_num.
+        '<br />Valid users: '.implode(',',$this->users).
+        '<br />Trash size warning: '.$this->trashWarn.
+        '<br />Trash objects warning: '.$this->trashOWarn.
+        '<br />Maximum upload size: '.$this->maxUploadSize.' Kbytes'.
+        '<br />Logo: '.$this->style['logo'].
+        '<br />Top bar bg color: '.$this->style['top_bar_bg'].
+        '<br />Left bar bg color: '.$this->style['left_bar_bg'];
     }
 }
 ?>

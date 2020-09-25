@@ -56,7 +56,7 @@ require_once('sources/init.php');
 		<?php echo $cms->board; ?>
 	</div>
 	<section id="history">
-		<header></header>
+		<header><?php echo $lang['history']; ?></header>
         <div>
 		<?php if ($dev_history) {
 			echo $dev_history;

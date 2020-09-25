@@ -137,4 +137,5 @@ $lang['tel1'] = 'Τηλέφωνο 1';
 $lang['tel2'] = 'Τηλέφωνο 2';
 $lang['email'] = 'Email';
 $lang['address'] = 'Διεύθυνση';
+$lang['history'] = 'Ιστορικό';
 ?>

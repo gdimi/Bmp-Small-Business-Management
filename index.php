@@ -12,6 +12,7 @@ require_once('sources/init.php');
 	<meta name="robots" content="no-index,no-follow" />
 	<meta name="Reply-to" content="info@hybridwebs.gr" />
 	<meta name="Author" content="George Dimitrakopoulos" />
+    <meta name="referrer" content="no-referrer-when-downgrade">
 	<link rel="shortcut icon" href="favicon.ico" />
 	<script type="text/javascript"> var activeLanguage = "<?php echo $activeLanguage; ?>"; </script>
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
@@ -24,6 +25,7 @@ require_once('sources/init.php');
 	<link href="tpl/css/cssbase-min.css" rel="stylesheet" type="text/css" />
 	<link href="tpl/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="tpl/css/responsive.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
    <header id="top" <?php if ($dss->style['top_bar_bg']) { echo 'style="background-color: '.$dss->style['top_bar_bg'].';"';} ?>>

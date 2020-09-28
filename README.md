@@ -12,9 +12,9 @@ database: this software uses an sqlite database for maximum portability.
 
 security: there is no user system so either do not throw it on www, or use an htacess auth in front of it!
 
-
+tested up to php 7.2
 
 Licenced in gpl 2.0
 
 
-George Dimitrakopoulos 2014
+George Dimitrakopoulos 2014 - 2020

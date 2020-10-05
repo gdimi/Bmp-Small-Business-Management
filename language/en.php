@@ -138,4 +138,5 @@ $lang['tel2'] = 'Telephone 2';
 $lang['email'] = 'Email';
 $lang['address'] = 'Address';
 $lang['history'] = 'History';
+$lang['case-tracker'] = 'Case Tracker';
 ?>

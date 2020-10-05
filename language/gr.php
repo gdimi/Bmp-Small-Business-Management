@@ -138,4 +138,5 @@ $lang['tel2'] = 'Τηλέφωνο 2';
 $lang['email'] = 'Email';
 $lang['address'] = 'Διεύθυνση';
 $lang['history'] = 'Ιστορικό';
+$lang['case-tracker'] = '';
 ?>

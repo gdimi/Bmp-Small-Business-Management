@@ -58,10 +58,10 @@ $tasks['trashObj'] = 'trashObj.task';
 $tasks['upload'] = 'upload.task';
 
 //get task and position
-if ($_GET['task']) $task = trim($_GET['task']);
-if ($_GET['pos']) $pos = trim($_GET['pos']);
+if (isset($_GET['task']) && $_GET['task'] != '') $task = trim($_GET['task']);
+if (isset($_GET['pos']) && $_GET['pos'] !='') $pos = trim($_GET['pos']);
 //get action
-if ($_GET['action']) $action = trim($_GET['action']);
+if (isset($_GET['action']) && $_GET['action'] != '') $action = trim($_GET['action']);
 
 //check if position
 if (!$pos && $task) {
@@ -73,7 +73,7 @@ if (!$pos && $task) {
 	exit(1);
 }
 //handle before tasks
-if ($tasks[$task] && $pos == 'before') {
+if ($task != '' && $tasks[$task] && $pos == 'before') {
 	$task_file = 'sources/tasks/'.$tasks[$task].'.php';
 	//echo $task_file.'<br />';
 	if (file_exists($task_file)) {
@@ -171,7 +171,7 @@ if ($tasks[$task] && $pos == 'before') {
     }
 
 	//handle after tasks
-	if ($tasks[$task] && $pos == 'after') {
+	if ($task !='' && $tasks[$task] && $pos == 'after') {
 		$task_file = 'sources/tasks/'.$tasks[$task].'.php';
 		if (file_exists($task_file)) {
 			require_once($task_file);

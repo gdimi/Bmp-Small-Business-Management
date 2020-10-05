@@ -16,7 +16,7 @@
 				<td>Action</td>
 			</tr>
 		<?php
-		if (is_array($tickets)) {
+		if (isset($tickets) && is_array($tickets)) {
             $ticket_data = '';
             $actual_ticket_data = '';
             $js = '';

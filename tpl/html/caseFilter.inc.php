@@ -1,4 +1,5 @@
 <?php
+    $userHTML = '';
     foreach ($dss->users as $oneuser) {
         $userHTML .= '<option value="'.$oneuser.'">'.$oneuser.'</option>';
     }

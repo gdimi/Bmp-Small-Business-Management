@@ -40,6 +40,8 @@ class cms {
      * */
      $boardFile = "content/board";
      $boardContents = file($boardFile);
+     $boardHTML = '';
+     $css = '';
      $dcvExploded = array();
 	 $closeJS = '<span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>'; 
      foreach ($boardContents as $line) {

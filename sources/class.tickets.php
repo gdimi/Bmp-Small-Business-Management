@@ -41,6 +41,7 @@ class tickets extends db {
 	
 	function returnHistory() {
 		try {
+         $rh = '';
 		 $history =  file($this->historyfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
 		 $history = array_reverse($history);//reverse array so actions appear first to last in time order
 		 foreach ($history as $line) {

@@ -8,7 +8,7 @@ if (!$pos or $pos != 'before') {
 } else {
 	if ($_GET['ci']) {
 		$cid = trim($_GET['ci']);
-        $cid = substr($cid,3);
+        $cid = substr($cid,-3);
         
 		if (is_numeric($cid)) {
             require_once('sources/config.php');

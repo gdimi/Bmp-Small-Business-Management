@@ -140,6 +140,7 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 		}
 
 		//check if tickets are to be sorted
+        $sort = '';
 		if (isset($_GET['sr'])) {
 			$sort = $_GET['sr']; //TODO: better security
 		}

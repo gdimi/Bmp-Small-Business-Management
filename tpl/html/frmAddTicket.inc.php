@@ -5,8 +5,8 @@ if (!defined('_w00t_frm')) die('har har har');
 			<div id="add_help_data">
 			<span style="    display: block;font-size: 1.2em;margin-bottom: 4px;text-align: center;">Heeeelp...</span>
 			<span>Title:</span> A title we all can make sense of. 255 chars max<br /><br />
-			<span>model:</span> To model i Serial Number i service tag 255 chars max. An den exei i den to 3eroume vazoume mia "-"<br /><br />
-			<span>Additional info:</span> Any other info about the error goes here. Dont write the story of your life, 4096chars max<br /><br />
+			<span>model:</span> To model i Serial Number i service tag 255 chars max.<br /><br />
+			<span>Additional info:</span> Any other info about the error goes here. Dont write the story of your life<br /><br />
 			<span>Client:</span> Auto complete field<br /><br />
 			<span>Category:</span> Use your imagination (eg LAB meaning ..LAB! onsite etc). There are no standar categories here, categories work as a tagging system.<br /><br />
 			<span>Priority:</span> High,Medium,Low pretty self explaining.<br /><br />
@@ -71,7 +71,7 @@ if (!defined('_w00t_frm')) die('har har har');
 			</fieldset>
 			<fieldset id="tfupload">
 				<?php echo $lang['upload-file']; ?><br />
-				<span class="removeAt" style="color:red;padding:4px;display:none;"><?php echo $lang['delete']; ?></span>
+				<span class="removeAt"><?php echo $lang['delete']; ?></span>
 				<input type="file" name="fileToUpload" class="fileToUpload">
 				<input type="hidden" name="fileUploaded" id="fileUploaded">
 				<div class="" style="display:none;"></div>

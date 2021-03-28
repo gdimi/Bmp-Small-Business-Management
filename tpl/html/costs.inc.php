@@ -1,4 +1,8 @@
 		<?php require_once('sources/preprocessor/costs.php'); //require preprocessor ?>
+		
+		<script src='sources/third_party/pickmeup.min.js'></script>
+		<link rel='stylesheet' href='sources/third_party/pickmeup.css' />
+
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
 		<h2><?php echo $lang['costs']; ?></h2>
         <span class="filters" id="cost_filters">
@@ -34,7 +38,7 @@
 					<label for="cAmount"><?php echo $lang['costs-amount']; ?></label>
 					<input type="text" name="cAmount" id="cAmount" value="" size="4" required /><br />
 					<label for="cDate"><?php echo $lang['costs-date']; ?></label>
-					<input type="text" name="cDate" id="cDate" value="" size="12" required placeholder="DD/MM/YYYY" /><br />
+					<input type="text" name="cDate" id="cDate" class="pdate" value="" size="12" required placeholder="DD/MM/YYYY" /><br />
 				</fieldset>
 				<span class="fake-button" id="addcsbtn"><?php echo $lang['costs-add-msg']; ?></span><br /><br />
 				<span class="cl-b" onclick="$(this).parent().parent().toggle();"><?php echo $lang['controls-close']; ?></span>
@@ -50,7 +54,7 @@
 					<label for="ecAmount"><?php echo $lang['costs-amount']; ?></label>
 					<input type="text" name="ecAmount" id="ecAmount" value="" size="4" required /><br />
 					<label for="ecDate"><?php echo $lang['costs-date']; ?></label>
-					<input type="text" name="ecDate" id="ecDate" value="" size="12" required placeholder="DD/MM/YYYY"/><br />
+					<input type="text" name="ecDate" id="ecDate" class="epdate" value="" size="12" required placeholder="DD/MM/YYYY"/><br />
                     <input type="hidden" name="ecId" id="ecId" value="" />
 				</fieldset>
 				<span class="fake-button" id="editcsbtn"><?php echo $lang['costs-save']; ?></span><br /><br />
@@ -67,6 +71,19 @@
         <div id="cres_act" class="elevate menu-dialog" style="display:none;"></div>
 <script>
 $(document).ready(function() {
+	
+	pickmeup('.pdate', {
+		format	: 'd/m/Y',
+		hide_on_select: true,
+		default_date: false
+	});
+
+	pickmeup('.epdate', {
+		format	: 'd/m/Y',
+		hide_on_select: true,
+		default_date: false
+	});
+	
 	$('#costs').on('change','select',function(){
 		var im = $('#cost_month').val();
 		var iy = $('#cost_year').val();

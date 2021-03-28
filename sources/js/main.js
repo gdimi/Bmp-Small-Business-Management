@@ -323,12 +323,12 @@ $(document).ready(function() {
 	});
 });
 
-    //functions
-    
-	function returnEndId(elem) {
-	   //return the numeric id from the end of a string (eg a class or id of an element)
-	   return parseInt(elem.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
-	}
+//functions
+
+function returnEndId(elem) {
+   //return the numeric id from the end of a string (eg a class or id of an element)
+   return parseInt(elem.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
+}
 
 
 function allowDrop(ev) {

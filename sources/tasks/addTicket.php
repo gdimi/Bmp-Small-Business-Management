@@ -84,7 +84,7 @@ foreach($ticket as $key=>$value) {
 //check values and finalize
 $ticket['title'] = $tfrm->truncate_str($ticket['title'],255);
 $ticket['model'] = $tfrm->truncate_str($ticket['model'],255);
-$ticket['info'] = $trim($ticket['info']);
+$ticket['info'] = trim($ticket['info']);
 $ticket['category'] = $tfrm->truncate_str($ticket['category'],255);
 $ticket['user'] = $tfrm->truncate_str($ticket['user'],64);
 $ticket['follow'] = $tfrm->truncate_str($ticket['follow'],255);

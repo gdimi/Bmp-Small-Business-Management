@@ -14,7 +14,7 @@
  * @category   bmp\sources\ajax handlers
  * @package    bmp\sources
  * @author     Original Author <gdimi@hyperworks.gr>
- * @copyright  2014-2017 George Dimitrakopoulos
+ * @copyright  2014-2021 George Dimitrakopoulos
  * @license    GPLv2
  * @version    1.0
  * @link       -
@@ -27,15 +27,21 @@ if (!defined('_w00t_frm')) die('har har har');
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
-	$to = $_GET['file'];
-	if ($file) {	
+	
+	$file = (isset($_POST['fln']) && !empty($_POST['fln'])) ? $_POST['fln'] : false;
+	
+	if ($file) {
 		include_once('sources/class.filesystem.php');
 		if (is_file($file)) {
-			$fs = new Filesystem;				
+			$fs = new Filesystem($dss->uploadTypes);
+			$fileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
+
+			$fs->unlinkFile($file);
+			
 			if (!$fs->fsErr) {
 				$tk_status = json_encode(array(
 				 'status'=>'success',
-				 'data' => 'file is erased!'
+				 'message' => 'file is erased!'
 				));
 				echo $tk_status;
 				exit(0);
@@ -45,7 +51,9 @@ if (!$pos or $pos != 'before') {
 		} else {
 			$scerr = 'File not found';
 		}
-	} 
+	} else {
+		$scerr = 'No file provided';
+	}
 }
 
 

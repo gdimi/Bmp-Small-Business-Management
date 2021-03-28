@@ -56,6 +56,8 @@ $tasks['uvar'] = 'variousUpdate.task';
 $tasks['trash'] = 'trash.task';
 $tasks['trashObj'] = 'trashObj.task';
 $tasks['upload'] = 'upload.task';
+$tasks['unlink'] = 'unlink.task';
+$tasks['sets'] = 'settingsSave.task';
 
 //get task and position
 if (isset($_GET['task']) && $_GET['task'] != '') $task = trim($_GET['task']);
@@ -72,6 +74,11 @@ if (!$pos && $task) {
 	echo $task_status;
 	exit(1);
 }
+
+//load model helper
+require_once('sources/model.helper.php');
+$modelHelper = Model::getInstance();
+
 //handle before tasks
 if ($task != '' && $tasks[$task] && $pos == 'before') {
 	$task_file = 'sources/tasks/'.$tasks[$task].'.php';
@@ -90,17 +97,19 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 } elseif ($task && in_array($task,$tasks) == false) {
 	$task_status = json_encode(array(
 	 'status' => 'error',
-	 'message'=> 'Uknown task '.$task
+	 'message'=> 'Unknown task '.$task
 	));
 	echo $task_status;
 	exit(2);
 } else {//continue normally
+	require_once('sources/class.filesystem.php');
 	require_once('sources/class.cache.php');
 	require_once('sources/class.helper.php');
 	require_once('sources/class.db.php');
 	require_once('sources/class.tickets.php');
 	require_once('sources/class.cms.php');
 	require_once('sources/class.trash.php');
+	require_once('sources/class.settings.php');
 
 	//now load language
 	if ($dss->lang) {
@@ -140,7 +149,6 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 		}
 
 		//check if tickets are to be sorted
-        $sort = '';
 		if (isset($_GET['sr'])) {
 			$sort = $_GET['sr']; //TODO: better security
 		}

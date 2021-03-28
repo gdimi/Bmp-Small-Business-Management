@@ -265,11 +265,12 @@ class DSConfig {".PHP_EOL."
 			$message = implode('<br>',$this->validate_errors);
 		}
 		
-		$p_status = json_encode(array(
+		$p_status = array(
 			'error' => $error,
 			'message'=> $message,
-		));
-		echo $p_status;
+		);
+		
+		return $p_status;
 	}
 	
 }

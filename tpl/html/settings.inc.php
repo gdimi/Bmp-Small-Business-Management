@@ -84,6 +84,7 @@ require_once('sources/preprocessor/settings.php'); //require preprocessor
 		</fieldset>
 		<input type="hidden" name="pos" id="pos" value="before" />
 		<span class="fake-button" id="savesetbtn"><?php echo $lang['settings-save']; ?></span><br>
+		<div id="settings_form_error"></div>
 	</form>
 </div>
 <span class="cl-b" onclick="$(this).parent().toggle();">Close me</span>
@@ -194,11 +195,11 @@ $(document).ready(function() {
 		$.post(URL,
 			formData,
 			function(data, textStatus, jqXHR){
-				if(data.status === "success") {
+				if(data.status == 'success') {
 					$("#settings_form_error").hide();
 					$("#settings_form").remove(".loader");
 					$("#settings_form").append(data.message);
-				} else if(data.status === "error") {
+				} else if(data.status == 'error') {
 					$("#settings_form_error").show();
 					$("#settings_form_error").html(data.message);
 					$("#savesetbtn").show(); //restore submit btn so to correct and resubmit

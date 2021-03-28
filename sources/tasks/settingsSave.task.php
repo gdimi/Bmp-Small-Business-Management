@@ -37,6 +37,14 @@ if (!$pos or $pos != 'before') {
 	$settings->dss = $dss;
 	
 	$res = $settings->process_settings();
+	
+	if (is_array($res)) {
+		if ($res['error'] == true) {
+			$scerr = $res['message'];
+		} 
+	} else {
+		$scerr = 'Unknown result';
+	}
 }
 
 
@@ -50,7 +58,7 @@ if ($scerr) {
 } else {
     $tk_status = json_encode(array(
     'status'=>'success',
-    'message'=>$res
+    'message'=>$res['message']
     ));
     echo $tk_status;
     exit(0);

@@ -8,6 +8,17 @@ $from_time = '';
 $to_time = $curTimestamp;
 $sc_err = '';
 
+//check if any client is to be excluded from stats-gross
+$ex_clients = '';
+$ex_sql = '';
+$ex_join_sql = '';
+if (count($dss->exclude_from_stats)) {
+	$ex_clients = implode(',',$dss->exclude_from_stats);
+	$ex_sql = " AND `ClientID` NOT IN ('".$ex_clients."')";
+	$ex_join_sql = " AND cs.ClientID NOT IN ('".$ex_clients."')";
+}
+
+
 //see if there's a year we're intrested in
 if (isset($_GET['iy']) && $_GET['iy'] > 0) {
 	$from_time = $_GET['iy'];
@@ -35,7 +46,7 @@ if (!$pos or $pos != 'before') {
 	try { //get number of cases
         $sccon = new PDO('sqlite:pld/HyperLAB.db3');
         $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-        $scall = $sccon->query('SELECT COUNT(0) as theAll FROM "Case" WHERE updated >= '.$from_time.' AND updated <= '.$to_time.';');
+        $scall = $sccon->query('SELECT COUNT(0) as theAll FROM "Case" WHERE updated >= '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
         if ($scall) {
             foreach ($scall as $all) {
                 $all = $all['theAll'];
@@ -44,7 +55,7 @@ if (!$pos or $pos != 'before') {
         }
 		if ($all > 0) {
 			//get total current income
-			$scinc = $sccon->query('SELECT SUM("price") as theIncome FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.';');
+			$scinc = $sccon->query('SELECT SUM("price") as theIncome FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
 			if ($scinc) {
 				foreach ($scinc as $allinc) {
 					$allinc = $allinc['theIncome'];
@@ -52,7 +63,7 @@ if (!$pos or $pos != 'before') {
 				$schtml .= ' | <strong>'.$lang['stats-gross'].' '.$allinc.'</strong><br /><hr size="1" />';
 			}
 			//make list by case type
-			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount FROM "Case" WHERE updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY "type" ORDER BY theCount  DESC;');
+			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount FROM "Case" WHERE updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY theCount  DESC;');
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytype'].'</h3>';
 				foreach ($scres as $ctl) {
@@ -71,7 +82,7 @@ if (!$pos or $pos != 'before') {
 				$scerr = "An error occured in list by case!";
 			}
 			// get list by case by tziros 
-			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY "type" ORDER BY theTotal DESC;');
+			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY theTotal DESC;');
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytypebygross'].'</h3>';
 				foreach ($scres as $ctli) {
@@ -88,7 +99,7 @@ if (!$pos or $pos != 'before') {
 				$schtml .="</div>";
 			}
 			// get top 8 customers by total income and display
-			$scres = $sccon->query('SELECT  cl.name, SUM("price") as theSUM FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY cs.clientID ORDER BY theSUM DESC LIMIT 8;');
+			$scres = $sccon->query('SELECT  cl.name, SUM("price") as theSUM FROM "Case"  AS cs INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.$ex_join_sql.' GROUP BY cs.clientID ORDER BY theSUM DESC LIMIT 10;');
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient'].'</h3>';
 				foreach ($scres as $cli) {
@@ -101,7 +112,7 @@ if (!$pos or $pos != 'before') {
 				$schtml .="</div>";
 			}
 			// get top 8 customers by # of cases and display
-			$scres = $sccon->query('SELECT  cl.name, COUNT(0) as theCount FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.' GROUP BY cs.clientID ORDER BY theCount DESC LIMIT 8;');
+			$scres = $sccon->query('SELECT  cl.name, COUNT(0) as theCount FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.$ex_join_sql.' GROUP BY cs.clientID ORDER BY theCount DESC LIMIT 10;');
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient-noc'].'</h3>';
 				foreach ($scres as $clcn) {

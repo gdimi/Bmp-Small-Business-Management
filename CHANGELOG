@@ -1,4 +1,21 @@
 ## CHANGELOG 
+*0.733 - 10/3/2021
+NEW: added exclude customer from stats
+changed top from 8 to 10 in stats
+language: changed 'Client' to 'Contact' for future contact types feature
+costs: added calendar popup for date insertion
+FIX: upload issues
+FIX: remove attachment not working at all
+improvements in file handling
+NEW: added simple settings edit form
+added comments in config file
+added config-dist file so that there is always default config for updates
+minor bug fixes
+small style changes
+upgraded pld from 1.9.7.1 to 1.9.8.2
+preliminary work for data encryption
+preliminary work for client cases to csv export
+
 *0.658 - 19/09/2020*
 client export to vcf file
 various page is wider

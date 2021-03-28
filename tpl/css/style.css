@@ -427,21 +427,25 @@ table#ct_table {
 	-webkit-transform: rotate(180deg); /* Safari and Chrome */
 }
 
+#settings_form .bmp-label {
+	padding-top:4px;
+}
+
 #new_tk_frm {}
 
-#new_tk_frm label {
+#new_tk_frm label, .bmp-label {
 	display: inline-block;
 	min-width: 100px;
 	vertical-align: top;
 }
-#new_tk_frm legend, #new_cl_frm legend, #ac_frm legend, #ec_frm legend {
+#new_tk_frm legend, #new_cl_frm legend, #ac_frm legend, #ec_frm legend, .bmp-legend {
   background-color: #9ACD32;
   border: thin solid #808080;
   border-radius: 2px 2px 2px 2px;
   font-weight: bold;
   padding: 4px;
 }
-#new_tk_frm fieldset {
+#new_tk_frm fieldset, .bmp-fieldset {
 	background-color: #FFFAFA;
 	border: thin solid #808080;
 	border-radius: 6px 6px 6px 6px;
@@ -506,7 +510,7 @@ table#ct_table {
 	-webkit-transform: rotate(180deg); /* Safari and Chrome */
 }
 
-#add_help_data, #add_help_data_cl {
+#add_help_data, #add_help_data_cl, #sets_help_data {
     background-color: #FFFFFF;
     border: thin solid #ADD8E6;
     box-shadow: -1px 1px 4px #696969;
@@ -519,7 +523,7 @@ table#ct_table {
     width: 450px;
 }
 
-#add_help_data > span, #add_help_data_cl > span {
+#add_help_data > span, #add_help_data_cl > span, #sets_help_data > span {
   background-color: #909090;
   color: #FFFFFF;
   font-weight: bold;
@@ -540,9 +544,10 @@ table#ct_table {
 	width: 33%;
 }
 
-.frm-input {
+.frm-input, .bmp-input, .bmp-textarea {
   border: thin solid #4682B4 !important;
   border-radius: 2px 2px 2px 2px;
+  padding: 4px;
 }
 
 .frm-actual-data {
@@ -593,7 +598,7 @@ table#ct_table {
     vertical-align:top;
 }
 
-#new_tk_frm input,#new_cl_frm input {
+#new_tk_frm input,#new_cl_frm input,.bmp-input, .bmp-textarea {
     width: auto !important;
     min-width: 68%;
 }
@@ -938,6 +943,16 @@ span.clname  {
   padding-right: 8px;
 }
 
+cl-cases h3 {
+    margin-top: 0.1em;
+    background-color: lightsteelblue;
+    padding-left: 4px;
+}
+
+.cl-cases > div > div {
+    padding-left: 2px;
+}
+
 
 
 #trash_info {
@@ -972,4 +987,43 @@ span.clname  {
     background-color: gray;
     padding: 2px;
     border-radius: 4px;
+}
+
+
+.bmp-label {
+	font-size: 0.7em;
+	color: white;
+	padding: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.bmp-label-grey {
+	background-color: grey;
+}
+
+.bmp-label-green {
+	background-color: green;
+}
+
+.bmp-label-red {
+	background-color: red;
+}
+
+.bmp-label-blue {
+	background-color: steelblue;
+}
+
+.removeAt {
+	color: red; 
+	padding: 4px; 
+	display: inline-block;
+	cursor:pointer;
+}
+
+.bmp-frm-label {
+	color: black;
+	padding:4px;
+	display: block;
 }

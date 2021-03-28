@@ -14,9 +14,9 @@
  * @category   bmp\sources\ajax handlers
  * @package    bmp\sources
  * @author     Original Author <gdimi@hyperworks.gr>
- * @copyright  2014-2016 George Dimitrakopoulos
+ * @copyright  2014-2021 George Dimitrakopoulos
  * @license    GPLv2
- * @version    1.0
+ * @version    1.1
  * @link       -
  * @see        -
  * @since      Since 0.438-dev
@@ -28,14 +28,22 @@ $scerr = '';
 $msg = '';
 $pos = $_GET['pos'];
 $caseId = (int)$_POST['cid'];
+$utype = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : false;
 
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
-	if (!$caseId || $caseId < 0) {
-		$target_dir = "content/uploads/tmp/";
+	
+	if ($utype) {
+	   $target_dir = "content/uploads/${utype}/";
 	} else {
-		$target_dir = "content/uploads/${thisYear}/${caseId}";
+	
+		if (!$caseId || $caseId < 0) {
+			$target_dir = "content/uploads/tmp/";
+		} else {
+			$target_dir = "content/uploads/${thisYear}/${caseId}/";
+		}
+		
 	}
 
 	$target_file = $target_dir . basename($_FILES["file"]["name"]);
@@ -43,7 +51,22 @@ if (!$pos or $pos != 'before') {
 	$fileSize = $_FILES["file"]["size"];
 	$fileTmpName = $_FILES["file"]["tmp_name"];
 
-	$scerr = validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSize,$dss->maxUploadSize,$dss->uploadTypes);
+	//specific logo settings or not
+	if ($utype == 'logo') {
+		$allow_overwrite = true;
+		$uploadTypes = array('jpg','jpeg','png','bmp','tiff','gif','svg');
+	} else {
+		$uploadTypes = $dss->uploadTypes;
+		$allow_overwrite = false;
+	}
+	/*var_dump($utype);
+	var_dump($fileType);
+	var_dump($fileSize);
+	var_dump($fileTmpName);
+	var_dump($target_dir);
+	var_dump($target_file);
+	die();*/
+	$scerr = validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSize,$dss->maxUploadSize,$dss->uploadTypes,$allow_overwrite);
 
 	// Check if we have an error and if not try to upload the file!
 	if (!$scerr) {
@@ -70,7 +93,7 @@ if ($scerr) {
 	exit(1);
 }
 
-function validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSize,$maxUploadSize,$uploadTypes=array()) {
+function validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSize,$maxUploadSize,$uploadTypes=array(),$allow_overwrite=false) {
     
     clearstatcache(); //to avoid file_exists false reports
 
@@ -84,11 +107,11 @@ function validate_upload($target_dir,$target_file,$fileType,$fileTmpName,$fileSi
 	if($fileType == 'jpg' || $fileType == 'jpeg' || $fileType == 'bmp' || $fileType == 'png' || $fileType == 'tiff' || $fileType == 'gif') {
 		$check = getimagesize($fileTmpName);
 		if($check === false) {
-			return "File is propably a fake image.";
+			return "File is probably a fake image.";
 		}
 	}
 	// Check if file already exists
-	if (file_exists($target_file)) {
+	if (!$allow_overwrite && file_exists($target_file)) {
 		return "Sorry, file already exists.($target_file)";
 	}
 	// Check file size

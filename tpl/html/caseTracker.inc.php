@@ -1,20 +1,22 @@
 		<div id="ct_div">
 		<table id="ct_table">
-			<tr class="thead">
-				<td>Cid</td>
-				<td>Created</td>
-				<td><a href="index.php?action=docache&sr=updated">Updated</a></td>
-				<td>Title</td>
-				<td>model/SN</td>
-				<td>Tag</td>
-				<td>Client</td>
-				<td>Status</td>
-				<td>Priority</td>
-				<td>Type</td>
-                <td>Price</td>
-				<td>User</td>
-				<td>Action</td>
-			</tr>
+			<thead>
+				<tr class="thead">
+					<th>Cid</th>
+					<th>Created</th>
+					<th><a href="index.php?action=docache&sr=updated">Updated</a></th>
+					<th>Title</th>
+					<th>model/SN</th>
+					<th>Tag</th>
+					<th>Client</th>
+					<th>Status</th>
+					<th>Priority</th>
+					<th>Type</th>
+					<th>Price</th>
+					<th>User</th>
+					<th>Action</th>
+				</tr>
+			</thead>
 		<?php
 		if (isset($tickets) && is_array($tickets)) {
             $ticket_data = '';

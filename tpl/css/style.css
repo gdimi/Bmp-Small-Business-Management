@@ -130,11 +130,16 @@ div.div-elevate {
 	display: none;
 }
 
-tr.thead td {
+tr.thead td, tr.thead th {
 	font-weight: bold;
 	background-color: #ECECEC;
 	border: medium none;
 	border-bottom: 1px solid #696969;
+}
+
+tr.thead th {
+    position: sticky;
+    top: 0;
 }
 
 tr.tbody td {

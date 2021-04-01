@@ -18,22 +18,22 @@
 	section#status {
 	  float:none;
 	  margin-left: 0px;
-	  font-size: 0.85em;
+	  font-size: 0.95em;
 	}
 
-	#ct_table td:nth-child(6) {
+	#ct_table td:nth-child(6), #ct_table .thead th:nth-child(6) {
 	  display: none;
 	}
 
-	#ct_table td:nth-child(9) {
+	#ct_table td:nth-child(9), #ct_table .thead th:nth-child(9) {
 		display: none;
 	}
 
-	#ct_table td:nth-child(10) {
+	#ct_table td:nth-child(10), #ct_table .thead th:nth-child(10) {
 		display: none;
 	}
 
-	#ct_table td:nth-child(12) {
+	#ct_table td:nth-child(12), #ct_table .thead th:nth-child(12) {
 		display: none;
 	}
 
@@ -49,10 +49,6 @@
 	  height: 82px;
 	}
 
-	#ct_table .thead {
-	  display: none;
-	}
-
 	#board {
 	  margin-left: 0px;
 	}
@@ -63,7 +59,8 @@
 
 	#new_ticket, #new_client, #settings, #client, #gen_res, #allclients, #cis_res, #esoda, #costs, #various, #stats_info, #prices {
 		min-width:314px;
-		width: 90%;
+		width: 90% !important;
+		left: 2% !important;
 	}
 
 	.frm-actual-data {
@@ -96,14 +93,54 @@
 		width: 90% !important;
 	}
 
+	.cl-b, .div-elevate input, .div-elevate textarea, .div-elevate select {
+		font-size: 1em;
+	}
 
+	#new_ticket, #new_client, #settings, #client, #gen_res, #allclients, #esoda, #costs, #various, #stats_info, #prices {
+		width: 60%;
+	}
+	
+	.menu-dialog {
+		left: 22%;
+	}
+	
 
+	tr.tbody td {
+		font-size: 1em;
+	}
+	
+	#new_tk_frm fieldset, .bmp-fieldset {
+		padding: 2px;
+	}
+	
+	#new_tk_frm input, #new_cl_frm input, .bmp-input, .bmp-textarea {
+		font-size: 1em;
+	}
+	
+	#cms_info, #trash_info {
+		left: 0 !important;
+	}
+	
+	#board_txt {
+		width: 98%;
+	}
+	
+	#various pre, #various .variousContent, #prices pre {
+		overflow: visible;
+	}
+	
 
 }
 
-@media screen and (min-width: 479px) and (max-width:540px) {
+@media screen and (min-width: 320px) and (max-width:540px) {
 	aside#menu {
 		min-height: 212px;
+	}
+	
+	#status .filters {
+		float:left;
+		margin-top: 10px;
 	}
 }
 

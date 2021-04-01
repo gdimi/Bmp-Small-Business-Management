@@ -13,6 +13,8 @@ require_once('sources/init.php');
 	<meta name="Reply-to" content="info@hybridwebs.gr" />
 	<meta name="Author" content="George Dimitrakopoulos" />
     <meta name="referrer" content="no-referrer-when-downgrade">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=5.0" />
+	<meta name="theme-color" content="#577C0E"/>
 	<link rel="shortcut icon" href="favicon.ico" />
 	<script type="text/javascript"> var activeLanguage = "<?php echo $activeLanguage; ?>"; </script>
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
@@ -70,24 +72,24 @@ require_once('sources/init.php');
 	<div id="new_ticket" class="elevate menu-dialog">
 		<?php include('tpl/html/frmAddTicket.inc.php'); ?>
 	</div>
-	<div id="new_client" class="elevate menu-dialog">
+	<div id="new_client" class="elevate menu-dialog" data-cardinality="">
 		<?php include('tpl/html/frmAddClient.inc.php'); ?>
 	</div>
-	<div id="settings" class="elevate menu-dialog">
+	<div id="settings" class="elevate menu-dialog" data-cardinality="">
 		<?php include('tpl/html/settings.inc.php'); ?>
 	</div>
-	<div id="client" class="elevate menu-dialog">
+	<div id="client" class="elevate menu-dialog" data-cardinality="">
 		<?php include('tpl/html/client.inc.php'); ?>
 	</div>
-	<div id="allclients" class="elevate menu-dialog">
+	<div id="allclients" class="elevate menu-dialog" data-cardinality="">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<h2><?php echo $lang['all-clients']; ?></h2>
 		<div></div>
 	</div>
-	<div id="esoda" class="elevate menu-dialog">
+	<div id="esoda" class="elevate menu-dialog" data-cardinality="">
 <?php include('tpl/html/income.inc.php'); ?>
 	</div>
-	<div id="costs" class="elevate menu-dialog">
+	<div id="costs" class="elevate menu-dialog" data-cardinality="">
 <?php include('tpl/html/costs.inc.php'); ?>
 	</div>
 	<div id="gen_res" class="elevate menu-dialog">
@@ -98,28 +100,28 @@ require_once('sources/init.php');
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<div></div>
 	</div>
-	<div id="stats_info" class="elevate menu-dialog">
+	<div id="stats_info" class="elevate menu-dialog" data-cardinality="">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php include('tpl/html/stats.inc.php'); ?>
 		<div></div>
 	</div>
-	<div id="various" class="elevate menu-dialog">
+	<div id="various" class="elevate menu-dialog" data-cardinality="">
 <?php include('tpl/html/various.inc.php'); ?>
 	</div>
-	<div id="prices" class="elevate menu-dialog" contenteditable="true">
+	<div id="prices" class="elevate menu-dialog" contenteditable="true" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php include('tpl/html/prices.inc.php'); ?>
 	</div>
-	<div id="cms_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 1%;">
+	<div id="cms_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 1%;" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/cms.inc.php'); ?>
 	</div>
-	<div id="trash_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;">
+	<div id="trash_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/trash.inc.php'); ?>
 	</div>
     
-	<div id="this_todo" class="elevate menu-dialog" style="display:none;">
+	<div id="this_todo" class="elevate menu-dialog" style="display:none;" data-cardinality="">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<h2>Development</h2>
 		<hr size="1" />

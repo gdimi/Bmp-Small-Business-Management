@@ -1,4 +1,13 @@
 ## CHANGELOG 
+*0.733-dev - 01/04/2021
+STYLE: fix some responive issues
+STYLE: add proper sticky header at case tracker
+hide changelog and events from left menu
+add links to words also in left menu
+STYLE: add viewport for proper render on mobile devices
+BEHAVIOUR: hide elevated items when click outside of them
+
+
 *0.733 - 10/3/2021
 NEW: added exclude customer from stats
 changed top from 8 to 10 in stats

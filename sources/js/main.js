@@ -321,6 +321,21 @@ $(document).ready(function() {
 				});
 		}
 	});
+
+	
+
+});
+
+
+$(document).mouseup(function(e) 
+{
+    var container = $(".elevate");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
+    }
 });
 
 //functions
@@ -329,6 +344,8 @@ function returnEndId(elem) {
    //return the numeric id from the end of a string (eg a class or id of an element)
    return parseInt(elem.id.match(/(\d+)$/)[0], 10); //we want the integer at the end from the id string
 }
+
+
 
 
 function allowDrop(ev) {

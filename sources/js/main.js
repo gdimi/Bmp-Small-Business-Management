@@ -326,13 +326,13 @@ $(document).ready(function() {
 
 });
 
-
+//hide elevated items when click outside
 $(document).mouseup(function(e) 
 {
     var container = $(".elevate");
-
+	console.log(e.target.parentNode);
     // if the target of the click isn't the container nor a descendant of the container
-    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    if (!container.is(e.target) && container.has(e.target).length === 0 && !e.target.parentNode.classList.contains("mcap") ) //do not do this for the left menu 
     {
         container.hide();
     }

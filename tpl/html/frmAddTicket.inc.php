@@ -71,7 +71,7 @@ if (!defined('_w00t_frm')) die('har har har');
 			</fieldset>
 			<fieldset id="tfupload">
 				<?php echo $lang['upload-file']; ?><br />
-				<span class="removeAt"><?php echo $lang['delete']; ?></span>
+				<span class="removeAt" style="display:none"><?php echo $lang['delete']; ?></span>
 				<input type="file" name="fileToUpload" class="fileToUpload">
 				<input type="hidden" name="fileUploaded" id="fileUploaded">
 				<div class="" style="display:none;"></div>

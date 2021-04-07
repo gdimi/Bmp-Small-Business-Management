@@ -2,6 +2,8 @@
 /* preprocess some html for select option year list in income tpl*/
 if (!defined('_w00t_frm')) die('har har har');
 
+$IncOptHTML = '';
+
 if ($dss->startYear && $thisYear) {
 	$tmpYear = $thisYear;
 	while ($tmpYear >= $dss->startYear) {

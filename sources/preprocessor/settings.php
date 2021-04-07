@@ -3,6 +3,7 @@
 if (!defined('_w00t_frm')) die('har har har');
 
 $exclude_from_stats = '';
+$exclude_from_stats_labels = '';
 $show_closed_sel = '<option></option>';
 $show_history_sel = '<option></option>';
 

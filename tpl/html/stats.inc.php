@@ -1,5 +1,8 @@
 <?php
- $oldYear = $dss->startYear;
+
+$statsselopt = '';
+ 
+$oldYear = $dss->startYear;
  for($i = $oldYear; $i <= $thisYear; $i++) {
 	$statsselopt .= '<option value="'.strtotime($i.'-01-01-00:00').'">'.$i.'</option>';
  }

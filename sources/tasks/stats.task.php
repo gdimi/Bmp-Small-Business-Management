@@ -7,6 +7,7 @@ $caseType = $dss->caseType;
 $from_time = '';
 $to_time = $curTimestamp;
 $sc_err = '';
+$scerr = '';
 
 //check if any client is to be excluded from stats-gross
 $ex_clients = '';

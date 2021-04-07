@@ -38,6 +38,7 @@ class Trash {
 		$this->trashSize = 0;
 		$this->trashFiles = 0; 
 		$this->trashErr = '';
+                $this->trashFilesArr = array();
 	}
 
     protected function countFilesInTrash() {

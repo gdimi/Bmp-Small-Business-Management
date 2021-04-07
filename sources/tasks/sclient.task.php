@@ -2,6 +2,8 @@
 //search for client
 if (!defined('_w00t_frm')) die('har har har');
 
+$schtml = '';
+
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {

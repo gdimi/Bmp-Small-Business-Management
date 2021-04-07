@@ -71,10 +71,12 @@ if (!$pos or $pos != 'before') {
 	// Check if we have an error and if not try to upload the file!
 	if (!$scerr) {
 		if (move_uploaded_file($fileTmpName, $target_file)) {
-			$msg = "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+			$fname = basename( $_FILES["file"]["name"]);
+			$msg = "The file ".$fname. " has been uploaded.";
 			$tk_status = json_encode(array(
 			 'status' => 'success',
-			 'message'=> $msg
+			 'message'=> $msg,
+			 'filename'=> $fname
 			));
 			echo $tk_status;
 			exit(0);

@@ -58,6 +58,7 @@ class tickets extends db {
 	
 	function checkForAttachment($cid) {
 		$defUploadDir = $this->attachDir;
+		$ticketfiles = array();
 		
 		if ($cid && $cid > 0) {
 			$caseDir = $defUploadDir.'/'.$cid;
@@ -68,7 +69,7 @@ class tickets extends db {
 
 					foreach ($files1 as $ifiles) {
 						if ($ifiles !='.' && $ifiles !='..') {
-							$ticketfiles = $ifiles;
+							$ticketfiles[] = $ifiles;
 						}
 					}
 
@@ -92,6 +93,27 @@ class tickets extends db {
 			switch ($sort) {
 				case "updated":
 					$ssql = ' ORDER BY cs.updated DESC';
+					break;				
+				case "model":
+					$ssql = ' ORDER BY cs.model ASC, cs.id DESC';
+					break;
+				case "tag":
+					$ssql = ' ORDER BY cs.category DESC, cs.id DESC';
+					break;
+				case "client":
+					$ssql = ' ORDER BY cl.name ASC, cs.id DESC';
+					break;
+				case "status":
+					$ssql = ' ORDER BY cs.status DESC, cs.id DESC';
+					break;
+				case "prior":
+					$ssql = ' ORDER BY cs.priority DESC, cs.id DESC';
+					break;
+				case "type":
+					$ssql = ' ORDER BY cs.type ASC, cs.id DESC';
+					break;
+				case "user":
+					$ssql = ' ORDER BY cs.user ASC, cs.id DESC';
 					break;
 				default:
 					$ssql = ' ORDER BY cs.id DESC';
@@ -99,7 +121,7 @@ class tickets extends db {
 			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs LEFT JOIN "Client" AS cl ON  cl.id = cs.clientID AND cs.status < '.$this->sclosed.''.$ssql);
 			if ($cresult) {
 				foreach($cresult as $case) {
-					$attach = $this->checkForAttachment($case['id']);
+					$attached = $this->checkForAttachment($case['id']);
 
 					$this->tickets[$case['id']]['id'] = $case['id'];
 					$this->tickets[$case['id']]['title'] = $case['title'];
@@ -116,7 +138,7 @@ class tickets extends db {
 					$this->tickets[$case['id']]['user'] = $case['user'];
 					$this->tickets[$case['id']]['name'] = $case['name'];
 					$this->tickets[$case['id']]['follow'] = $case['follow'];
-					$this->tickets[$case['id']]['attachment'] = $attach;
+					$this->tickets[$case['id']]['attachment'] = $attached;
 				}
 				$ticket_cnt++;
 			} else {

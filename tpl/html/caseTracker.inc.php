@@ -6,14 +6,14 @@
 					<th>Created</th>
 					<th><a href="index.php?action=docache&sr=updated">Updated</a></th>
 					<th>Title</th>
-					<th>model/SN</th>
-					<th>Tag</th>
-					<th>Client</th>
-					<th>Status</th>
-					<th>Priority</th>
-					<th>Type</th>
+					<th><a href="index.php?action=docache&sr=model">model/SN</a></th>
+					<th><a href="index.php?action=docache&sr=tag">Tag</a></th>
+					<th><a href="index.php?action=docache&sr=client">Client</a></th>
+					<th><a href="index.php?action=docache&sr=status">Status</a></th>
+					<th><a href="index.php?action=docache&sr=prior">Priority</a></th>
+					<th><a href="index.php?action=docache&sr=type">Type</a></th>
 					<th>Price</th>
-					<th>User</th>
+					<th><a href="index.php?action=docache&sr=user">User</a></th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -41,7 +41,10 @@
 				if ($ticket['priority'] == 1) { $tprior = 'Low'; } elseif ($ticket['priority'] == 2) { $tprior = 'Medium'; } else { $tprior = 'High'; }
 				
 				if ($ticket['attachment']) {
-					$attachHTML = $lang['attachment'].'&nbsp; <a href="'.$defUploadDir.'/'.$key.'/'.$ticket['attachment'].'">'.$ticket['attachment'].'</a>'; // use $key for actual db id and not constructed $tcid
+					$attachHTML = $lang['attachment'];
+					foreach ($ticket['attachment'] as $attached) {
+						$attachHTML .= '&nbsp; <a href="'.$defUploadDir.'/'.$key.'/'.$attached.'" target="_blank">'.$attached.'</a>&nbsp;'; // use $key for actual db id and not constructed $tcid
+					}
                     $att_class = 'hasAttachment';
 				} else {
                     $att_class = '';

@@ -135,7 +135,7 @@
 
 @media screen and (min-width: 320px) and (max-width:540px) {
 	aside#menu {
-		min-height: 212px;
+		min-height: 266px;
 	}
 	
 	#status .filters {

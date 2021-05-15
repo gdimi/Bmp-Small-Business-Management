@@ -37,8 +37,10 @@
                 }
 				$tdate = date("j/m/Y H:i",$ticket['created']);
 				$tudate = date("j/m/Y H:i",$ticket['updated']);
-				//TODO: adjust priority check with proper dss array
-				if ($ticket['priority'] == 1) { $tprior = 'Low'; } elseif ($ticket['priority'] == 2) { $tprior = 'Medium'; } else { $tprior = 'High'; }
+				//see priority so to put correct class
+				if ($ticket['priority'] == 1) { $tprior_class = 'Low'; } elseif ($ticket['priority'] == 2) { $tprior_class = 'Medium'; } else { $tprior_class = 'High'; }
+
+				$tprior = $dss->casePriority[$ticket['priority']];
 				
 				if ($ticket['attachment']) {
 					$attachHTML = $lang['attachment'];
@@ -58,7 +60,7 @@
 				}
 
 				$ticket_data .=  "
-				<tr class=\"tbody $tstat_class $tprior ${ticket['user']} cl-${ticket['client']}\" $style>
+				<tr class=\"tbody $tstat_class $tprior_class ${ticket['user']} cl-${ticket['client']}\" $style>
 					<td>$tcid</td>
 					<td>$tdate</td>
 					<td>$tudate</td>
@@ -67,7 +69,7 @@
 					<td>${ticket['cat']}</td>
 					<td><a href=\"javascript:void(0);\" class=\"cclient\" id=\"cl_${ticket['client']}\">${ticket['name']}</a></td>
 					<td class=\"ct-stat${ticket['status']}\">${tstat}</td>
-					<td class=\"ct-$tprior\">$tprior</td>
+					<td class=\"ct-$tprior_class\">$tprior</td>
 					<td class=\"ct-type${ticket['type']}\">${ttype}</td>
 					<td class=\"ct-price\">${ticket['price']}</td>
 					<td class=\"ct-user\">${ticket['user']}</td>

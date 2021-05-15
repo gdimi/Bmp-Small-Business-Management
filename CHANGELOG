@@ -6,7 +6,8 @@ hide changelog and events from left menu
 add links to words also in left menu
 STYLE: add viewport for proper render on mobile devices
 BEHAVIOUR: hide elevated items when click outside of them
-
+STYLE: fix responsive menu height
+CODE: fix hardcoded priority in tracker which prevented other values other than low,medium,high
 
 *0.733 - 10/3/2021
 NEW: added exclude customer from stats

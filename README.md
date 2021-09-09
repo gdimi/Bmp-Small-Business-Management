@@ -1,14 +1,16 @@
 bmp
 ===
 Hello to everyone, this is a small software made in php/js/sql/css/html.
-It's purpose is to manage small business's afairs:customers, expenses, income etc.
+It's purpose is to manage a small business's afairs: customers, expenses, income etc.
 It organises day to day task in a case tracker and has statistcs.
 It is still in beta stage so bugs are expected and welcomed!
 
 
-Notes
-=====
-database: this software uses an sqlite database for maximum portability.
+Notes and installation
+======================
+installation: just clone or download this repository and place the files in a directory in a webserver. Then point to it from your browser
+
+database: this software uses an sqlite database for maximum portability. There is a folder named pld/ which has the phpliteadmin tool to manage the db. The default password is croatoan.
 
 security: there is no user system so either do not throw it on www, or use an htacess auth in front of it!
 

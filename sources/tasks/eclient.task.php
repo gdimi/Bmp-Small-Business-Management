@@ -101,7 +101,7 @@ function checkVals(&$ecerr,$postvals=array()) {
 		return false;
 	}
 	if ($client['email']) {
-		if (!validEMail_simple($client['email'])) {
+		if (!validEmailSimple($client['email'])) {
 			$ecerr = 'This email is not valid';
 			return false;
 		}
@@ -120,7 +120,7 @@ function checkVals(&$ecerr,$postvals=array()) {
 	return $client;
 }
 
-function validEMail_simple($email) { 
+function validEmailSimple($email) { 
 	$regexp='/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 	return preg_match($regexp, trim($email));
 }

@@ -1,4 +1,6 @@
 <?php
+namespace BMP;
+
 if (!defined('_w00t_frm')) die('har har har');
 
 /*main init file
@@ -13,6 +15,7 @@ if (!defined('_w00t_frm')) die('har har har');
 
 //load settings
 require_once('sources/config.php');
+use BMP\Core\DSconfig;
 $dss = new DSconfig;
 
 //set timezone
@@ -58,6 +61,7 @@ $tasks['trashObj'] = 'trashObj.task';
 $tasks['upload'] = 'upload.task';
 $tasks['unlink'] = 'unlink.task';
 $tasks['sets'] = 'settingsSave.task';
+$tasks['api'] = 'api.task';
 
 //get task and position
 if (isset($_GET['task']) && $_GET['task'] != '') $task = trim($_GET['task']);
@@ -75,8 +79,18 @@ if (!$pos && $task) {
 	exit(1);
 }
 
+require_once('sources/class.db.php');
+require_once('sources/class.api.php');
+
+//init api to get state
+$curState = '';
+$api = Database\BMPApi::getInstance();
+$api->init();
+$curState = $api->getState();
+
 //load model helper
 require_once('sources/model.helper.php');
+use BMP\Helpers\Model;
 $modelHelper = Model::getInstance();
 
 //handle before tasks
@@ -105,7 +119,6 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 	require_once('sources/class.filesystem.php');
 	require_once('sources/class.cache.php');
 	require_once('sources/class.helper.php');
-	require_once('sources/class.db.php');
 	require_once('sources/class.tickets.php');
 	require_once('sources/class.cms.php');
 	require_once('sources/class.trash.php');
@@ -123,7 +136,7 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 	include_once('language/'.$activeLanguage.'.php');
 
 	//load tickets and cache
-	$tickets_handler = tickets::getInstance();
+	$tickets_handler = Database\Tickets::getInstance();
 	$tickets_handler->attachDir = $defUploadDir;
     if ($dss->show_closed == 1) {
         $tickets_handler->sclosed = 10;
@@ -131,7 +144,7 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
         $tickets_handler->sclosed = 4;
     }
 
-	$cache = new Cache;
+	$cache = new Core\Cache;
 	$cache->cachefile = 'tickets.html';
 	$cache->cacheInit();
 
@@ -162,13 +175,13 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 	}
 
     //load cms class and get objects
-    $cms = new cms;
+    $cms = new Core\Cms;
     $cms->getMotd();
     $cms->readBoard();
 
     //load trash 
     if (is_dir("content/trashed")) {
-        $Trash = new Trash;
+        $Trash = new Core\Trash;
         $Trash->initTrash();
         $trashSize = round(($Trash->trashSize)/1024,2);
         $trashFiles = $Trash->trashFiles;

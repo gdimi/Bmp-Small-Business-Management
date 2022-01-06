@@ -12,11 +12,15 @@ Installation: just clone or download this repository and place the files in a di
 
 Database: this software uses an sqlite database for maximum portability. There is a folder named pld/ which has the phpliteadmin tool to manage the db. The default password is croatoan.
 
-Security: there is no user system so either do not throw it on www, or use htacess auth in front of it!
+Authentication: there is no user system so either do not throw it on www, or use htacess auth in front of it!
 
-Tested up to php 7.2
+Security: this codebase is checked for basic security with RIPS community edition and PHPstan
+
+Standards: this code losely conforms to PSR-0 and PSR-1 standards
+
+Tested up to php 7.4
 
 Licence: gpl 2.0
 
 
-George Dimitrakopoulos 2014 - 2021
+George Dimitrakopoulos 2014 - 2022

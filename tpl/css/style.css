@@ -943,6 +943,13 @@ span.clname  {
 	border:medium solid red;
 }
 
+.gen-error span {
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 2px;
+}
+
 .loader {
     background-image: url("../../images/loader.gif");
     background-repeat: no-repeat;
@@ -1039,4 +1046,26 @@ cl-cases h3 {
 	color: black;
 	padding:4px;
 	display: block;
+}
+
+.api-msg {
+	position: fixed;
+	top: 50%;
+	left: calc(100vw - 50% - 200px);
+	background: white;
+	padding: 0 !important;
+	z-index: 10000;
+	width: 400px;
+	box-shadow: 1px 1px 10px black;
+}
+
+.api-msg span{
+    opacity: 1;
+    animation: fade 2s linear infinite;
+}
+
+
+@keyframes fade {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }

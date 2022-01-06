@@ -23,6 +23,9 @@
  * @deprecated -
  */
 //TODO: add session validation...
+namespace BMP\Core;
+use PDO;
+
 if (!defined('_w00t_frm')) die('har har har');
 //check position of execution
 if ($_GET['pos'] != 'before') {
@@ -82,12 +85,12 @@ foreach($ticket as $key=>$value) {
 }
 
 //check values and finalize
-$ticket['title'] = $tfrm->truncate_str($ticket['title'],255);
-$ticket['model'] = $tfrm->truncate_str($ticket['model'],255);
+$ticket['title'] = $tfrm->truncateString($ticket['title'],255);
+$ticket['model'] = $tfrm->truncateString($ticket['model'],255);
 $ticket['info'] = trim($ticket['info']);
-$ticket['category'] = $tfrm->truncate_str($ticket['category'],255);
-$ticket['user'] = $tfrm->truncate_str($ticket['user'],64);
-$ticket['follow'] = $tfrm->truncate_str($ticket['follow'],255);
+$ticket['category'] = $tfrm->truncateString($ticket['category'],255);
+$ticket['user'] = $tfrm->truncateString($ticket['user'],64);
+$ticket['follow'] = $tfrm->truncateString($ticket['follow'],255);
 
 if (!in_array($ticket['priority'],$tprior)) {
 	$terror = 'Uknown ticket priority';

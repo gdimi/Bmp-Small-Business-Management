@@ -1,15 +1,19 @@
 ## CHANGELOG 
-*0.733-dev - 15/05/2021
+*0.733-dev - 1/12/2021*
+PSR-1 compatibility
+In progress: Check for changed content
+API: initial read only api
 STYLE: fix some responive issues
 STYLE: add proper sticky header at case tracker
-hide changelog and events from left menu
-add links to words also in left menu
+CONTENT: hide changelog and events from left menu
+CONTENT: add links to words also in left menu
 STYLE: add viewport for proper render on mobile devices
 BEHAVIOUR: hide elevated items when click outside of them
 STYLE: fix responsive menu height
 CODE: fix hardcoded priority in tracker which prevented other values other than low,medium,high
+BUG: fix a bug when case id over 999 would cause case id search not function
 
-*0.733 - 10/3/2021
+*0.733 - 10/3/2021*
 NEW: added exclude customer from stats
 changed top from 8 to 10 in stats
 language: changed 'Client' to 'Contact' for future contact types feature

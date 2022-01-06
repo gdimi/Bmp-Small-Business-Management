@@ -1,5 +1,8 @@
 <?php
-//delete a ticket
+/* Case Search by Id */
+namespace BMP\Core;
+use PDO;
+
 if (!defined('_w00t_frm')) die('har har har');
 $pos = $_GET['pos'];
 
@@ -8,7 +11,7 @@ if (!$pos or $pos != 'before') {
 } else {
 	if ($_GET['ci']) {
 		$cid = trim($_GET['ci']);
-        $cid = substr($cid,-3);
+        $cid = substr($cid,2);
 
         if (is_numeric($cid)) {
             require_once('sources/config.php');

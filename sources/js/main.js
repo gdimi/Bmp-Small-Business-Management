@@ -1,3 +1,5 @@
+var $curState = '<?php echo $curState; ?>';
+var $cookieState = '';
 $(document).ready(function() {
     
     // Return today's date and time
@@ -322,7 +324,48 @@ $(document).ready(function() {
 		}
 	});
 
+	$("#all_clients").click(function() {
+		$.get("index.php",
+		{task: "acl",pos: "before"},
+		function(data, textStatus, jqXHR){
+			if(data.status === "success") {
+				$("#allclients div").html(data.message);
+				$("#allclients").show("fast");
+			} else if(data.status === "error") {
+				$("#allclients div").append(data.message);
+				$("#allclients").show("fast").delay(2000).hide("slow");
+			}
+		}, "json").fail(function(jqXHR, textStatus, errorThrown){
+			$("#allclients").show("fast").append(textStatus);
+		});
+	});
 	
+	//Check state through API for changes since last accessed
+	function checkState(){
+		$.ajax({
+			type: "get",
+			url: "index.php?task=api&pos=before&comm=getstate",
+			success:function(data)
+			{
+				let cookieState = getCookie("BMPstate");
+				console.log((data.message == $curState));
+				console.log(data.message);
+				console.log($curState);
+				console.log(cookieState);
+
+				if (cookieState != data.message) {
+					$('.api-msg').show();
+				} else {
+					$('.api-msg').hide();
+				}
+				setTimeout(function(){
+					checkState();
+				}, 60000);
+			}
+		});
+	}
+
+	checkState();
 
 });
 
@@ -347,6 +390,21 @@ function returnEndId(elem) {
 
 
 
+function getCookie(cname) {
+	let name = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	for(let i = 0; i <ca.length; i++) {
+	  let c = ca[i];
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+	  }
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }
 
 function allowDrop(ev) {
     ev.preventDefault();

@@ -4,7 +4,9 @@
 * THE PURPOSE HERE IS TO HIDE PLAINTEXT ONLY FROM THE RANDOM PERSON WHO COULD LOOK AT YOUR DATABASE, OR AMATURE GUYS, NOTHING MORE.
 */
 
-Class crypto {
+namespace BMP\Security;
+
+Class Crypto {
 	
 	// the random key to use
 	var $token;
@@ -53,7 +55,7 @@ Class crypto {
 		
 	}
 	
-	public function construct_data_path() {
+	public function constructDataPath() {
 		if ($this->type == 'client') {
 			$this->data_path .= 'cldata/'.$this->id;
 		} elseif ($this->type == 'v') {
@@ -76,7 +78,7 @@ Class crypto {
 	}
 
 	//custom encryption algorithm like vigerene, do not use this!
-	private function str_hide($str,$key){
+	private function strHide($str,$key){
 		if ($key == '') return $str;
 		if ($str == '') return false;
 
@@ -143,7 +145,7 @@ Class crypto {
 	 }
 
 	//generate a safe token
-	public function TokenRand($length = 32){
+	public function tokenRand($length = 32){
 		if(!isset($length) || intval($length) <= 32 ){
 		  $length = 32;
 		}
@@ -158,7 +160,7 @@ Class crypto {
 	}
 	
 	//select appropriate key data file
-	private function get_key_data() {
+	private function getKeyData() {
 		
 		if ($this->error == false) {
 			echo $this->data_path;
@@ -182,7 +184,7 @@ Class crypto {
 	}
 	
 	//write key data to appropriate file
-	private function write_key_data() {
+	private function writeKeyData() {
 	
 		if ($this->error == false) {
 			
@@ -223,7 +225,7 @@ Class crypto {
 			if ($this->token == '') $this->token = $this->TokenRand();
 			$this->data = $this->rc4a();
 			//write key to file
-			$res = $this->write_key_data();
+			$res = $this->writeKeyData();
 			if ($res == false) {
 				$this->errors[] = 'Write data failed. Unable to encrypt';;
 			} else {
@@ -246,7 +248,7 @@ Class crypto {
 		if ($this->data) {
 			//if ($this->token == '') $this->token = $this->TokenRand();
 			//get the key from file
-			$token = $this->get_key_data();
+			$token = $this->getKeyData();
 			
 			if ($token) {
 				$this->token = $token;

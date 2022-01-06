@@ -1,6 +1,8 @@
 <?php
-class stats extends db {
-    function GroupByType() {
+namespace BMP\Core;
+
+class Stats extends Db {
+    function groupByType() {
 		$gbt = Array();
 
 		try {

@@ -1,15 +1,18 @@
 <?php 
 /**
  * @info: form validation stuff
- * @version: 110211
+ * @version: 211003
  * @changes:
+ * - changed normalize_tel -> normalizeTel, truncate_str -> truncateString, validEMail_simple -> validEmailSimple for psr-1
+ * - added namespace Core
+ * @history:
+ *  -- 110211
  * - added normalize_tel
  * - added a constructor
  * - added normalization to telephone number
  * - added ability to pass you own array of chars for normalizing tels
  * - fixed protected functions to public except truncate_str & normalize_tel
  * - changed is_numeric to ctype_digit in telephone checks
- * @history:
  * -- 110126
  *  -made it a class
  *  -added removeXss
@@ -17,12 +20,14 @@
  *  -added validUrl
  *  -added truncate_str
  *  */
+namespace BMP\Core;
+
 defined( '_w00t_frm' ) or die( 'Restricted access' );
 
 class ValForm {
 	var $tel_chars = array();
 	
-	function __construct($tel_chr = array()) {
+	public function __construct($tel_chr = array()) {
 		if (count($tel_chr)) {
 			$this->tel_chars = $tel_chr;
 		} else {
@@ -30,7 +35,7 @@ class ValForm {
 		}
 	}
 	
-	public function truncate_str($string,$len) {
+	public function truncateString($string,$len) {
 		if (!$len) {$len = 22;}
 		if (strlen($string) <= $len) { return $string; }
 		else {
@@ -39,7 +44,7 @@ class ValForm {
 		}
 	}
 
-	protected function normalize_tel($tel) {
+	protected function normalizeTel($tel) {
 		/**
 		 * removes some common non-digit chars like
 		 * -+/. and spaces from a given telephone number
@@ -99,7 +104,7 @@ class ValForm {
 	   return $isValid;
 	}
 	
-	public function validEMail_simple($email)
+	public function validEmailSimple($email)
 	{ 
 		$regexp='/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 		return preg_match($regexp, trim($email));
@@ -134,7 +139,7 @@ class ValForm {
 	}
 	
 	public function validTel($tel) {
-		$tel = self::normalize_tel($tel);
+		$tel = self::normalizeTel($tel);
 		if (strlen($tel) == 10) {
 			if (ctype_digit($tel)) {
 				return $tel;

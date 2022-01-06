@@ -22,6 +22,7 @@
  * @since      0.4
  * @deprecated -
  */
+namespace BMP\Core;
 
 if (!defined('_w00t_frm')) die('har har har');
 

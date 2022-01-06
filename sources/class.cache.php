@@ -1,4 +1,6 @@
 <?php
+namespace BMP\Core;
+
 if (!defined('_w00t_frm')) die('har har har');
 
 class Cache {

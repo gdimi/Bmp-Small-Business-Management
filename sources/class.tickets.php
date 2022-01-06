@@ -22,10 +22,11 @@
  * @since      Initial
  * @deprecated -
  */
+namespace BMP\Database;
 
 if (!defined('_w00t_frm')) die('har har har');
 
-class tickets extends db {
+class Tickets extends Db {
 	public $historyfile = 'content/action_history.txt';
 	public $tickets = Array();
 	public $attachDir;

@@ -22,8 +22,9 @@
  * @since      Since 0.658-dev
  * @deprecated -
  */
-if (!defined('_w00t_frm')) die('har har har');
+namespace BMP\Core;
 
+if (!defined('_w00t_frm')) die('har har har');
 
 Class Settings extends Filesystem 
 {
@@ -49,7 +50,7 @@ Class Settings extends Filesystem
 		$this->thisYear = $thisYear;
 	}
 	
-	private function check_config_file() {
+	private function checkConfigFile() {
 		if ($this->config_file) {
 			if (is_file($this->config_file)) {
 				if (is_writable($this->config_file)) {
@@ -67,7 +68,7 @@ Class Settings extends Filesystem
 		return false;
 	}
 	
-	private function save_settings() {
+	private function saveSettings() {
 		$config_vars = $this->config_vars;
 		//var_dump($config_vars);die();
 		$caseType = '';
@@ -165,7 +166,7 @@ class DSConfig {".PHP_EOL."
     }".PHP_EOL."
 }".PHP_EOL;
 
-		$chkcfgfile = $this->check_config_file();
+		$chkcfgfile = $this->checkConfigFile();
 		
 		if ($chkcfgfile) {
 			$wd = $this->safeFileWrite($this->config_file,$config_data);
@@ -177,7 +178,7 @@ class DSConfig {".PHP_EOL."
 			
 	}
 	
-	private function validate_settings($post_vars) {
+	private function validateSettings($post_vars) {
 		//var_dump($this->dss);die();
 		$val_vars = array();
 		
@@ -242,18 +243,18 @@ class DSConfig {".PHP_EOL."
 		
 	}
 	
-	public function process_settings() {
+	public function processSettings() {
 	//var_dump($_POST);
 		$res = '';
 		$save = '';
 		$error = false;
 		$post_vars = $_POST;
-		$res = $this->validate_settings($post_vars);
+		$res = $this->validateSettings($post_vars);
 		
 		//var_dump($this->config_vars);
 		
 		if ($res === true) {
-			$save = $this->save_settings();
+			$save = $this->saveSettings();
 			if ($save) {
 				$message = 'Settings saved!';
 			} else {

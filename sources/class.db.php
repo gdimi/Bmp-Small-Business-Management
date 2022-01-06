@@ -1,7 +1,10 @@
 <?php
+namespace BMP\Database;
+use PDO;
+
 if (!defined('_w00t_frm')) die('har har har');
 
-class db {
+class Db {
 	private $user;
 	private $dbname;
 	private $pass;
@@ -28,9 +31,9 @@ class db {
 		try {
 			$this->conn = new PDO('sqlite:pld/HyperLAB.db3');
 			$this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-			//echo 'connected';
+			return '';
 		} catch(PDOException $ex) {
-			echo "An Error occured!".$ex->getMessage(); //user friendly message
+			return "An Error occured!".$ex->getMessage(); //user friendly message
 		}
 	}
 	

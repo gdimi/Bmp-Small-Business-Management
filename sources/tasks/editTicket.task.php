@@ -22,6 +22,8 @@
  * @since      Since 0.375-dev
  * @deprecated -
  */
+namespace BMP\Core;
+use PDO;
 
 if (!defined('_w00t_frm')) die('har har har');
 
@@ -82,11 +84,11 @@ foreach($ticket as $key=>$value) {
 }
 
 //check values and finalize
-$ticket['title'] = $tfrm->truncate_str($ticket['title'],255);
-$ticket['model'] = $tfrm->truncate_str($ticket['model'],255);
+$ticket['title'] = $tfrm->truncateString($ticket['title'],255);
+$ticket['model'] = $tfrm->truncateString($ticket['model'],255);
 $ticket['info'] = trim($ticket['info']);
-$ticket['category'] = $tfrm->truncate_str($ticket['category'],255);
-$ticket['user'] = $tfrm->truncate_str($ticket['user'],64);
+$ticket['category'] = $tfrm->truncateString($ticket['category'],255);
+$ticket['user'] = $tfrm->truncateString($ticket['user'],64);
 
 if (!in_array($ticket['priority'],$tprior)) {
 	$terror = 'Uknown ticket priority';

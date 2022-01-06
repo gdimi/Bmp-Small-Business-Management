@@ -36,7 +36,7 @@ if (!$pos or $pos != 'before') {
 	$settings = new Settings(array(),$thisYear);
 	$settings->dss = $dss;
 	
-	$res = $settings->process_settings();
+	$res = $settings->processSettings();
 	
 	if (is_array($res)) {
 		if ($res['error'] == true) {

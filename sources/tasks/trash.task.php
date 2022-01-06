@@ -5,6 +5,8 @@
  * reports size
  * shows list of objects in trash
  */
+namespace BMP\Core; 
+
 if (!defined('_w00t_frm')) die('har har har');
 
 if (!$pos or $pos != 'before') {

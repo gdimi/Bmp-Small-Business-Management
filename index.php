@@ -129,6 +129,9 @@ require_once('sources/init.php');
 			<?php include('CHANGELOG'); ?>
 		</div></pre>
 	</div>
+    <div class="api-msg gen-error" style="display:none;">
+        <span>Warning:</span> Content has changed since last time! <br> Reload the page to see the latest changes! 
+	</div>
 <script>
 <?php include('sources/js/main.js'); ?>
 </script>

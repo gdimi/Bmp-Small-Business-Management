@@ -387,7 +387,7 @@ $(document).ready(function() {
 });
 
 //hide elevated items when click outside
-$(document).mouseup(function(e) 
+/*$(document).mouseup(function(e) 
 {
     var container = $(".elevate");
 	console.log(e.target.parentNode);
@@ -396,7 +396,7 @@ $(document).mouseup(function(e)
     {
         container.hide();
     }
-});
+});*/
 
 //functions
 

@@ -24,7 +24,7 @@
  */
 namespace BMP\Core;
 use PDO;
-
+ 
 if (!defined('_w00t_frm')) die('har har har');
 
 //check position of execution
@@ -41,6 +41,7 @@ require_once('sources/config.php');
 $dss = new DSconfig;
 $tfrm = new ValForm;
 
+$terror = '';
 $ticket = Array();
 $tprior = Array("1","2","3");//FIXME use REAL config attributes
 $ttype = $dss->caseType;

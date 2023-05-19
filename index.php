@@ -53,19 +53,19 @@ require_once('sources/init.php');
 			<span class="filters"><?php include('tpl/html/caseFilter.inc.php'); ?></span>
 		</header>
 		<?php include_once('tpl/html/caseTracker.inc.php'); ?>
-	</section>
-	<div id="board">
+   </section>
+   <div id="board">
 		<?php echo $cms->board; ?>
-	</div>
-	<section id="history">
+   </div>
+   <section id="history">
 		<header><?php echo $lang['history']; ?></header>
         <div>
 		<?php if ($dev_history) {
 			echo $dev_history;
 		  } ?>
         </div>
-	</section>
-    <section id="trash">
+   </section>
+   <section id="trash">
         <?php include('tpl/html/trashMain.inc.php'); ?>
    </section>
    <footer>Version <?php include('VERSION'); ?></footer>
@@ -91,12 +91,12 @@ require_once('sources/init.php');
    </div>
    <div id="costs" class="elevate menu-dialog draggable" data-cardinality="">
 <?php include('tpl/html/costs.inc.php'); ?>
-	</div>
-	<div id="gen_res" class="elevate menu-dialog">
+   </div>
+   <div id="gen_res" class="elevate menu-dialog">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<div></div>
-	</div>
-	<div id="cis_res" class="elevate menu-dialog">
+   </div>
+   <div id="cis_res" class="elevate menu-dialog">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<div></div>
    </div>
@@ -119,19 +119,18 @@ require_once('sources/init.php');
    <div id="trash_info" class="elevate menu-dialog draggable" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/trash.inc.php'); ?>
-	</div>
-    
-	<div id="this_todo" class="elevate menu-dialog" style="display:none;" data-cardinality="">
+   </div> 
+   <div id="this_todo" class="elevate menu-dialog" style="display:none;" data-cardinality="">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<h2>Development</h2>
 		<hr size="1" />
 		<div><pre>
 			<?php include('CHANGELOG'); ?>
 		</div></pre>
-	</div>
-    <div class="api-msg gen-error" style="display:none;">
+   </div>
+   <div class="api-msg gen-error" style="display:none;">
         <span>Warning:</span> Content has changed since last time! <br> Reload the page to see the latest changes! 
-	</div>
+   </div>
 <script>
 <?php include('sources/js/main.js'); ?>
 </script>

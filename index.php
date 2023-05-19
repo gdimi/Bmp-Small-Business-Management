@@ -26,7 +26,10 @@ require_once('sources/init.php');
     
 	<link href="tpl/css/cssbase-min.css" rel="stylesheet" type="text/css" />
 	<link href="tpl/css/style.css" rel="stylesheet" type="text/css" />
-	<link href="tpl/css/responsive.css" rel="stylesheet" type="text/css" />
+    <?php if ($dss->style['flat'] == 'yes'): ?>
+	<link href="tpl/css/flat.css" rel="stylesheet" type="text/css" />
+    <?php endif; ?>
+  	<link href="tpl/css/responsive.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>

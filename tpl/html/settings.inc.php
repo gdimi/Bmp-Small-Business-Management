@@ -8,7 +8,7 @@ require_once('sources/preprocessor/settings.php'); //require preprocessor
 <link rel='stylesheet' href='sources/third_party/spectrum.min.css' />
 
 <span id="settings_help" class="help"></span>
-<div id="settings_data">
+<div id="settings_data" id="settings-handle">
 	<form id="settings_form" name="settings_form" action="index.php?task=sets&pos=before">
 		<div id="sets_help_data">
 		<span style="display: block;font-size: 1.2em;margin-bottom: 4px;text-align: center;">Heeeelp...</span>

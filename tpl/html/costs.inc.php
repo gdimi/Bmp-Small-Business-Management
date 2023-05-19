@@ -4,7 +4,7 @@
 		<link rel='stylesheet' href='sources/third_party/pickmeup.css' />
 
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
-		<h2><?php echo $lang['costs']; ?></h2>
+		<h2 class="drag-head" id="costs-handle"><?php echo $lang['costs']; ?></h2>
         <span class="filters" id="cost_filters">
             <form>
                 <?php echo $lang['year']; ?> <select id="cost_year">

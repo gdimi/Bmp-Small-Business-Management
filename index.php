@@ -67,29 +67,29 @@ require_once('sources/init.php');
 	</section>
     <section id="trash">
         <?php include('tpl/html/trashMain.inc.php'); ?>
-    </section>
-	<footer>Version <?php include('VERSION'); ?></footer>
-	<div id="new_ticket" class="elevate menu-dialog">
+   </section>
+   <footer>Version <?php include('VERSION'); ?></footer>
+   <div id="new_ticket" class="elevate menu-dialog draggable">
 		<?php include('tpl/html/frmAddTicket.inc.php'); ?>
-	</div>
-	<div id="new_client" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="new_client" class="elevate menu-dialog draggable" data-cardinality="">
 		<?php include('tpl/html/frmAddClient.inc.php'); ?>
-	</div>
-	<div id="settings" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="settings" class="elevate menu-dialog draggable" data-cardinality="">
 		<?php include('tpl/html/settings.inc.php'); ?>
-	</div>
-	<div id="client" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="client" class="elevate menu-dialog draggable" data-cardinality="">
 		<?php include('tpl/html/client.inc.php'); ?>
-	</div>
-	<div id="allclients" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="allclients" class="elevate menu-dialog draggable data-cardinality="">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
-		<h2><?php echo $lang['all-clients']; ?></h2>
+		<h2 class="drag-head" id="allclients-handle"><?php echo $lang['all-clients']; ?></h2>
 		<div></div>
-	</div>
-	<div id="esoda" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="esoda" class="elevate menu-dialog draggable" data-cardinality="">
 <?php include('tpl/html/income.inc.php'); ?>
-	</div>
-	<div id="costs" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="costs" class="elevate menu-dialog draggable" data-cardinality="">
 <?php include('tpl/html/costs.inc.php'); ?>
 	</div>
 	<div id="gen_res" class="elevate menu-dialog">
@@ -99,24 +99,24 @@ require_once('sources/init.php');
 	<div id="cis_res" class="elevate menu-dialog">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 		<div></div>
-	</div>
-	<div id="stats_info" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="stats_info" class="elevate menu-dialog draggable" data-cardinality="">
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php include('tpl/html/stats.inc.php'); ?>
 		<div></div>
-	</div>
-	<div id="various" class="elevate menu-dialog" data-cardinality="">
+   </div>
+   <div id="various" class="elevate menu-dialog draggable" data-cardinality="">
 <?php include('tpl/html/various.inc.php'); ?>
-	</div>
-	<div id="prices" class="elevate menu-dialog" contenteditable="true" data-cardinality="">
+   </div>
+   <div id="prices" class="elevate menu-dialog draggable" contenteditable="true" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php include('tpl/html/prices.inc.php'); ?>
-	</div>
-	<div id="cms_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 1%;" data-cardinality="">
+   </div>
+   <div id="cms_info" class="elevate menu-dialog draggable" style="width: auto; max-width: 848px; display: none; left: 20%; top: 1%;" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/cms.inc.php'); ?>
-	</div>
-	<div id="trash_info" class="elevate menu-dialog" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;" data-cardinality="">
+   </div>
+   <div id="trash_info" class="elevate menu-dialog draggable" style="width: auto; max-width: 848px; display: none; left: 20%; top: 30%;" data-cardinality="">
    		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['close-me']; ?></span>
 <?php @include('tpl/html/trash.inc.php'); ?>
 	</div>

@@ -1,7 +1,7 @@
 <?php
 if (!defined('_w00t_frm')) die('har har har');
 ?>		<span id="add_help" class="help"></span>
-		<form id="new_tk_frm" name="new_tk_frm" action="index.php?task=atk&pos=before">
+		<form id="new_tk_frm" name="new_tk_frm" action="index.php?task=atk&pos=before" id="new_ticket-handle">
 			<div id="add_help_data">
 			<span style="    display: block;font-size: 1.2em;margin-bottom: 4px;text-align: center;">Heeeelp...</span>
 			<span>Title:</span> A title we all can make sense of. 255 chars max<br /><br />

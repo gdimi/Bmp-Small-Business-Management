@@ -1,5 +1,5 @@
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
-        <h2><?php echo $lang['various']; ?></h2>
+        <h2 class="drag-head" id="various-handle"><?php echo $lang['various']; ?></h2>
 		<div class="variousContent">
 			<?php include('content/various.html'); ?>
 

@@ -2,7 +2,7 @@
 if (!defined('_w00t_frm')) die('har har har');
 ?>
 		<span id="add_help_cl" class="help"></span>
-		<form id="new_cl_frm" name="new_cl_frm" action="index.php?task=aclient&pos=before">
+		<form id="new_cl_frm" name="new_cl_frm" action="index.php?task=aclient&pos=before" id="new_client-handle">
 			<div id="add_help_data_cl" style="display:none;">
 			<span style="display: block;font-size: 1.2em;margin-bottom: 4px;text-align: center;">Heeeelp...</span>
 			<span>Name:</span> Everyone has a name..<br /><br />

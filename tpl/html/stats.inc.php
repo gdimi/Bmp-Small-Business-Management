@@ -8,7 +8,7 @@ $oldYear = $dss->startYear;
  }
 ?>
 
-<h2 style="display: inline-block;padding-right: 12px;"><?php echo $lang['stats']; ?></h2>
+<h2 style="display: inline-block;padding-right: 12px;" class="drag-head" id="stats-handle"><?php echo $lang['stats']; ?></h2>
 <form name="stats-time" id="stats_time_frm" style="display:inline">
 	Χρονολογία <select id="stats_time">
 	<option>all</option>

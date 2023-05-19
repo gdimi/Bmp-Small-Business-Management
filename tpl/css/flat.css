@@ -1,0 +1,76 @@
+.menu-dialog {
+	border: none;
+	padding: 16px;
+}
+
+table.grid {
+    padding: 0.5rem;
+    border: thin solid #ddd;
+}
+
+#cost_filters, #income_filters {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cl-b:hover {
+    font-weight: bold;
+}
+
+.fake-button {
+	background-color: #FCF7C2;
+	border: thin solid #9D942E;
+	border-radius: 2px;
+	transition: all .3s linear;
+}
+
+.fake-button:hover {
+    background-color: #fffde8;
+    border-color: #ddd;
+}
+
+section#history {
+    border: thin solid #ddd;
+}
+
+#new_tk_frm fieldset, .bmp-fieldset {
+	background-color: #FAFBFF;
+	border: thin solid #ddd;
+}
+
+.frm-input, .bmp-input, .bmp-textarea {
+    border: thin solid #A6D7FF  !important;
+}
+
+div.div-elevate {
+	border: 2px solid #ddd;
+	box-shadow: 1px 1px 1px dimgray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.b-blue:hover {
+    background-color: #507491;
+    padding: 6px;
+}
+
+.filters > form {
+    border: thin solid #ddd;
+}
+
+tr.tbody td {
+    border-bottom: 1px solid #aaa;
+}
+
+#new_tk_frm input, #new_cl_frm input, .bmp-input, .bmp-textarea {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+
+#new_cl_frm textarea, #new_tk_frm textarea {
+  border: 1px solid #ddd;
+}
+ 
+select {
+  border: 1px solid #ddd;
+}

@@ -1,4 +1,4 @@
-<h2><?php echo $lang['cms']; ?></h2> <?php echo $lang['cms-msg']; ?>
+<h2 class="drag-head" id="cms-handle"><?php echo $lang['cms']; ?></h2> <?php echo $lang['cms-msg']; ?>
 <hr size="1" />
 <div id="cms_intro">
 <?php echo $lang['cms-intro']; ?>

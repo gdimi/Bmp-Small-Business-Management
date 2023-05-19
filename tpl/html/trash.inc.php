@@ -1,4 +1,4 @@
-<h2><?php echo $lang['trash']; ?></h2>
+<h2 class="drag-head" id="trash-handle"><?php echo $lang['trash']; ?></h2>
 <hr size="1" />
 <div id="trash_data">
 

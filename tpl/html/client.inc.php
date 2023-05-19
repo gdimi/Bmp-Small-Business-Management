@@ -1,5 +1,5 @@
 		<span class="cl-b" onclick="$(this).parent().toggle();"><?php echo $lang['controls-close']; ?></span>
-		<h2><?php echo $lang['client-card']; ?></h2>
+		<h2 class="drag-head" id="client-handle"><?php echo $lang['client-card']; ?></h2>
 		<div>
 			<div>
 				<form id="ecl_frm" name="ecl-frm" action="index.php?task=eclient&pos=before">

@@ -1108,3 +1108,12 @@ cl-cases h3 {
     float: right;
     padding: 0 20px;
 }
+
+.draggable {
+    position:absolute;
+}
+
+.drag-head {
+    cursor:move;
+    user-select: none;
+}

@@ -4,19 +4,21 @@ if (!defined('_w00t_frm')) die('har har har');
 $pos = $_GET['pos'];
 $scerr = ''; //initialize error variable
 
+$im = isset($_GET['im']) ? $_GET['im'] : '';
+$iy = isset($_GET['iy']) ? $_GET['iy'] : '';
+
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
 	try {
-		if ($_GET['im'] and $_GET['iy']) {
+		if ($im and $iy) {
 			date_default_timezone_set('UTC+2');
 			$now = time();
 			$curMonth = date('n')+1;
 			$curYear = date('Y');
 			$curDay = date('d');
-			$im = $_GET['im']+1;
+			$im = $im + 1;
 			$lastMonth = $im - 1;
-			$iy = $_GET['iy'];
 			$ly = $iy;
 			if ($iy > $curYear) {
 				$idate = $now;
@@ -29,8 +31,7 @@ if (!$pos or $pos != 'before') {
 			if (!$idate) { $idate = strtotime($iy.'-'.$im); }
 			if (!$ldate) { $ldate = strtotime($ly.'-'.$lastMonth); }
 			$idateSQL = ' AND updated < '.$idate.' AND updated > '.$ldate;
-		} elseif ($_GET['iy'] && (int)$_GET['im'] == 0) {
-			$iy = $_GET['iy'];
+		} elseif ($iy && (int)$im == 0) {
 			$idate = strtotime(($iy).'-12-31');
 			$ldate = strtotime($iy.'-1-1') - 1; //adjust timestamp 1 sec before selected year to catch 'zero' second of it
 			$idateSQL = ' AND updated < '.$idate.' AND updated > '.$ldate;

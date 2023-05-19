@@ -1,4 +1,4 @@
-		<h3><?php echo $lang['lmenu']; ?></h3>
+		<h3><span><?php echo $lang['lmenu']; ?></span><a id="menuToggle" style="float:right;cursor:pointer;" title="shrink menu">&laquo;</a></h3>
         <ul>
             <li>
 				<span class="mcap">

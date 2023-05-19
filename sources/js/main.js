@@ -341,7 +341,22 @@ $(document).ready(function() {
 			$("#allclients").show("fast").append(textStatus);
 		});
 	});
-	
+    
+    $("#menuToggle").click(function() {
+       if ($("aside#menu").hasClass("shrunk")) {
+           $("aside#menu").removeClass("shrunk");
+           $("aside#menu > h3 span").html("<?php echo $lang['lmenu']; ?>");
+           $("section").css("margin-left","10%");
+           $(this).html("&laquo;");
+       } else {
+           $("aside#menu").addClass("shrunk");
+           $("aside#menu > h3 span").html("M");
+           $("section").css("margin-left","48px");
+           $(this).html("&raquo;");
+       }
+       $("aside#menu ul > li > span > a").toggle(); 
+    });
+
 	//Check state through API for changes since last accessed
 	function checkState(){
 		$.ajax({

@@ -44,8 +44,8 @@ require_once('sources/init.php');
    </header>
    <aside id="menu" <?php echo ($dss->style['left_bar_bg']) ? 'style="background-color: '.$dss->style['left_bar_bg'].';"' : '';?>>
 		<?php include('tpl/html/left-menu.inc.php'); ?>
-    </aside>
-	<section id="status">
+   </aside>
+   <section id="status">
 		<header>
 			<span class="cisearch">
 				<form>

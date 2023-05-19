@@ -68,7 +68,7 @@ section {
     float: left;
 }
 
-.cisearch .fake-button {
+.cisearch .fake-button, input#cisearch {
     font-size: 1em;
     font-weight: normal;
     padding: 2px;

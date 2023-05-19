@@ -62,8 +62,12 @@ if (!$pos or $pos != 'before') {
             break;
         case 'lastmsg':
             http_response_code(200);
-             echo json_encode(array("message" => $api->lastMsg()));
-           break;
+            echo json_encode(array("message" => $api->lastMsg()));
+            break;
+        case 'readlog':
+            http_response_code(200);
+            echo json_encode(array("message" => $api->readLog()));
+            break;
         case 'getclient':
         case 'getclients':
         case 'getcase':

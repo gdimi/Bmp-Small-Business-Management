@@ -31,7 +31,7 @@ if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';
 } else {
     if (isset($_POST['varData'])) { 
-		$varData = html_entity_decode($_POST['varData'],ENT_COMPAT | HTML5,"UTF-8"); //convert html entities
+		$varData = html_entity_decode($_POST['varData'],ENT_COMPAT | ENT_HTML5,"UTF-8"); //convert html entities
 		file_put_contents("content/various.html"," "); //erase old data
 		$evar = file_put_contents("content/various.html",$varData, LOCK_EX); //put new with a lock on file
 		if ($evar === false) {

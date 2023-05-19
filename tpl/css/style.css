@@ -906,6 +906,11 @@ span.clname  {
     clear: left;
 }
 
+#statres {
+    width: 200px;
+    display: inline-block;
+}
+
 .ecl_res {
     display: block;
 }

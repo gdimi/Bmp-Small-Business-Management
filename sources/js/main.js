@@ -1,5 +1,6 @@
-var $curState = '<?php echo $curState; ?>';
-var $cookieState = '';
+var curState = '<?php echo $curState; ?>';
+var cookieState = '';
+
 $(document).ready(function() {
     
     // Return today's date and time

@@ -62,6 +62,7 @@ $tasks['upload'] = 'upload.task';
 $tasks['unlink'] = 'unlink.task';
 $tasks['sets'] = 'settingsSave.task';
 $tasks['api'] = 'api.task';
+$tasks['trends'] = 'trends.task';
 
 //get task and position
 if (isset($_GET['task']) && $_GET['task'] != '') $task = trim($_GET['task']);

@@ -23,4 +23,4 @@ Tested up to php 7.4
 Licence: gpl 2.0
 
 
-George Dimitrakopoulos 2014 - 2022
+George Dimitrakopoulos 2014 - 2023

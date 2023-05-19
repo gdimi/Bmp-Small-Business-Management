@@ -2,6 +2,7 @@ var curState = '<?php echo $curState; ?>';
 var cookieState = '';
 
 $(document).ready(function() {
+	liveTime();
     
     // Return today's date and time
     var currentTime = new Date()
@@ -407,16 +408,27 @@ function getCookie(cname) {
 	return "";
   }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+function liveTime() {
+	let date = new Date(); 
+	let hh = date.getHours();
+	let mm = date.getMinutes();
+	let ss = date.getSeconds();
+	//let session = "AM";
+  
+/* 	if(hh == 0){
+		hh = 12;
+	}
+	if(hh > 12){
+		hh = hh - 12;
+		//session = "PM";
+	 } */
+  
+	 hh = (hh < 10) ? "0" + hh : hh;
+	 mm = (mm < 10) ? "0" + mm : mm;
+	 ss = (ss < 10) ? "0" + ss : ss;
+	  
+	 let time = hh + ":" + mm + ":" + ss; // + " " + session;
+  
+	document.getElementById("topClock").innerText = time; 
+	let t = setTimeout(function(){ liveTime() }, 1000);
 }

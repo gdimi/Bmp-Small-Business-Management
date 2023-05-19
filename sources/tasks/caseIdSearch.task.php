@@ -13,6 +13,7 @@ if (!$pos or $pos != 'before') {
 		$cid = trim($_GET['ci']);
         $cid = substr($cid,2);
 
+        $ticket_data = '';    
         if (is_numeric($cid)) {
             require_once('sources/config.php');
             $dss = new DSconfig;

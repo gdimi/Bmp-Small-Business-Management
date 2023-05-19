@@ -21,6 +21,9 @@
  * @see        -
  * @since      0.733-dev
  * @deprecated -
+ 
+ * last update 29/11/2022
+ - add an array for logging last 100 messages
  */
 
 namespace BMP\Database;
@@ -33,13 +36,17 @@ class BMPApi extends Db {
     protected $BMPApiError;
     protected $BMPApiMsg;
     protected $version;
+    private $arrayStates;
+    protected $apiLog;
     
-    public function init() {
+    public function init($dontSetState = false) {
         $this->BMPStatus = $this->getStatus();
         $this->BMPApiError = 0;
         $this->BMPstate = false;
-        $this->version = '1.0.0alpha';
-        $this->setState();
+        $this->version = '1.0.1alpha';
+        $this->arrayStates = $this->arrayChanges();
+        $this->setState($dontSetState);
+        $this->apiLog = array();
     }
     
     /* check that we can access db and return true or false */
@@ -53,14 +60,85 @@ class BMPApi extends Db {
     }
     
     /* add a cookie with the current state */
-    private function setState() {
+    private function setState($dontSetCookie = false) {
         $state = $this->calcChanges();
         $this->BMPstate = $state;
         
-        if ($state != 0 && $this->BPMApiError == 0) {
+        if ($state != 0 && $this->BMPApiError == 0 && !$dontSetCookie) {
             setcookie("BMPstate", "$state", time()+3600, "/","", 1);
         } else {
-            $this->_Log('API: Cannot set state');
+            $this->_Log('API: Cannot set state cookie');
+        }
+    }
+    
+    /*return an array with states and errors*/
+    private function arrayChanges() {
+        $tsArray = array();
+        $tsErrorArr = array();
+        
+        // get latest case changed
+        try {
+            $cresult = $this->getConn()->query('SELECT `updated` FROM `Case` ORDER BY `updated` DESC LIMIT 1');
+            if ($cresult) {
+                foreach($cresult as $timestamp) {
+                    $tsArray['case'] = $timestamp[0];
+                }
+            } else {
+                $tsErrorArr['db'] = $cresult;
+            }
+        } catch(PDOException $ex) {
+            $this->BMPApiMsg =  "SYSTEM: An Error occured!".$ex->getMessage(); //user friendly message
+            $this->BMPApiError = 1;
+        }
+        // get modification timestamp of history file
+        $hstat = stat('content/action_history.txt');
+
+        if (!$hstat) {
+            $tsArray['history'] = 'State: cannot stat action history file';
+        } else {
+            $tsErrorArr['history'] = $hstat['mtime'];
+        }
+        
+        // get modification timestamp of board 
+        $bstat = stat('content/board');
+
+        if (!$bstat) {
+            $tsErrorArr['board'] ='State: cannot stat board file';
+        } else {
+            $tsArray['board'] = $bstat['mtime'];
+        }
+        
+        // get modification timestamp of motd 
+        $mstat = stat('content/motd');
+
+        if (!$mstat) {
+            $tsErrorArr['motd'] = 'State: cannot stat motd file';
+        } else {
+            $tsArray['motd'] = $mstat['mtime'];
+        }
+        
+        // get modification timestamp of various page 
+        $vstat = stat('content/various.html');
+
+        if (!$vstat) {
+            $tsErrorArr['various'] = 'State: cannot stat various file';
+        } else {
+            $tsArray['various'] = $vstat['mtime'];
+        }
+        
+        asort($tsArray,SORT_NUMERIC);
+        
+        return $tsArray+$tsErrorArr;
+    }
+    
+    public function getVarious() {
+        try {
+            $various = file_get_contents('content/various.html');
+            return $various;
+        } catch(Exception $ex) {
+            $this->BMPApiError = 1;
+            $this->BMPApiMsg = 'Error: Cannot read various content';
+            return false;
         }
     }
     
@@ -89,7 +167,7 @@ class BMPApi extends Db {
         if (!$hstat) {
             $this->_Log('State: cannot stat action history file');
         } else {
-            $tsArray['history'] = $hstat['atime'];
+            $tsArray['history'] = $hstat['mtime'];
         }
         
         // get modification timestamp of board 
@@ -98,7 +176,7 @@ class BMPApi extends Db {
         if (!$bstat) {
             $this->_Log('State: cannot stat board file');
         } else {
-            $tsArray['board'] = $bstat['atime'];
+            $tsArray['board'] = $bstat['mtime'];
         }
         
         // get modification timestamp of motd 
@@ -107,7 +185,7 @@ class BMPApi extends Db {
         if (!$mstat) {
             $this->_Log('State: cannot stat motd file');
         } else {
-            $tsArray['motd'] = $mstat['atime'];
+            $tsArray['motd'] = $mstat['mtime'];
         }
         
         // get modification timestamp of various page 
@@ -116,13 +194,18 @@ class BMPApi extends Db {
         if (!$vstat) {
             $this->_Log('State: cannot stat various file');
         } else {
-            $tsArray['various'] = $vstat['atime'];
+            $tsArray['various'] = $vstat['mtime'];
         }
         
-        asort($tsArray);
+        asort($tsArray,SORT_NUMERIC);
         
         return end($tsArray);
         //return $tsArray;
+    }
+    
+    /*return json with all states and errors*/
+    public function returnStatesErrors() {
+        return json_encode($this->arrayStates);
     }
     
     /* Return description */
@@ -145,10 +228,22 @@ class BMPApi extends Db {
         return $this->BMPApiError;
     }
     
+    /*Return log*/
+    public function readLog() {
+        return $this->apiLog;
+    }
+    
     /* API logger */
     private function _Log($data) {
         //set last message
         $this->BMPApiMsg = $data;
+        
+        //hold only last 100 messages in array log
+        if (count($this->apiLog) > 100) {
+            $this->apiLog = array();
+        }
+        //store data
+        $this->apiLog[] = $data;
     }
     
 

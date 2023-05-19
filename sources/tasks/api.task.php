@@ -74,8 +74,14 @@ if (!$pos or $pos != 'before') {
         case 'getcases':
         case 'getmotd':
         case 'getboard':
+            if ($api->getVarious() === false) {
+                $scerr = $api->BMPApiMsg;
+            } else {
+                http_response_code(200);
+                echo json_encode(array("message" => $api->getVarious()));
+            }
         case 'getvarious':
-            http_response_code(418);
+            http_response_code(418); //to be implemented
             break;
         default:
             http_response_code(400);

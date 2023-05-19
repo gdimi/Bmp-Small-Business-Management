@@ -6,22 +6,22 @@
  * - changed normalize_tel -> normalizeTel, truncate_str -> truncateString, validEMail_simple -> validEmailSimple for psr-1
  * - added namespace Core
  * @history:
- *  -- 110211
- * - added normalize_tel
- * - added a constructor
- * - added normalization to telephone number
- * - added ability to pass you own array of chars for normalizing tels
- * - fixed protected functions to public except truncate_str & normalize_tel
- * - changed is_numeric to ctype_digit in telephone checks
  * -- 110126
  *  -made it a class
  *  -added removeXss
  *  -added validTel
  *  -added validUrl
  *  -added truncate_str
+ *  -- 111010
+  * - added normalize_tel
+ * - added a constructor
+ * - added normalization to telephone number
+ * - added ability to pass you own array of chars for normalizing tels
+ * - fixed protected functions to public except truncate_str & normalize_tel
+ * - changed is_numeric to ctype_digit in telephone checks
  *  */
 namespace BMP\Core;
-
+ 
 defined( '_w00t_frm' ) or die( 'Restricted access' );
 
 class ValForm {

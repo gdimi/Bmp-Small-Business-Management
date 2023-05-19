@@ -56,6 +56,10 @@ if (!$pos or $pos != 'before') {
             http_response_code(200);
             echo json_encode(array("message" => $api->errorState()));
             break;
+        case 'returnStatesErrors':
+            http_response_code(200);
+            echo json_encode(array("message" => $api->returnStatesErrors()));
+            break;
         case 'lastmsg':
             http_response_code(200);
              echo json_encode(array("message" => $api->lastMsg()));

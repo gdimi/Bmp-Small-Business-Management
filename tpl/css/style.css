@@ -1101,3 +1101,10 @@ cl-cases h3 {
   0%,100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
+
+#topClock {
+    font-family: monospace;
+    color: black;
+    float: right;
+    padding: 0 20px;
+}

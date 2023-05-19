@@ -60,8 +60,9 @@
 	#new_ticket, #new_client, #settings, #client, #gen_res, #allclients, #cis_res, #esoda, #costs, #various, #stats_info, #prices {
 		min-width:314px;
 		width: 90% !important;
-		left: 2% !important;
-	}
+        left: 0% !important;
+        padding: 10px;	
+    }
 
 	.frm-actual-data {
 		max-width: 100%;

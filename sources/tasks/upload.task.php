@@ -32,6 +32,7 @@ if (isset($_POST['cid'])) {
 } else {
    $caseId = '';
 }
+
 $utype = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : false;
 
 if (!$pos or $pos != 'before') {

@@ -165,7 +165,9 @@ if ($task != '' && $tasks[$task] && $pos == 'before') {
 		//check if tickets are to be sorted
 		if (isset($_GET['sr'])) {
 			$sort = $_GET['sr']; //TODO: better security
-		}
+		} else {
+            $sort = null;
+        }
 
 		$tickets = $tickets_handler->readAllTicketsnew($sort);
 	}

@@ -22,12 +22,18 @@ if (count($dss->exclude_from_stats)) {
 
 //see if there's a year we're intrested in
 if (isset($_GET['iy']) && $_GET['iy'] > 0) {
-	$from_time = $_GET['iy'];
-	$year_only = date('Y',$from_time);
+    
+    if ((int)$_GET['iy'] < 12) { // one of the btns 
+        $days = 30 * (int)$_GET['iy'];
+        $from_time = strtotime(date('Y-m-d', strtotime('-'.$days.' days')));
+    } else { // yearly from select dropdown
+        $from_time = $_GET['iy'];
+        $year_only = date('Y',$from_time);
 
-	if ( strtotime($year_only.'-01-01-00:00') < strtotime($thisYear.'-01-01-00:00')) {
-		$to_time = strtotime("$year_only-12-31-00:00");
-	}
+        if ( strtotime($year_only.'-01-01-00:00') < strtotime($thisYear.'-01-01-00:00')) {
+            $to_time = strtotime("$year_only-12-31-00:00");
+        }
+    }
 } else {
 	$from_time = strtotime($dss->startYear.'-01-01-00:00');
 }

@@ -18,11 +18,15 @@ if (!$pos or $pos != 'before') {
     echo '<br> msg:'. $api->lastMsg();
     echo '<br> error:'. $api->errorState();*/
 
-    $command = '';
+    $command = ''; //which command are we going to rung
+    $dontSetState = true; //do we want to set a new state, hence update cookie??
     
     if (isset($_GET['comm']) && $_GET['comm'] != '') {
         $command = $_GET['comm'];
-    } else {
+        if (isset($_GET['dss']) && (int)$_GET['dss'] == 0) { //set state if dss is zero
+            $dontSetState = false;
+        }
+    } else { //no command is not accepted
         http_response_code(404);
         echo json_encode(array("message" => "42")); //the answer to everything
         exit(1);
@@ -33,7 +37,7 @@ if (!$pos or $pos != 'before') {
     require_once('sources/class.api.php');
     
     $api = BMPApi::getInstance();
-    $api->init();
+    $api->init($dontSetState);
 
     switch ($command) {
         case 'version':

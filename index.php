@@ -138,5 +138,6 @@ require_once('sources/init.php');
 <script>
 <?php include('sources/js/main.js'); ?>
 </script>
+<script src="sources/third_party/chart.min.js"></script>
 </body>
 </html>

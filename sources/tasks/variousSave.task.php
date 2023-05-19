@@ -32,11 +32,19 @@ if (!$pos or $pos != 'before') {
 } else {
     if (isset($_POST['varData'])) { 
 		$varData = html_entity_decode($_POST['varData'],ENT_COMPAT | ENT_HTML5,"UTF-8"); //convert html entities
-		file_put_contents("content/various.html"," "); //erase old data
-		$evar = file_put_contents("content/various.html",$varData, LOCK_EX); //put new with a lock on file
-		if ($evar === false) {
-			$scerr = 'Failed to store data!';
-		}
+        if (is_file("content/various.html")) {
+            if (is_writable("content/various.html")) {
+                file_put_contents("content/various.html"," "); //erase old data
+                $evar = file_put_contents("content/various.html",$varData, LOCK_EX); //put new with a lock on file
+                if ($evar === false) {
+                    $scerr = 'Failed to store data!';
+                }
+            } else {
+                $scerr = 'File is not writable!';
+            }
+        } else {
+            $scerr = 'File not found!';
+        }
 	}
 }
 

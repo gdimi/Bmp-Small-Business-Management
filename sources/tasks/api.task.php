@@ -5,6 +5,8 @@ namespace BMP\Database;
 
 if (!defined('_w00t_frm')) die('har har har');
 
+$scerr = false;
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 

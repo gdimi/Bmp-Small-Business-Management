@@ -341,8 +341,7 @@ tr.tbody td {
     display:none;
 }
 
-#settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms {
-    background: url("../../images/settings.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+#add_tk, #settings_tk, #add_client, #all_clients, #income, #expenses, #events, #stats, #cms {
     cursor: pointer;
     display: inline-block;
     height: 32px;
@@ -444,6 +443,14 @@ table#ct_table {
 }
 #cms {
 	background: url("../../images/cms.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+#add_tk {
+    background: none;
+}
+
+#settings_tk {
+    background: url("../../images/settings.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
 #settings_tk:hover,#add_client:hover,#all_clients:hover,#income:hover,#expenses:hover,#events:hover,#stats:hover,#cms:hover {

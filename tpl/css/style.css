@@ -270,6 +270,10 @@ tr.tbody td {
    vertical-align: middle;
 }
 
+#menu ul li:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
 .elevate {
 	box-shadow: 2px 2px 6px #000000;
 	z-index:2;

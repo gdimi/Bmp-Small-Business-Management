@@ -365,10 +365,10 @@ $(document).ready(function() {
 			success:function(data)
 			{
 				let cookieState = getCookie("BMPstate");
-				console.log((data.message == $curState));
-				console.log(data.message);
-				console.log($curState);
-				console.log(cookieState);
+				console.log((data.message == curState));
+				console.log('state received '+data.message);
+				console.log('current state '+curState);
+				console.log('cookie state '+cookieState);
 
 				if (cookieState != data.message) {
 					$('.api-msg').show();

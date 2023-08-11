@@ -24,6 +24,7 @@
  */
 if (!defined('_w00t_frm')) die('har har har');
 $pos = $_GET['pos'];
+$storemsg = '';
 
 if (!$pos or $pos != 'before') {
 	$scerr = 'Task ['.$task.'] warning: no or wrong position of execution';

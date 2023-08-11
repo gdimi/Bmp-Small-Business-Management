@@ -14,7 +14,7 @@
  * @category   bmp\sources\classes
  * @package    bmp\sources
  * @author     Original Author <gdimi@hyperworks.gr>
- * @copyright  2014-2021 George Dimitrakopoulos
+ * @copyright  2014-2023 George Dimitrakopoulos
  * @license    GPLv2
  * @version    1.0
  * @link       -
@@ -96,7 +96,9 @@ Class Settings extends Filesystem
 			$users_txt .= "'$user', \n";
 		}
 		//var_dump($caseStatus);die();
-		$config_data = "<?php".PHP_EOL."
+		$config_data = "<?php".PHP_EOL.
+        "namespace BMP\Core;".PHP_EOL.
+        "
 if (!defined('_w00t_frm')) die('har har har');".PHP_EOL."
 
 class DSConfig {".PHP_EOL."
@@ -151,7 +153,8 @@ class DSConfig {".PHP_EOL."
 	var \$style = array(
 		'logo'=>'{$config_vars['logo']}', //path to logo file
 		'top_bar_bg'=>'{$config_vars['top_bar_bg']}', //top bar bg color
-		'left_bar_bg'=>'{$config_vars['left_bar_bg']}' //left bar bg color
+		'left_bar_bg'=>'{$config_vars['left_bar_bg']}', //left bar bg color
+                'flat'=>'yes', //new flat style css
 	);
 ".PHP_EOL."
     public function __toString() {

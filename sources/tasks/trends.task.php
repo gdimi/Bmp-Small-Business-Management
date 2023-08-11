@@ -5,7 +5,7 @@ if (!defined('_w00t_frm')) die('har har har');
 $caseType = $dss->caseType;
 
 $from_time = '';
-$to_time = $curTimestamp;
+$to_time = '';
 $sc_err = '';
 $scerr = '';
 
@@ -47,24 +47,34 @@ if (!$pos or $pos != 'before') {
     // get list by case by tziros 
     //var_dump((int)$dss->startYear);
     //var_dump($yearNow);
+    
     for ($i = $yearStart;$i <= $yearNow;$i++) {
          
-        $from_time = strtotime("$i-01-01-00:00");
-        $to_time = strtotime("$i-12-31-59:59");
+        $totalPerYear = 0;
+         
+        $from_time = strtotime("$i-01-01 00:00:00");
+        $to_time = strtotime("$i-12-31 23:59:59");
         //print_r($from_time)."\n\n";
         //print_r($to_time)."\n\n";
-        $qry = 'SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY type DESC;';
+        $qry = 'SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM `Case` WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY type ORDER BY type DESC;';
+
+        //echo $i.'-'.$qry.'<br>';
+
         $scres = $sccon->query($qry);
         if ($scres) {
             //$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytypebygross'].'</h3>';
             foreach ($scres as $ctli) {
                 $ctype = $caseType[$ctli['type']];
-                $perc = ($ctli['theTotal']/$allinc)*100;
-                $perc = round($perc,2);
-                $barWidth = round($perc * 2.8);
+                //$perc = ($ctli['theTotal']/$allinc)*100;
+                //$perc = round($perc,2);
+                //$barWidth = round($perc * 2.8);
                 
                 $cases["$i"][$ctype] = $ctli['theTotal'];
+                
+                $totalPerYear += $ctli['theTotal'];
             }
+            
+            $cases["$i"]['total'] = $totalPerYear;
         }
         
         //print_r($qry);

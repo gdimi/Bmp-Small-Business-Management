@@ -30,12 +30,12 @@ if (isset($_GET['iy']) && $_GET['iy'] > 0) {
         $from_time = $_GET['iy'];
         $year_only = date('Y',$from_time);
 
-        if ( strtotime($year_only.'-01-01-00:00') < strtotime($thisYear.'-01-01-00:00')) {
-            $to_time = strtotime("$year_only-12-31-00:00");
+        if ( strtotime($year_only.'-01-01 00:00:00') < strtotime($thisYear.'-01-01 00:00:00')) {
+            $to_time = strtotime("$year_only-12-31 23:59:59");
         }
     }
 } else {
-	$from_time = strtotime($dss->startYear.'-01-01-00:00');
+	$from_time = strtotime($dss->startYear.'-01-01 00:00:00');
 }
 
 if (!$pos or $pos != 'before') {

@@ -101,11 +101,11 @@ function checkVals(&$ecerr,$postvals=array()) {
 		$ecerr = 'Name '.$client['name'].' too short!'.strlen($client['name']);
 		return false;
 	}
-	if ($client['clTel1'] && !is_numeric($client['tel1'])) {
+	if ($clTel1 && !is_numeric($clTel1)) {
 		$ecerr = 'Cant you write a proper phone number??';
 		return false;
 	}
-	if ($client['clTel2'] && !is_numeric($client['tel2'])) {
+	if ($clTel2 && !is_numeric($clTel2)) {
 		$ecerr = 'Cant you write a proper phone number??';
 		return false;
 	}

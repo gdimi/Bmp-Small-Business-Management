@@ -4,7 +4,7 @@
  *
  * this file updates a client 
  * 
- * PHP version 5.2+
+ * PHP version 5.3+
  *
  * LICENCE: This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -14,9 +14,9 @@
  * @category   bmp\sources\ajax handlers
  * @package    bmp\sources
  * @author     Original Author <gdimi@hyperworks.gr>
- * @copyright  2014-2015 George Dimitrakopoulos
+ * @copyright  2014-2023 George Dimitrakopoulos
  * @license    GPLv2
- * @version    1.0
+ * @version    1.1
  * @link       -
  * @see        -
  * @since      Since 0.375-dev

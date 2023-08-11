@@ -23,6 +23,8 @@
  * @since      Since 0.733
  * @deprecated -
  */
+use BMP\Core; 
+
 if (!defined('_w00t_frm')) die('har har har');
 
 $scerr = ''; //var to hold error msg. Initialized here so functions below can access it by addr

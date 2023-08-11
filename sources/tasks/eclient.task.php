@@ -73,13 +73,22 @@ function checkVals(&$ecerr,$postvals=array()) {
 	$telIlligalChars = array(' ','-','_','+');
 	$client = array();
 
-	$client['name'] = trim($_POST['eclname']);
-	$client['address'] = trim($_POST['ecladdr']);
-	$client['info'] = trim($_POST['eclinfo']);
-	$client['email'] = trim($_POST['eclmail']);
-	$client['tel1'] = trim($_POST['ecltel1']);
-	$client['tel2'] = trim($_POST['ecltel2']);
-	$client['id'] = (int)($_POST['eclid']);
+	$client['name'] = '';
+	$client['address'] = '';
+	$client['info'] = '';
+	$client['email'] = '';
+	$client['tel1'] = '';
+	$client['tel2'] = '';
+	$client['id'] = 0;
+
+	$client['name'] = !isset($_POST['eclname']) ?: trim($_POST['eclname']);
+	$client['address'] = !isset($_POST['ecladdr']) ?: trim($_POST['ecladdr']);
+	$client['info'] = !isset($_POST['eclinfo']) ?: trim($_POST['eclinfo']);
+	$client['email'] = !isset($_POST['eclmail']) ?: trim($_POST['eclmail']);
+	$client['tel1'] = !isset($_POST['ecltel1']) ?: trim($_POST['ecltel1']);
+	$client['tel2'] = !isset($_POST['ecltel2']) ?: trim($_POST['ecltel2']);
+	$client['id'] = !isset($_POST['eclid']) ?: (int)($_POST['eclid']);
+    
 	if ($client['name'] == '') {
 		$ecerr = 'No name found';
 		return false;

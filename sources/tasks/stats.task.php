@@ -1,5 +1,31 @@
 <?php
-//search for client
+/**
+ *
+ * this file contains the code that handles statistics requests
+ * 
+ * PHP version 5+
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version
+ *
+ * @category   bmp\sources\tasks
+ * @package    bmp\sources
+ * @author     Original Author <gdimi@hyperworks.gr>
+ * @copyright  2014-2023 George Dimitrakopoulos
+ * @license    GPLv2
+ * @version    1.0
+ * @link       -
+ * @see        -
+ * @since      0.733-dev
+ * @deprecated -
+ 
+ * last update 21/12/2023
+ - moved query for number of closed cases to class stats  
+ */
+namespace BMP\Database;
+
 if (!defined('_w00t_frm')) die('har har har');
 
 $caseType = $dss->caseType;

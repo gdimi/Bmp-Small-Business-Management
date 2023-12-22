@@ -152,30 +152,87 @@ if (!$pos or $pos != 'before') {
 			// get top customers by total income and display
 			$scres = $statsInstance->getTopCustomersByIncome($from_time,$to_time,$ex_join_sql,$hardLimit);
 			if ($scres) {
-				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient'].'</h3>';
-				foreach ($scres as $cli) {
-					$schtml .="
-					<div>
-						<span class=\"clname\">${cli['name']}</span> | <span class=\"stc\">${cli['theSUM']}</span>
-					</div>
-					";
+			    $schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient'].'</h3>';
+                            $counter = 0;
+			    foreach ($scres as $cli) {
+                                $counter++;
+                    
+                                $clArray[$cli['id']] = array();
+                                $clArray[$cli['id']]['name'] = $cli['name'];
+                                $clArray[$cli['id']]['total'] = 0;
+                                $clArray[$cli['id']]['count'] = 0;
+                                $clArray[$cli['id']]['VPC'] = 0;
+                    
+                                $clArray[$cli['id']]['total'] = $cli['theSUM'];
+                    
+                                if ($counter <= $softLimit) {
+                                    $schtml .="
+                        <div>
+                            <span class=\"clname cl-${cli['id']}\" data-cid=\"${cli['id']}\">${cli['name']}</span> | <span class=\"stc\">${cli['theSUM']}</span>
+                        </div>
+                        ";
 				}
 				$schtml .="</div>";
-			}
+			    }
+                        }
 
 			// get top customers by # of cases and display
 			$scres = $statsInstance->getTopCustomersByNofCases($from_time,$to_time,$ex_join_sql,$hardLimit);
 			if ($scres) {
+                            $counter = 0;
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient-noc'].'</h3>';
 				foreach ($scres as $clcn) {
-					$schtml .="
-					<div>
-						<span class=\"clname\">${clcn['name']}</span> | <span class=\"stc\">${clcn['theCount']}</span>
-					</div>
-					";
+                    $counter++;                   
+                    
+                    //store theCount to used it calculating Value Per Case (VPC)
+                    $clArray[$clcn['id']]['count'] = $clcn['theCount'];
+                    
+                    //we want only clients with more than $totalCasesThreshold to avoid skeweing result for customers with too few cases
+                    if ($clArray[$clcn['id']]['count'] >= $totalCasesThreshold) {
+                        if (isset($clArray[$clcn['id']]['total']) && (int)$clArray[$clcn['id']]['total'] > 0) {
+                            $clArray[$clcn['id']]['VPC'] = round($clArray[$clcn['id']]['total'] / $clArray[$clcn['id']]['count'] , 1);
+                        } else {
+                            //var_dump("asdasd ".$clcn['name']);
+                            unset($clArray[$clcn['id']]);
+                        }
+                    } else {
+                        //$clArray[$clcn['id']]['VPC'] = null;
+                        unset($clArray[$clcn['id']]);
+                    }
+                    
+                    if ($counter <= $softLimit) {
+                        $schtml .="
+                        <div>
+                            <span class=\"clname cl-${clcn['id']}\" data-cid=\"${clcn['id']}\">${clcn['name']}</span> | <span class=\"stc\">${clcn['theCount']}</span>
+                        </div>
+                        ";
+                    }
 				}
 				$schtml .="</div>";
 			}
+            
+            //sort array 
+            uasort($clArray, function($a, $b) {
+                if ($a['VPC'] > $b['VPC']) {
+                    return -1;
+                } elseif ($a['VPC'] < $b['VPC']) {
+                    return 1;
+                }
+                return 0;
+            });
+            
+            $schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient-vpc'].'</h3>';
+            
+            foreach ($clArray as $clid => $clientA) {
+                $schtml .= "
+                  <div>
+                      <span class=\"clname cl-${clid}\" data-cid=\"${clid}\">${clientA['name']}</span> | <span class=\"stc\">${clientA['VPC']}</span>
+                  </div>
+                ";
+              
+            }
+            
+            $schtml .= '</div><div style="clear: both;"></div>';
 		}
     } catch(PDOException $ex) {
         $scerr = "An Error occured!".$ex->getMessage();

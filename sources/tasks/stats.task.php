@@ -41,6 +41,16 @@ $scerr = '';
 $ex_clients = '';
 $ex_sql = '';
 $ex_join_sql = '';
+
+//limits
+$hardLimit = 500; // actual sql query limit
+$softLimit = 10; // limit for result loops 
+
+//master client array and usefull vars
+$clArray = [];
+$totalCasesThreshold = 5; //used on calculating the VPC (Value Per Case) for clients
+
+//exclude from stats selected clients in config
 if (count($dss->exclude_from_stats)) {
 	$ex_clients = implode(',',$dss->exclude_from_stats);
 	$ex_sql = " AND `ClientID` NOT IN ('".$ex_clients."')";
@@ -58,7 +68,7 @@ if (isset($_GET['iy']) && $_GET['iy'] > 0) {
         $from_time = $_GET['iy'];
         $year_only = date('Y',$from_time);
 
-        if ( strtotime($year_only.'-01-01 00:00:00') < strtotime($thisYear.'-01-01 00:00:00')) {
+        if (strtotime($year_only.'-01-01 00:00:00') < strtotime($thisYear.'-01-01 00:00:00')) {
             $to_time = strtotime("$year_only-12-31 23:59:59");
         }
     }
@@ -71,6 +81,7 @@ if (!$pos or $pos != 'before') {
 } else {
 	//check if lang is set and if not load english
 	$lang = array();
+    
 	if (isset($_GET['lang'])) {
 		$language = trim(strip_tags($_GET['lang']));
 		include("language/${language}.php");
@@ -79,9 +90,12 @@ if (!$pos or $pos != 'before') {
 	}
     
 	try { //get number of cases
-        $sccon = new PDO('sqlite:pld/HyperLAB.db3');
-        $sccon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-        $scall = $sccon->query('SELECT COUNT(0) as theAll FROM "Case" WHERE updated >= '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
+        $statsInstance = Stats::getInstance();
+        $statsInstance->init();
+
+        $scall = $statsInstance->getNumOfCases($from_time,$to_time,$ex_sql);
+        //$scall = $sccon->query('SELECT COUNT(0) as theAll FROM "Case" WHERE status > 3 AND updated >= '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
+        
         if ($scall) {
             foreach ($scall as $all) {
                 $all = $all['theAll'];
@@ -90,7 +104,7 @@ if (!$pos or $pos != 'before') {
         }
 		if ($all > 0) {
 			//get total current income
-			$scinc = $sccon->query('SELECT SUM("price") as theIncome FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
+			$scinc = $statsInstance->getIncomeTotal($from_time,$to_time,$ex_sql);
 			if ($scinc) {
 				foreach ($scinc as $allinc) {
 					$allinc = $allinc['theIncome'];

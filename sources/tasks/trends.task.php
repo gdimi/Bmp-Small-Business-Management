@@ -48,7 +48,7 @@ if (!$pos or $pos != 'before') {
     //var_dump((int)$dss->startYear);
     //var_dump($yearNow);
     
-    for ($i = $yearStart;$i <= $yearNow;$i++) {
+    /*for ($i = $yearStart;$i <= $yearNow;$i++) {
          
         $totalPerYear = 0;
          
@@ -80,8 +80,146 @@ if (!$pos or $pos != 'before') {
         //print_r($qry);
     }
     
-    //print_r($cases);
+    //print_r($cases);*/
+    
+    
+    $ttspy = calcTotalStatsPerYear($sccon,$yearStart,$yearNow,$ex_sql);
+    
+    $dataY = $ttspy;
+    $dataQ = calcTotalStatsPerQuarter($sccon,$yearStart,$yearNow,$ex_sql);
 }
+
+//Calculate total stats per year
+function calcTotalStatsPerYear (&$sccon,$firstYear,$thisYear,$ex_sql) {
+    $StatsPerYear = [];
+    $years = [];
+    $income = [];
+    $cases = [];
+    $IPC = [];
+    
+    $income["Income"] = array();
+    $cases["Cases"] = array();
+    $IPC["IncomePerCase"] = array();
+    
+    $income["Income"]["amount"] = array();
+    $cases["Cases"]["num"] = array();
+    $IPC["IncomePerCase"]["IPC"] = array();
+    
+    for ($i = $firstYear; $i <= $thisYear; $i++) {
+        
+        $years[] = "$i";
+        
+        $scres = $sccon->query('SELECT count(0) as totalYcases, SUM("price") as totalYtziros FROM "Case" WHERE "status" > 3 AND datetime("Case"."updated",\'unixepoch\') >= \''.$i.'-01-01 00:00:00\' AND datetime("Case"."updated",\'unixepoch\') <= \''.$i.'-12-31 23:59:59\''.$ex_sql.';');
+        
+        if ($scres) {
+            
+            foreach ($scres as $totals) {
+                //var_dump($totals['totalYcases']);
+
+                
+                $income["Income"]["amount"][] = $totals['totalYtziros'];
+                $cases["Cases"]["num"][] = $totals['totalYcases']*10;
+                $IPC["IncomePerCase"]["IPC"][] = round(($totals['totalYtziros'] / $totals['totalYcases']),2)*10;
+            }
+        }
+    }
+    
+    $income["Years"] = $years;
+    $cases["Years"] = $years;
+    $IPC["Years"] = $years;
+    
+    $statsPerYear[] = $income;
+    $statsPerYear[] = $cases;
+    $statsPerYear[] = $IPC;
+    
+    
+    return $statsPerYear;
+}
+
+
+function calcTotalStatsPerQuarter (&$sccon,$firstYear,$thisYear,$ex_sql) {
+    $StatsPerQ = [];
+    $years = [];
+    $quarters = [];
+    $income = [];
+    $cases = [];
+    $IPC = [];
+    
+    $income["Income"] = array();
+    $cases["Cases"] = array();
+    $IPC["IncomePerCase"] = array();
+    
+    $income["Income"]["amount"] = array();
+    $cases["Cases"]["num"] = array();
+    $IPC["IncomePerCase"]["IPC"] = array();   
+
+    for ($i = $firstYear; $i <= $thisYear; $i++) {
+        
+        $years[] = "$i";
+
+        $monthFrom = 1;
+        $monthTo = 3;
+               
+        for ($q = 1; $q <= 4; $q++) {
+            
+            //these will be our labels in the frontend graph
+            if ($q == 1) {
+                $quarters[] = "$i - Q$q";
+            } else {
+                $quarters[] = "Q$q";
+            }
+                       
+            //1 - 3   12 - 11 | 12/12 -> 12 - 9 | 12/4
+            //4 - 6   12 - 8 | 12/3  -> 12 - 6 | 12/2
+            //7 - 9   12 - 5 | ???   -> 12 - 3 | ???
+            //10 - 12 12 - 2 | ???   -> 12 - 0 | 12/12
+
+            $monthFromSql = "$monthFrom";
+            $monthToSql = "$monthTo";
+            
+            //add a zero in front of month if < 10
+            if ($monthFrom < 10) {
+                $monthFromSql = "0"."$monthFrom";
+            }
+            
+            if ($monthTo < 10) {
+                $monthToSql = "0"."$monthTo";
+            }
+            
+            $scres = $sccon->query('SELECT count(0) as totalYcases, SUM("price") as totalYtziros FROM "Case" WHERE "status" > 3 AND datetime("Case"."updated",\'unixepoch\') >= \''.$i.'-'.$monthFromSql.'-01 00:00:00\' AND datetime("Case"."updated",\'unixepoch\') <= \''.$i.'-'.$monthToSql.'-31 23:59:59\''.$ex_sql.';');
+        
+           // echo 'SELECT count(0) as totalYcases, SUM("price") as totalYtziros FROM "Case" WHERE "status" > 3 AND datetime("Case"."updated",'."'unixepoch') >= '".$i.'-'.$monthFrom."-01 00:00:00' AND datetime(".'"Case"."updated",'."'unixepoch') <= '".$i.'-'.$monthTo."-31 23:59:59'".$ex_sql.';';
+        
+            if ($scres) {
+                
+                //echo $i.'-'.$monthFromSql."-01 00:00:00 - ".$i.'-'.$monthToSql."-31 23:59:59' <br>";
+                
+                foreach ($scres as $totals) {
+                    //var_dump($totals);
+                    
+                    $income["Income"]["amount"][] = $totals['totalYtziros'];
+                    $cases["Cases"]["num"][] = $totals['totalYcases']*10;
+                    if ($totals['totalYtziros'] > 0 && $totals['totalYcases'] > 0) {
+                        $IPC["IncomePerCase"]["IPC"][] = round(($totals['totalYtziros'] / $totals['totalYcases']),2)*10;
+                    } else {
+                        $IPC["IncomePerCase"]["IPC"][] = 0;
+                    }
+                }
+            }
+            
+            $monthFrom = $monthFrom + 3;
+            $monthTo = $monthTo + 3;
+        }        
+    }
+    
+    $StatsPerQ[] = $income; 
+    $StatsPerQ[] = $cases; 
+    $StatsPerQ[] = $IPC; 
+    $StatsPerQ[] = $quarters;     
+
+    return $StatsPerQ;
+}
+
 
 if ($scerr) {
 	$tk_status = json_encode(array(
@@ -93,7 +231,8 @@ if ($scerr) {
 } else {
     $tk_status = json_encode(array(
      'status' => 'success',
-     'data'=> json_encode($cases)
+     'dataY'=> json_encode($dataY),
+     'dataQ'=> json_encode($dataQ)
     ));
     echo $tk_status;
     exit(0);    

@@ -117,7 +117,7 @@ class Tickets extends Db {
 					$ssql = ' ORDER BY cs.user ASC, cs.id DESC';
 					break;
 				default:
-					$ssql = ' ORDER BY cs.id DESC';
+					$ssql = ' ORDER BY cs.created DESC';
 			}
 			$cresult = $this->getConn()->query('SELECT cs.*,cl.name FROM "Case" AS cs LEFT JOIN "Client" AS cl ON  cl.id = cs.clientID AND cs.status < '.$this->sclosed.''.$ssql);
 			if ($cresult) {

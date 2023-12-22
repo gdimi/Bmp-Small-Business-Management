@@ -18,7 +18,7 @@ if (!$pos or $pos != 'before') {
 			$Trash->initTrash();
 			if (!$Trash->trashErr) {
 				$to_data = $Trash->showObjectDetails('content/trashed/'.$to);
-                                
+  
                 //determine data type in trash file
                 if (strpos($to,'case') !== false) { 
                     $type = 'case';

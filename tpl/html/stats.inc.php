@@ -24,10 +24,19 @@ $oldYear = $dss->startYear;
 
 </div>
 <div id="statres" class="btn-red"></div>
-<div id="chart_container" style="position: relative; width:40%;clear:both">
-    <canvas id="trendsChart" width="auto" height="400" style="display:none;width:auto;height:400px;" aria-label="Trends Chart" role="img">
-        <p>Plotted line chart</p>
-    </canvas>
+<div id="chart_container" style="display:none; position: relative; width:80%; height:auto; clear:both; padding: 80px;">
+    <div id="gpy_container" style="width:960px;height:400px">
+        <h3><?php echo $lang['graph_per_year']; ?></h3>
+        <canvas id="graphPerYear" aria-label="Chart Per Year" role="img">
+            <p>Plotted line chart</p>
+        </canvas>
+    </div>
+    <div id="gpq_container" style="width:960px;height:400px;padding-top:80px;">
+        <h3><?php echo $lang['graph_per_quorter']; ?></h3>
+        <canvas id="graphPerQ" style="" aria-label="Chart Per Quarter" role="img">
+            <p>Plotted line chart</p>
+        </canvas>
+    </div>
 </div>
 <script>
 $(document).ready(function() {
@@ -110,7 +119,7 @@ $(document).ready(function() {
             }
         }, "json").fail(function(jqXHR, textStatus, errorThrown){
             $("#stats_info").show("fast").append(textStatus);
-        });        
+        });
     }
     
     //trends
@@ -120,18 +129,25 @@ $(document).ready(function() {
         function(data, textStatus, jqXHR){
             $("#stats_info > div#statres").html('&nbsp;');
             if(data.status === "success") {
-                $("#trendsChart").toggle();
+                $("#chart_container").toggle();
                 $("#stats_info > div#statres").hide("fast");
                 
-                const sourceData = data.data;
+                const sourceDataY = data.dataY;
+                const sourceDataQ = data.dataQ;
 
                 const Years = [];
-                const graphData = [];
 
-                for (const key of Object.keys(sourceData)) {
-                   Years.push(key);
-                   graphData.push(sourceData[key]);
-                }
+               //console.log(sourceDataY);
+                
+               const graphDataY = JSON.parse(sourceDataY);
+               const graphDataQ = JSON.parse(sourceDataQ);
+               
+               //console.log(graphDataY);
+
+                //for (const key of Object.keys(sourceData)) {
+                //   Years.push(key);
+                //   graphData.push(sourceData[key]);
+               // }
                 /*const ctx = document.getElementById('trendsChart').getContext('2d');
                 
                 const myLineChart = new Chart(ctx, {
@@ -150,6 +166,81 @@ $(document).ready(function() {
                     ]
                   }
                 });*/           
+                const ctx = document.getElementById('graphPerYear').getContext('2d');
+                
+                const myLineChartY = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: graphDataY[0].Years,
+                    datasets: [
+                    {
+                      label: 'Income per Year',
+                      data: graphDataY[0].Income.amount,
+                      borderColor: 'green',
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      fill: true,
+                      animations: false,
+                    },
+                    {
+                      label: '# of Cases (x10)',
+                      data: graphDataY[1].Cases.num,
+                      borderColor: 'blue',
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      fill: true,
+                      animations: false             
+                    },
+                    {
+                      label: 'Income Per Case (x10)',
+                      data: graphDataY[2].IncomePerCase.IPC,
+                      borderColor: 'black',
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      fill: true,
+                      animations: false             
+                    }
+                    ]
+                  },
+                  options: {
+                    responsive:true,
+                  }
+                });
+                
+                const Qctx = document.getElementById('graphPerQ').getContext('2d');
+               
+                const myLineChartQ = new Chart(Qctx, {
+                  type: 'line',
+                  data: {
+                    labels: graphDataQ[3],
+                    datasets: [
+                    {
+                      label: 'Income',
+                      data: graphDataQ[0].Income.amount,
+                      borderColor: 'green',
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      fill: true,
+                      animations: false,
+                    },
+                    {
+                      label: '# of Cases (x10)',
+                      data: graphDataQ[1].Cases.num,
+                      borderColor: 'blue',
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      fill: true,
+                      animations: false             
+                    },
+                    {
+                      label: 'Case Value(x10)',
+                      data: graphDataQ[2].IncomePerCase.IPC,
+                      borderColor: 'black',
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      fill: true,
+                      animations: false             
+                    }
+                    ]
+                  },
+                  options: {
+                    responsive:true,
+                  }
+                }); 
 
         } else if(data.status === "error") {
                 $("#stats_info > div#statres").append(data.message);
@@ -158,113 +249,6 @@ $(document).ready(function() {
         }, "json").fail(function(jqXHR, textStatus, errorThrown){
             $("#stats_info").show("fast").append(textStatus);
         });
-    });
-
-    let Income = {
-      "Years" : [
-        "2015",
-        "2016",
-        "2017",
-        "2018",
-        "2019",
-        "2020",
-        "2021",
-        "2022",
-      ],
-      "amount": [
-        2954.5,
-        4410.0,
-        3716.4,
-        4071.4,
-        1818.2,
-        4444.53,
-        5576.7,
-        1893
-      ]
-    };
-    
-    let Cases = {
-      "Years" : [
-        "2015",
-        "2016",
-        "2017",
-        "2018",
-        "2019",
-        "2020",
-        "2021",
-        "2022",
-      ],
-      "num": [
-        1880,
-        1450,
-        1550,
-        1430,
-        650,
-        1050,
-        1140,
-        580
-      ]      
-    }
-    
-    let IncomePerCase = {
-       "Years" : [
-        "2015",
-        "2016",
-        "2017",
-        "2018",
-        "2019",
-        "2020",
-        "2021",
-        "2022",
-      ],
-      "IPC": [
-        157,
-        304,
-        239,
-        284,
-        279,
-        423,
-        488,
-        326
-      ]  
-    }
-
-    const ctx = document.getElementById('trendsChart').getContext('2d');
-    
-    const myLineChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: Income.Years,
-        datasets: [
-        {
-          label: 'Income per Year',
-          data: Income.amount,
-          borderColor: 'green',
-          backgroundColor: 'rgba(0, 0, 0, 0.1)',
-          fill: true,
-          animations: false,
-        },
-        {
-          label: '# of Cases (x10)',
-          data: Cases.num,
-          borderColor: 'blue',
-          backgroundColor: 'rgba(0, 0, 0, 0.1)',
-          fill: true,
-          animations: false             
-        },
-        {
-          label: 'Income Per Case (x10)',
-          data: IncomePerCase.IPC,
-          borderColor: 'black',
-          backgroundColor: 'rgba(0, 0, 0, 0.1)',
-          fill: true,
-          animations: false             
-        }
-        ]
-      },
-      options: {
-        responsive:true,
-      }
     });
 });
 </script>

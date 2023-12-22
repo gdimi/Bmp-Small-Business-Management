@@ -112,7 +112,7 @@ if (!$pos or $pos != 'before') {
 				$schtml .= ' | <strong>'.$lang['stats-gross'].' '.$allinc.'</strong><br /><hr size="1" />';
 			}
 			//make list by case type
-			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount FROM "Case" WHERE updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY theCount  DESC;');
+			$scres = $statsInstance->listByCaseType($from_time,$to_time,$ex_sql);
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytype'].'</h3>';
 				foreach ($scres as $ctl) {
@@ -130,9 +130,10 @@ if (!$pos or $pos != 'before') {
 			} else {
 				$scerr = "An error occured in list by case!";
 			}
+            
 			// get list by case by tziros 
-			$scres = $sccon->query('SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY theTotal DESC;');
-			if ($scres) {
+			$scres = $statsInstance->listByCaseTypeByTziros($from_time,$to_time,$ex_sql);
+            if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbytypebygross'].'</h3>';
 				foreach ($scres as $ctli) {
 					$ctype = $caseType[$ctli['type']];
@@ -147,8 +148,9 @@ if (!$pos or $pos != 'before') {
 				}
 				$schtml .="</div>";
 			}
-			// get top 8 customers by total income and display
-			$scres = $sccon->query('SELECT  cl.name, SUM("price") as theSUM FROM "Case"  AS cs INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.$ex_join_sql.' GROUP BY cs.clientID ORDER BY theSUM DESC LIMIT 10;');
+
+			// get top customers by total income and display
+			$scres = $statsInstance->getTopCustomersByIncome($from_time,$to_time,$ex_join_sql,$hardLimit);
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient'].'</h3>';
 				foreach ($scres as $cli) {
@@ -160,8 +162,9 @@ if (!$pos or $pos != 'before') {
 				}
 				$schtml .="</div>";
 			}
-			// get top 8 customers by # of cases and display
-			$scres = $sccon->query('SELECT  cl.name, COUNT(0) as theCount FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.$ex_join_sql.' GROUP BY cs.clientID ORDER BY theCount DESC LIMIT 10;');
+
+			// get top customers by # of cases and display
+			$scres = $statsInstance->getTopCustomersByNofCases($from_time,$to_time,$ex_join_sql,$hardLimit);
 			if ($scres) {
 				$schtml .= '<div class="case-types"><h3>'.$lang['stats-listbyclient-noc'].'</h3>';
 				foreach ($scres as $clcn) {
@@ -171,7 +174,7 @@ if (!$pos or $pos != 'before') {
 					</div>
 					";
 				}
-				$schtml .="</div>"; //lang:".$_GET['lang'];
+				$schtml .="</div>";
 			}
 		}
     } catch(PDOException $ex) {

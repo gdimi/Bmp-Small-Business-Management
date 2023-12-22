@@ -28,6 +28,8 @@ namespace BMP\Database;
 
 if (!defined('_w00t_frm')) die('har har har');
 
+require_once('sources/class.stats.php');
+
 $caseType = $dss->caseType;
 
 $from_time = '';

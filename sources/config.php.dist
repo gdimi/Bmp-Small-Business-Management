@@ -74,7 +74,8 @@ class DSConfig {
     var $style = array(
         'logo'=>'', //path to logo file
         'top_bar_bg'=>'dimgrey', //top bar bg color
-        'left_bar_bg'=>'brown' //left bar bg color
+        'left_bar_bg'=>'brown', //left bar bg color
+        'flat'=>'yes', //new flat style css
     );
 
     public function __toString() {

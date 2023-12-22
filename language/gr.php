@@ -116,6 +116,7 @@ $lang['stats-listbytype'] = 'Ανάλυση ανά είδος';
 $lang['stats-listbytypebygross'] = 'Ανάλυση ανά είδος ανά τζίρο';
 $lang['stats-listbyclient'] = 'Ανάλυση ανά επαφή ανά τζίρο (τοπ 10)';
 $lang['stats-listbyclient-noc'] = 'Ανάλυση ανά επαφή με αριθμό cases (τοπ 10)';
+$lang['stats-listbyclient-vpc'] = 'Ανάλυση ανά επαφή με VPC (τοπ 10)';
 $lang['stats_last_month'] = 'Τελευταίος Μήνας';
 $lang['stats_last_3'] = 'Τελευταίοι 3 μήνες';
 $lang['stats_last_6'] = 'Τελευταίοι 6 μήνες';

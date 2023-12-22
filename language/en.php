@@ -116,6 +116,7 @@ $lang['stats-listbytype'] = 'List by type';
 $lang['stats-listbytypebygross'] = 'List by type and by gross';
 $lang['stats-listbyclient'] = 'List by contact (top 10)';
 $lang['stats-listbyclient-noc'] = 'List by contact number of cases (top 10)';
+$lang['stats-listbyclient-vpc'] = 'List by contact VPC (top 10)';
 $lang['stats_last_month'] = 'Last month';
 $lang['stats_last_3'] = 'Last 3 months';
 $lang['stats_last_6'] = 'Last 6 months';

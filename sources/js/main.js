@@ -107,6 +107,23 @@ $(document).ready(function() {
 			function(data, textStatus, jqXHR){
 				if(data.status === "success") {
 					$("#stats_info > #stats_data").html(data.message);
+                    //highlight client in each stats block on hover 
+                    document.querySelectorAll(".clname").forEach(el => {
+                       let clid = el.dataset.cid;
+                       let clQuery = '.clname.cl-'+clid;
+                       el.addEventListener("mouseover", () => {
+                           document.querySelectorAll(clQuery).forEach(el => {
+                               el.style.backgroundColor = 'lightgreen';
+                           });
+                       });
+                       el.addEventListener("mouseout", () => {
+                           document.querySelectorAll(clQuery).forEach(el => {
+                               el.style.backgroundColor = '#F5F5F5';
+                           });                           
+                       });
+                    });                    
+                    const clients = document.getElementsByClassName('clname');
+                    console.log(clients);
 				} else if(data.status === "error") {
 					$("#stats_info > div").append(data.message);
 					$("#stats_info").delay(2000).hide("slow");

@@ -10,21 +10,20 @@ class Db {
 	private $pass;
 	protected $conn;
     private static $instances = array();
-    protected function __construct() {}
-    protected function __clone() {}
 
-    public function __wakeup()
-    {
-        throw new Exception("Cannot unserialize singleton");
-    }
+    // do not allow the following 
+    protected function __construct() {}
+    private function __clone() {}
+    private function __wakeup() {}
+    private function __sleep() {}    
 
     public static function getInstance()
     {
-        $cls = get_called_class(); // late-static-bound class name
-        if (!isset(self::$instances[$cls])) {
-            self::$instances[$cls] = new static;
+        $caller = get_called_class(); // late-static-bound class name
+        if (!isset(self::$instances[$caller])) {
+            self::$instances[$caller] = new static;
         }
-        return self::$instances[$cls];
+        return self::$instances[$caller];
     }
 
 	function connect() {
@@ -44,6 +43,10 @@ class Db {
 	protected function close() {
 		$this->conn = null;
 	}
+    
+    public function getInstances() {
+        return self::$instances;
+    }
 }
 
 ?>

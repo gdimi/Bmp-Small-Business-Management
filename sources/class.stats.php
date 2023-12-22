@@ -28,6 +28,83 @@
 namespace BMP\Database;
 
 class Stats extends Db {
+    function init() {
+        $this->connect();      
+    }
+    
+    function getNumOfCases($from_time,$to_time,$ex_sql) {
+
+		try {
+			$cresult = $this->getConn()->query('SELECT COUNT(0) as theAll FROM "Case" WHERE status > 3 AND updated >= '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
+			if ($cresult) {
+                return $cresult;
+			} 
+		} catch(PDOException $ex) {
+			echo "An Error occured!".$ex->getMessage(); //user friendly message
+		}
+    }    
+    
+    function getIncomeTotal($from_time,$to_time,$ex_sql) {
+
+		try {
+			$cresult = $this->getConn()->query('SELECT SUM("price") as theIncome FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.';');
+			if ($cresult) {
+                return $cresult;
+			} 
+		} catch(PDOException $ex) {
+			echo "An Error occured!".$ex->getMessage(); //user friendly message
+		}
+    }    
+    
+    function listByCaseType($from_time,$to_time,$ex_sql) {
+
+		try {
+			$cresult = $this->getConn()->query('SELECT type, COUNT(0) AS theCount FROM "Case" WHERE updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY theCount DESC;');            
+			if ($cresult) {
+                return $cresult;
+			} 
+		} catch(PDOException $ex) {
+			echo "An Error occured!".$ex->getMessage(); //user friendly message
+		}
+    }
+    
+    function listByCaseTypeByTziros($from_time,$to_time,$ex_sql) {
+
+		try {
+			$cresult = $this->getConn()->query('SELECT type, COUNT(0) AS theCount, SUM("price") as theTotal FROM "Case" WHERE status > 3 AND updated > '.$from_time.' AND updated <= '.$to_time.$ex_sql.' GROUP BY "type" ORDER BY theTotal DESC;');
+
+			if ($cresult) {
+                return $cresult;
+			} 
+		} catch(PDOException $ex) {
+			echo "An Error occured!".$ex->getMessage(); //user friendly message
+		}
+    }    
+    
+    function getTopCustomersByIncome($from_time,$to_time,$ex_join_sql,$hardLimit) {
+
+		try {
+			$cresult = $this->getConn()->query('SELECT  cl.name, cl.id, SUM("price") as theSUM FROM "Case"  AS cs INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.$ex_join_sql.' GROUP BY cs.clientID ORDER BY theSUM DESC LIMIT '.$hardLimit.';');
+			if ($cresult) {
+                return $cresult;
+			} 
+		} catch(PDOException $ex) {
+			echo "An Error occured!".$ex->getMessage(); //user friendly message
+		}
+    }
+    
+    function getTopCustomersByNofCases($from_time,$to_time,$ex_join_sql,$hardLimit) {
+
+		try {
+			$cresult = $this->getConn()->query('SELECT  cl.name, cl.id, COUNT(*) as theCount FROM "Case"  AS cs  INNER JOIN "Client" AS cl ON cl.id = cs.clientID WHERE cs.status > 3 AND cs.updated > '.$from_time.' AND updated <= '.$to_time.$ex_join_sql.' GROUP BY cs.clientID ORDER BY theCount DESC LIMIT '.$hardLimit.';');
+			if ($cresult) {
+                return $cresult;
+			} 
+		} catch(PDOException $ex) {
+			echo "An Error occured!".$ex->getMessage(); //user friendly message
+		}
+    }
+
     function groupByType() {
 		$gbt = Array();
 
@@ -49,6 +126,8 @@ class Stats extends Db {
     function medianPrice() {
         
     }
+    
+    
 }
 
 ?>
